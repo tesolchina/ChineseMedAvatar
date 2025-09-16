@@ -300,6 +300,35 @@ body {
     margin-bottom: 10px;
 }
 
+/* Avatar placeholder styles */
+.avatar-placeholder {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    font-size: 24px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.avatar-placeholder.tcm-doctor {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+}
+
+.avatar-placeholder.herbalist {
+    background: linear-gradient(135deg, #fd7e14 0%, #ffc107 100%);
+}
+
+.avatar-placeholder.acupuncturist {
+    background: linear-gradient(135deg, #6f42c1 0%, #e83e8c 100%);
+}
+
+.avatar-icon {
+    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
+}
+
 .avatar-card h4 {
     margin-bottom: 5px;
     color: #333;

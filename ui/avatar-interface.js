@@ -5,11 +5,13 @@ class AvatarInterface {
         this.inputMode = 'voice';
         this.isRecording = false;
         this.avatarFrame = null;
+        this.avatarConfigs = {};
         
         this.init();
     }
 
     init() {
+        this.loadAvatarConfigs();
         this.setupEventListeners();
         this.setupIframeIntegration();
         this.updateConnectionStatus('connecting');
@@ -19,6 +21,56 @@ class AvatarInterface {
             this.hideLoadingOverlay();
             this.updateConnectionStatus('connected');
         }, 3000);
+    }
+
+    async loadAvatarConfigs() {
+        // Load avatar configuration files
+        const configFiles = {
+            'dr-li-wei': '../bot-config/dr-li-wei.json',
+            'master-chen': '../bot-config/master-chen.json',
+            'dr-zhang': '../bot-config/dr-zhang.json'
+        };
+
+        for (const [key, path] of Object.entries(configFiles)) {
+            try {
+                const response = await fetch(path);
+                if (response.ok) {
+                    this.avatarConfigs[key] = await response.json();
+                    console.log(`Loaded config for ${key}:`, this.avatarConfigs[key]);
+                } else {
+                    console.warn(`Failed to load config for ${key}`);
+                    // Fallback configuration
+                    this.avatarConfigs[key] = this.getDefaultConfig(key);
+                }
+            } catch (error) {
+                console.warn(`Error loading config for ${key}:`, error);
+                this.avatarConfigs[key] = this.getDefaultConfig(key);
+            }
+        }
+    }
+
+    getDefaultConfig(avatarKey) {
+        const defaults = {
+            'dr-li-wei': {
+                name: '李伟医生 (Dr. Li Wei)',
+                styleClass: 'from-emerald-500 to-teal-600',
+                systemPrompt: 'You are Dr. Li Wei, a Traditional Chinese Medicine doctor with 30 years of experience.',
+                welcomePrompt: 'Hello! I am Dr. Li Wei. How can I help you with Traditional Chinese Medicine today?'
+            },
+            'master-chen': {
+                name: '陈师傅 (Master Chen)',
+                styleClass: 'from-orange-500 to-yellow-500',
+                systemPrompt: 'You are Master Chen, an experienced herbalist specializing in Chinese herbal medicine.',
+                welcomePrompt: 'Greetings! I am Master Chen. What herbal remedies can I help you with?'
+            },
+            'dr-zhang': {
+                name: '张医生 (Dr. Zhang)',
+                styleClass: 'from-purple-500 to-pink-500',
+                systemPrompt: 'You are Dr. Zhang, an acupuncture expert with modern TCM approach.',
+                welcomePrompt: 'Hello! I am Dr. Zhang. How can I assist you with acupuncture and TCM treatment?'
+            }
+        };
+        return defaults[avatarKey] || defaults['dr-li-wei'];
     }
 
     setupEventListeners() {
@@ -203,14 +255,58 @@ class AvatarInterface {
         document.querySelectorAll('.avatar-card').forEach(card => {
             card.classList.remove('active');
         });
-        document.querySelector(`[data-avatar="${avatarId}"]`).classList.add('active');
-        
-        // Notify the technical avatar about the selection
-        this.sendMessageToAvatar('avatar-change', { avatarId });
+        const selectedCard = document.querySelector(`[data-avatar="${avatarId}"]`);
+        if (selectedCard) {
+            selectedCard.classList.add('active');
+            
+            // Get the config key from the data-config attribute
+            const configKey = selectedCard.dataset.config;
+            const config = this.avatarConfigs[configKey];
+            
+            if (config) {
+                console.log(`Selected avatar: ${config.name}`);
+                console.log(`System prompt: ${config.systemPrompt}`);
+                
+                // Notify the technical avatar about the selection with full config
+                this.sendMessageToAvatar('avatar-change', { 
+                    avatarId, 
+                    config: config,
+                    animationSpecs: this.getAnimationSpecs(avatarId)
+                });
+            }
+        }
         
         // Show loading while switching
         this.showLoadingOverlay();
         setTimeout(() => this.hideLoadingOverlay(), 2000);
+    }
+
+    getAnimationSpecs(avatarId) {
+        // Return animation specifications from the avatar/animation.md file
+        const specs = {
+            'tcm-doctor': {
+                appearance: 'Professional, traditional Chinese medicine doctor',
+                ageRange: '45-55 years',
+                attire: 'Traditional white coat or Chinese medical attire',
+                expressions: ['wise', 'patient', 'caring', 'attentive'],
+                gestures: ['gentle hand movements', 'traditional greeting']
+            },
+            'herbalist': {
+                appearance: 'Experienced herbalist with traditional wisdom',
+                ageRange: '55-65 years',
+                attire: 'Traditional Chinese clothing, possibly herbal workshop setting',
+                expressions: ['knowledgeable', 'detailed-oriented', 'traditional'],
+                gestures: ['herb handling motions', 'explanatory gestures']
+            },
+            'acupuncturist': {
+                appearance: 'Modern TCM practitioner with scientific approach',
+                ageRange: '35-45 years',
+                attire: 'Modern medical attire with TCM elements',
+                expressions: ['precise', 'gentle', 'focused', 'reassuring'],
+                gestures: ['point location demonstrations', 'needle handling motions']
+            }
+        };
+        return specs[avatarId] || specs['tcm-doctor'];
     }
 
     updateConnectionStatus(status) {
