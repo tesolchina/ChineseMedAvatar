@@ -58,6 +58,11 @@ ChineseMedAvatar/
 4. **Testing**: Coordinate with technical repo for integration testing
 5. **Demo Preparation**: Create presentation materials and coordinate outreach
 
+## GitHub Repository
+- **Repository**: https://github.com/tesolchina/ChineseMedAvatar.git
+- **Branch**: main
+- **Status**: Ready for initial push to GitHub
+
 ## iframe Integration Strategy
 The technical avatar implementation will be embedded in our HTML interface using:
 - iframe for secure embedding
