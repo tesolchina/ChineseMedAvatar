@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese Medicine Avatar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Chinese Medicine Avatar</h1>
+            <p>Interactive Traditional Chinese Medicine Consultation</p>
+        </header>
+
+        <!-- Main Avatar Interface -->
+        <main class="main-interface">
+            <!-- Avatar Display Area -->
+            <section class="avatar-section">
+                <div class="avatar-container">
+                    <!-- This iframe will contain the technical avatar implementation -->
+                    <iframe 
+                        id="avatar-frame" 
+                        src="about:blank" 
+                        frameborder="0"
+                        sandbox="allow-scripts allow-same-origin"
+                        title="Chinese Medicine Avatar">
+                    </iframe>
+                    
+                    <!-- Loading overlay -->
+                    <div class="loading-overlay" id="loading-overlay">
+                        <div class="loading-spinner"></div>
+                        <p>Loading Avatar...</p>
+                    </div>
+                    
+                    <!-- Error overlay -->
+                    <div class="error-overlay" id="error-overlay" style="display: none;">
+                        <p>Avatar temporarily unavailable</p>
+                        <button onclick="reloadAvatar()">Retry</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Control Panel -->
+            <section class="control-panel">
+                <div class="conversation-controls">
+                    <h3>Conversation Controls</h3>
+                    
+                    <!-- Turn Management -->
+                    <div class="turn-controls">
+                        <button id="user-turn" class="turn-button active">
+                            <span class="icon">👤</span>
+                            Your Turn
+                        </button>
+                        <button id="avatar-turn" class="turn-button">
+                            <span class="icon">🤖</span>
+                            Avatar Speaking
+                        </button>
+                    </div>
+
+                    <!-- Input Mode Selection -->
+                    <div class="input-mode">
+                        <h4>Input Mode</h4>
+                        <button id="voice-mode" class="mode-button active">
+                            <span class="icon">🎤</span>
+                            Voice
+                        </button>
+                        <button id="text-mode" class="mode-button">
+                            <span class="icon">⌨️</span>
+                            Text
+                        </button>
+                    </div>
+
+                    <!-- Text Input Area -->
+                    <div class="text-input-area" id="text-input-area" style="display: none;">
+                        <textarea 
+                            id="message-input" 
+                            placeholder="Type your question about Traditional Chinese Medicine..."
+                            rows="3">
+                        </textarea>
+                        <button id="send-message" class="send-button">Send</button>
+                    </div>
+
+                    <!-- Voice Controls -->
+                    <div class="voice-controls" id="voice-controls">
+                        <button id="start-recording" class="record-button">
+                            <span class="icon">🎤</span>
+                            Hold to Speak
+                        </button>
+                        <div class="recording-indicator" id="recording-indicator" style="display: none;">
+                            <span class="pulse"></span>
+                            Recording...
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Avatar Selection -->
+                <div class="avatar-selection">
+                    <h3>Select Avatar</h3>
+                    <div class="avatar-grid">
+                        <div class="avatar-card active" data-avatar="tcm-doctor">
+                            <img src="avatars/tcm-doctor-thumb.jpg" alt="TCM Doctor" onerror="this.src='avatars/placeholder.jpg'">
+                            <h4>Dr. Li Wei</h4>
+                            <p>Traditional Chinese Medicine Doctor</p>
+                        </div>
+                        <div class="avatar-card" data-avatar="herbalist">
+                            <img src="avatars/herbalist-thumb.jpg" alt="Herbalist" onerror="this.src='avatars/placeholder.jpg'">
+                            <h4>Master Chen</h4>
+                            <p>Herbal Medicine Specialist</p>
+                        </div>
+                        <div class="avatar-card" data-avatar="acupuncturist">
+                            <img src="avatars/acupuncture-thumb.jpg" alt="Acupuncturist" onerror="this.src='avatars/placeholder.jpg'">
+                            <h4>Dr. Zhang</h4>
+                            <p>Acupuncture Expert</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Status Bar -->
+        <footer class="status-bar">
+            <div class="connection-status">
+                <span class="status-indicator" id="connection-status">🔴</span>
+                <span id="status-text">Connecting...</span>
+            </div>
+            <div class="demo-info">
+                <a href="#" onclick="showDemoInfo()">Demo Information</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Demo Info Modal -->
+    <div class="modal" id="demo-modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeDemoInfo()">&times;</span>
+            <h2>Demo Information</h2>
+            <p>This is a demonstration of the Chinese Medicine Avatar system.</p>
+            <ul>
+                <li>Select an avatar specialist</li>
+                <li>Choose voice or text input</li>
+                <li>Ask questions about Traditional Chinese Medicine</li>
+                <li>Receive personalized guidance and recommendations</li>
+            </ul>
+            <p><strong>Test Environment:</strong> http://8.211.158.223/</p>
+        </div>
+    </div>
+
+    <script src="avatar-interface.js"></script>
+</body>
+</html>

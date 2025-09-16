@@ -1,51 +1,79 @@
-# Text-to-Speech Module
+# Text-to-Speech Requirements
 
 ## Overview
-Cost-effective text-to-speech engine for the Chinese Medicine Avatar project.
+Cost-effective text-to-speech requirements for the Chinese Medicine Avatar project. Implementation will be in the technical repository.
 
-## Requirements
-- Low API costs
-- High quality Chinese language support
-- Real-time processing capability
-- Multiple voice options
+## UI Integration Requirements
+- Audio playback controls in HTML interface
+- Volume control and mute functionality  
+- Visual indicators for speech activity
+- Loading states for TTS processing
 
-## Potential Services
-1. **Azure Cognitive Services Speech** - Competitive pricing for Chinese TTS
-2. **Google Cloud Text-to-Speech** - Good Chinese language support
-3. **Amazon Polly** - Pay-per-use model
-4. **Local TTS Solutions** - One-time cost, no API fees
+## TTS Service Requirements
 
-## API Interface
-```python
-class TextToSpeech:
-    def __init__(self, service_provider: str, api_key: str):
-        """Initialize TTS service"""
-        pass
-    
-    def synthesize(self, text: str, language: str = "zh-CN") -> bytes:
-        """Convert text to speech audio"""
-        pass
-    
-    def set_voice(self, voice_id: str) -> None:
-        """Set voice for synthesis"""
-        pass
-    
-    def get_available_voices(self) -> list:
-        """Get list of available voices"""
-        pass
+### Language Support
+- **Primary**: Mandarin Chinese (zh-CN)
+- **Secondary**: English (en-US)
+- Natural-sounding pronunciation for medical terms
+- Appropriate accent and tone for each avatar
+
+### Voice Characteristics by Avatar
+
+#### Dr. Li Wei (TCM Doctor)
+- **Voice Type**: Mature male, authoritative yet warm
+- **Speaking Pace**: Moderate, clear enunciation
+- **Tone**: Professional, caring, educational
+
+#### Master Chen (Herbalist)
+- **Voice Type**: Older male, traditional wisdom
+- **Speaking Pace**: Slightly slower, thoughtful
+- **Tone**: Traditional, detailed, patient
+
+#### Dr. Zhang (Acupuncturist)
+- **Voice Type**: Mid-aged professional, precise
+- **Speaking Pace**: Clear and measured
+- **Tone**: Scientific yet gentle, reassuring
+
+## Cost Optimization Strategy
+1. **Service Comparison**: Azure, Google, Amazon pricing
+2. **Usage Patterns**: Cache common responses
+3. **Compression**: Optimize audio format and quality
+4. **Batching**: Group multiple requests when possible
+
+## Integration Specifications
+
+### Message Format for TTS
+```javascript
+{
+    type: 'text-to-speech-request',
+    data: {
+        text: "Traditional Chinese Medicine focuses on...",
+        voice_id: "tcm-doctor" | "herbalist" | "acupuncturist", 
+        language: "zh-CN" | "en-US",
+        speed: 0.8 to 1.2,
+        emotion: "neutral" | "happy" | "concerned"
+    }
+}
 ```
 
-## Cost Optimization
-- Batch processing for multiple requests
-- Audio caching for repeated phrases
-- Quality vs cost trade-offs
-- Usage monitoring and alerts
+### Audio Delivery
+```javascript
+{
+    type: 'speech-audio-ready',
+    data: {
+        audio_url: "blob:https://...",
+        duration: 5000, // milliseconds
+        format: "mp3" | "wav",
+        transcript: "Original text"
+    }
+}
+```
 
-## Integration Points
-- Avatar animation sync
-- Real-time conversation flow
-- Audio output management
+## Quality Requirements
+- Natural prosody and intonation
+- Correct pronunciation of TCM terminology
+- Consistent voice quality across sessions
+- Low latency for real-time conversation
 
 ---
-*Module: Text-to-Speech*
-*Status: Research Phase*
+*TTS Requirements for Technical Implementation*

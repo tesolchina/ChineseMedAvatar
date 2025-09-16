@@ -1,17 +1,30 @@
 # Chinese Medicine Avatar Project
 
 ## Project Overview
-This project aims to develop an interactive Chinese medicine avatar using proprietary technology for educational and consultation purposes.
+This repository contains the **non-technical development** components for the Chinese Medicine Avatar project. The actual technical implementation (frontend/backend) will be in a separate repository and integrated via iframe embedding.
+
+## Repository Focus
+- **HTML UI Components**: User interface elements for avatar interaction
+- **Content Management**: Avatar prompts, responses, and Chinese medicine knowledge
+- **Integration Documentation**: iframe embedding and communication protocols
+- **Demo Materials**: Presentation content and stakeholder resources
+- **Contact Management**: Outreach and demo coordination
 
 ## September 2025 Goals
 Based on the meeting with Kaitai Zhang on 2025-08-22, the priority objectives for September include:
 
-### Core Features to Implement
+### Core Features (Technical Repo)
 - **Animated Photo Avatar**: Set up an animated photo that can talk and interact
 - **Text-to-Speech Engine**: Implement cost-effective TTS with low API costs
 - **Speech-to-Text Engine**: Implement cost-effective STT with low API costs  
 - **Turn-Based Control**: Button interface to control conversation turns
 - **Multi-Avatar Support**: Enable multiple people to talk with multiple avatars
+
+### Our Responsibilities (This Repo)
+- **UI Design**: HTML/CSS for avatar interface and controls
+- **Content Creation**: Avatar personalities, medical knowledge, conversation flows
+- **Integration Planning**: iframe embedding strategy and communication
+- **Demo Coordination**: Stakeholder outreach and presentation materials
 
 ## Current Test Environment
 - **Test URL**: http://8.211.158.223/
@@ -21,26 +34,36 @@ Based on the meeting with Kaitai Zhang on 2025-08-22, the priority objectives fo
 ## Project Structure
 ```
 ChineseMedAvatar/
-├── frontend/          # Web interface and user interaction
-├── backend/           # API services and business logic
-├── avatar/            # Avatar animation and AI components
+├── ui/                # HTML/CSS interface components
+├── content/           # Avatar content and Chinese medicine knowledge
+├── integration/       # iframe embedding and API communication docs
+├── avatar/            # Avatar specifications and requirements
 ├── contacts/          # Contact management and email system
+├── demo/              # Demo materials and presentations
 ├── docs/              # Documentation and specifications
 └── README.md          # This file
 ```
 
 ## Technology Stack
-- Avatar Animation: [TBD - Proprietary Tech]
-- Text-to-Speech: [TBD - Low cost API]
-- Speech-to-Text: [TBD - Low cost API]
-- Frontend: [TBD]
-- Backend: [TBD]
+- **UI Layer**: HTML5, CSS3, JavaScript (for iframe communication)
+- **Technical Backend**: Separate repository (TBD)
+- **Integration**: iframe embedding, postMessage API
+- **Content**: Markdown files, JSON data structures
+- **Demo Tools**: Presentation software, screen recording
 
-## Setup Instructions
-1. Clone this repository
-2. Install dependencies (instructions TBD)
-3. Configure API keys for TTS/STT services
-4. Run development server
+## Development Workflow
+1. **Content Creation**: Develop avatar personalities and medical knowledge
+2. **UI Design**: Create HTML interface components
+3. **Integration Planning**: Design iframe communication protocols
+4. **Testing**: Coordinate with technical repo for integration testing
+5. **Demo Preparation**: Create presentation materials and coordinate outreach
+
+## iframe Integration Strategy
+The technical avatar implementation will be embedded in our HTML interface using:
+- iframe for secure embedding
+- postMessage API for communication
+- Responsive design for different screen sizes
+- Loading states and error handling
 
 ## Development Timeline
 - **Phase 1 (September 2025)**: Core avatar functionality

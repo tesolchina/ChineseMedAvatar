@@ -1,52 +1,120 @@
-# Speech-to-Text Module
+# Speech-to-Text Requirements
 
 ## Overview
-Cost-effective speech-to-text engine for real-time conversation with the Chinese Medicine Avatar.
+Cost-effective speech-to-text requirements for real-time conversation with the Chinese Medicine Avatar. Implementation will be in the technical repository.
 
-## Requirements
-- Low API costs
-- High accuracy Chinese language recognition
-- Real-time processing
-- Noise reduction capabilities
+## UI Integration Requirements
+- Microphone access and permissions handling
+- Visual recording indicators
+- Real-time transcription display (optional)
+- Noise level indicators
+- Push-to-talk button functionality
 
-## Potential Services
-1. **Azure Cognitive Services Speech** - Good pricing and Chinese support
-2. **Google Cloud Speech-to-Text** - Strong accuracy for Chinese
-3. **Amazon Transcribe** - Pay-per-use model
-4. **Local STT Solutions** - Whisper, DeepSpeech for cost savings
+## STT Service Requirements
 
-## API Interface
-```python
-class SpeechToText:
-    def __init__(self, service_provider: str, api_key: str):
-        """Initialize STT service"""
-        pass
-    
-    def transcribe_real_time(self, audio_stream) -> str:
-        """Real-time transcription from audio stream"""
-        pass
-    
-    def transcribe_file(self, audio_file: str) -> str:
-        """Transcribe audio file"""
-        pass
-    
-    def set_language(self, language_code: str) -> None:
-        """Set recognition language"""
-        pass
+### Language Support
+- **Primary**: Mandarin Chinese (zh-CN)
+- **Secondary**: English (en-US)
+- Medical terminology recognition
+- Accent tolerance for non-native speakers
+
+### Performance Requirements
+- **Latency**: <2 seconds for real-time response
+- **Accuracy**: >90% for clear speech
+- **Noise Handling**: Background noise filtering
+- **Continuous Recognition**: Support for natural conversation flow
+
+## UI Controls
+
+### Recording Interface
+```html
+<!-- Push-to-talk button -->
+<button id="push-to-talk" class="record-button">
+    <span class="icon">🎤</span>
+    Hold to Speak
+</button>
+
+<!-- Recording indicator -->
+<div class="recording-status">
+    <span class="pulse-indicator"></span>
+    <span class="recording-text">Listening...</span>
+</div>
+
+<!-- Volume level indicator -->
+<div class="volume-meter">
+    <div class="volume-bar"></div>
+</div>
+```
+
+### Visual Feedback
+- Pulsing microphone icon during recording
+- Volume level visualization
+- Transcription confidence indicators
+- Error states for audio issues
+
+## Integration Specifications
+
+### STT Request Message
+```javascript
+{
+    type: 'speech-recognition-start',
+    data: {
+        language: "zh-CN" | "en-US",
+        continuous: true,
+        interim_results: true,
+        max_alternatives: 3
+    }
+}
+```
+
+### STT Response Message
+```javascript
+{
+    type: 'speech-recognition-result',
+    data: {
+        transcript: "I have a headache and feel tired",
+        confidence: 0.95,
+        is_final: true,
+        alternatives: [
+            { transcript: "I have a headache and feel tired", confidence: 0.95 },
+            { transcript: "I have a headache and feel tie", confidence: 0.82 }
+        ]
+    }
+}
+```
+
+## Error Handling
+
+### Common Issues
+- Microphone access denied
+- No audio input detected
+- Network connectivity problems
+- Service rate limits exceeded
+
+### Error UI States
+```javascript
+{
+    type: 'speech-recognition-error',
+    data: {
+        error: 'microphone-denied' | 'no-audio' | 'network-error',
+        message: "Please allow microphone access to continue",
+        recovery_action: "Check browser settings and reload page"
+    }
+}
 ```
 
 ## Cost Optimization Strategies
-- Audio preprocessing to reduce processing time
-- Silence detection to avoid unnecessary API calls
-- Local preprocessing before cloud recognition
-- Usage tracking and optimization
+1. **Audio Preprocessing**: Remove silence, normalize volume
+2. **Batch Processing**: Group short utterances  
+3. **Local Processing**: Use Web Speech API when available
+4. **Caching**: Store common phrases and responses
+5. **Quality Settings**: Adjust accuracy vs cost based on user needs
 
-## Technical Considerations
-- Audio format compatibility
-- Latency requirements for real-time chat
-- Error handling and fallback options
-- Integration with conversation management
+## Browser Compatibility
+- Chrome: Web Speech API support
+- Firefox: Limited Web Speech API  
+- Safari: Basic support
+- Mobile: Platform-specific considerations
 
 ---
-*Module: Speech-to-Text*
-*Status: Research Phase*
+*STT Requirements for Technical Implementation*
