@@ -2,15 +2,75 @@
   "contacts": [
     {
       "id": "contact_001",
-      "name": "[Name - To be provided]",
-      "email": "[Email - To be provided]",
+      "name": "Simon H WANG",
+      "email": "simonwang@hkbu.edu.hk",
       "category": "stakeholder",
-      "organization": "[Organization]",
-      "role": "[Role]",
-      "interest_level": "unknown",
-      "last_contact": null,
-      "notes": "Contact information to be provided by user",
-      "demo_status": "pending"
+      "organization": "Hong Kong Baptist University",
+      "role": "Project Lead / Professor",
+      "interest_level": "high",
+      "last_contact": "2025-08-10",
+      "notes": "Project lead requesting avatar features by end of August 2025",
+      "demo_status": "active_development"
+    },
+    {
+      "id": "contact_002", 
+      "name": "Zian ZHENG (Kaitai Zhang)",
+      "email": "22231153@life.hkbu.edu.hk",
+      "category": "technical_team",
+      "organization": "Hong Kong Baptist University",
+      "role": "Technical Developer",
+      "interest_level": "high",
+      "last_contact": "2025-08-10",
+      "notes": "Primary technical developer working on avatar implementation",
+      "demo_status": "active_development"
+    },
+    {
+      "id": "contact_003",
+      "name": "Yuen Yi LAW",
+      "email": "ellielaw@hkbu.edu.hk", 
+      "category": "stakeholder",
+      "organization": "Hong Kong Baptist University",
+      "role": "Team Member",
+      "interest_level": "high",
+      "last_contact": "2025-08-10",
+      "notes": "Part of TDG scenarios development team",
+      "demo_status": "contacted"
+    },
+    {
+      "id": "contact_004",
+      "name": "Andy",
+      "email": "21253153@life.hkbu.edu.hk",
+      "category": "technical_team",
+      "organization": "Hong Kong Baptist University", 
+      "role": "Technical Developer",
+      "interest_level": "high",
+      "last_contact": "2025-08-10",
+      "notes": "Technical developer working with Kaitai on avatar development",
+      "demo_status": "active_development"
+    },
+    {
+      "id": "contact_005",
+      "name": "John DELLA PIETRA",
+      "email": "johndp@hkbu.edu.hk",
+      "category": "stakeholder",
+      "organization": "Hong Kong Baptist University",
+      "role": "Team Member (CC'd)",
+      "interest_level": "medium",
+      "last_contact": "2025-08-10", 
+      "notes": "CC'd on technical discussions",
+      "demo_status": "contacted"
+    },
+    {
+      "id": "contact_006",
+      "name": "Cissy Y X LI",
+      "email": "yxli@hkbu.edu.hk",
+      "category": "stakeholder",
+      "organization": "Hong Kong Baptist University",
+      "role": "Team Member (CC'd)",
+      "interest_level": "medium",
+      "last_contact": "2025-08-10",
+      "notes": "CC'd on technical discussions",
+      "demo_status": "contacted"
     }
   ],
   "categories": [
@@ -26,7 +86,8 @@
     "scheduled",
     "completed",
     "declined",
-    "follow_up_needed"
+    "follow_up_needed",
+    "active_development"
   ],
   "interest_levels": [
     "high",

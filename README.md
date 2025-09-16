@@ -31,6 +31,16 @@ Based on the meeting with Kaitai Zhang on 2025-08-22, the priority objectives fo
 - **Username**: zi.an.zheng0715@gmail.com
 - **Password**: ChineseMedicine
 
+## Avatar Management Platform
+- **Platform**: chat.hkbu.life
+- **Management URL**: https://chat.hkbu.life/#/teacher/manage-avatars
+- **Avatar to Edit**: ChineseMedTutor
+- **Demo Video**: https://meeting.tencent.com/cw/295QPG5q2d (start at 56 seconds)
+
+## Integration Target
+- **Target URL**: https://gamesbe.asia:3000/GamePlay/Clinical_handover
+- **Access**: Student SSO login required
+
 ## Project Structure
 ```
 ChineseMedAvatar/

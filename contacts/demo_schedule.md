@@ -3,7 +3,13 @@
 ## Upcoming Demos
 | Date | Time | Contact | Type | Status | Notes |
 |------|------|---------|------|--------|-------|
-| TBD | TBD | [To be scheduled] | Live Demo | Pending | Awaiting contact list |
+| TBD | TBD | Simon H WANG (simonwang@hkbu.edu.hk) | Live Demo | Active Development | Project lead, HKBU |
+| TBD | TBD | Technical Team (Kaitai, Andy) | Technical Demo | Active Development | Ongoing development |
+
+## Completed Interactions
+| Date | Contact | Type | Outcome | Follow-up Required |
+|------|---------|------|---------|-------------------|
+| 2025-08-10 | Technical Team | Email Discussion | Development Requirements | August 2025 deliverables |
 
 ## Demo Options Available
 
@@ -18,6 +24,7 @@
 - **Format**: Pre-recorded demonstration
 - **Features**: Core functionality showcase, narrated walkthrough
 - **Requirements**: Video hosting platform
+- **Existing Demo**: https://meeting.tencent.com/cw/295QPG5q2d (start at 56 seconds)
 
 ### 3. Test Environment Access
 - **URL**: http://8.211.158.223/
@@ -26,6 +33,11 @@
   - Password: ChineseMedicine
 - **Duration**: Self-paced exploration
 - **Support**: Documentation and contact for questions
+
+### 4. Platform Management Access
+- **URL**: https://chat.hkbu.life/#/teacher/manage-avatars
+- **Avatar**: ChineseMedTutor
+- **Purpose**: System prompt editing and avatar management
 
 ## Demo Preparation Checklist
 - [ ] Test environment verification
