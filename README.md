@@ -1,4 +1,122 @@
-# Chinese Medicine Avatar Project
+# TCM Communication Practice Platform
+
+## 🩺 Overview
+Interactive platform for Traditional Chinese Medicine practitioners to practice communication skills with AI-powered patient avatars.
+
+## 🌐 Live Demo
+**Student Interface:** https://tesolchina.github.io/ChineseMedAvatar/
+
+## 📚 Practice Scenarios
+
+### 1. 🩺 Clinical Interview
+- **Patient:** Ms. Wang (45), stressed office worker with digestive issues
+- **Framework:** HEAL framework + TCM diagnostic inquiry
+- **Duration:** 15-20 minutes
+- **Difficulty:** Intermediate
+
+### 2. 📚 Concept Explanation
+- **Patient:** Mr. Chen (38), engineer new to TCM seeking acupuncture
+- **Framework:** TEACH-BACK method with cultural bridging
+- **Duration:** 10-15 minutes
+- **Difficulty:** Intermediate
+
+### 3. 🌏 Cultural Sensitivity
+- **Patient:** Mrs. Johnson (52), Western patient skeptical about TCM
+- **Framework:** Cultural competency + respectful dialogue
+- **Duration:** 15-20 minutes
+- **Difficulty:** Advanced
+
+### 4. 💬 Difficult Conversations
+- **Patient:** Mr. Liu (60), chronic pain patient with unrealistic expectations
+- **Framework:** SPIKES protocol adapted for TCM
+- **Duration:** 20-25 minutes
+- **Difficulty:** Advanced
+
+### 5. 🤝 Professional Referral
+- **Patient:** Ms. Zhang (28), anxiety symptoms requiring psychiatric evaluation
+- **Framework:** Collaborative care model
+- **Duration:** 10-15 minutes
+- **Difficulty:** Intermediate
+
+### 6. 📋 Treatment Planning
+- **Patient:** Dr. Anderson (45), physician seeking TCM for work stress
+- **Framework:** Shared decision-making + TCM principles
+- **Duration:** 20-25 minutes
+- **Difficulty:** Advanced
+
+## 🚀 Features
+
+- **Responsive Design:** Optimized for desktop, tablet, and mobile devices
+- **Interactive Chat:** Real-time conversation with AI patient avatars
+- **Progress Tracking:** Session management and performance monitoring
+- **Professional UI:** Modern, accessible interface design
+- **Multi-Framework:** Incorporates established communication frameworks
+
+## 🛠️ Technical Stack
+
+- **Frontend:** HTML5, CSS3, JavaScript (ES6+)
+- **Hosting:** GitHub Pages
+- **AI Integration:** Bytewise chat platform (textbot.hkbu.tech)
+- **Design:** Responsive grid layout with modern UI components
+
+## 📁 Project Structure
+
+```
+ChineseMedAvatar/
+├── index.html          # Main student interface
+├── styles.css          # Responsive stylesheet
+├── app.js             # Application logic and session management
+├── iframe-embeds/     # Individual embed files
+│   ├── tcm-clinical-interview-embed.html
+│   ├── tcm-concept-explanation-embed.html
+│   ├── tcm-cultural-sensitivity-embed.html
+│   ├── tcm-difficult-conversations-embed.html
+│   ├── tcm-professional-referral-embed.html
+│   └── tcm-treatment-planning-embed.html
+├── bot-config/        # Avatar configurations
+└── bytewise-configs/  # Bytewise-compatible JSON files
+```
+
+## 🔗 Integration Options
+
+### Direct Link
+```
+https://tesolchina.github.io/ChineseMedAvatar/
+```
+
+### Iframe Embedding
+```html
+<iframe 
+    src="https://tesolchina.github.io/ChineseMedAvatar/" 
+    width="100%" 
+    height="800px" 
+    frameborder="0">
+</iframe>
+```
+
+### Individual Scenario Embedding
+```html
+<iframe 
+    src="https://tesolchina.github.io/ChineseMedAvatar/iframe-embeds/tcm-clinical-interview-embed.html" 
+    width="100%" 
+    height="600px" 
+    frameborder="0">
+</iframe>
+```
+
+## 👥 Development Team
+
+- **Project Lead:** Dr. Simon Wang, Hong Kong Baptist University
+- **Institution:** School of Chinese Medicine, HKBU
+- **Contact:** simonwang@hkbu.edu.hk
+
+## 📄 License
+
+Educational use - Hong Kong Baptist University
+
+---
+
+© 2025 Hong Kong Baptist University - School of Chinese Medicine
 
 ## Project Overview
 This repository contains the **non-technical development** components for the Chinese Medicine Avatar project. The actual technical implementation (frontend/backend) will be in a separate repository and integrated via iframe embedding.
