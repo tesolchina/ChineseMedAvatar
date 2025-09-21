@@ -381,6 +381,7 @@ class AvatarSelectionApp {
                     src="${this.selectedAvatar.url}"
                     title="${this.selectedAvatar.name} Practice Session"
                     loading="lazy"
+                    allow="microphone; camera; autoplay; encrypted-media; fullscreen"
                     style="width: 100%; height: 100%; border: none;">
                 </iframe>
             `;
