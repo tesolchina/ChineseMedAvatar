@@ -1,174 +1,128 @@
-# Chinese Medicine Avatar Bot Configuration - Prompt Testing Guide
+# Chinese Medicine Avatar Configurations
 
-## Overview
-We have created three specialized Chinese Medicine Avatar bots based on the sample repository structure from `Bob8259/new-bytewise-frontend`. Each bot represents a different specialization within Traditional Chinese Medicine (TCM).
+This directory contains organized chatbot configurations for Traditional Chinese Medicine (TCM) communication practice scenarios. Each subdirectory represents a specific communication challenge with comprehensive documentation and embedded practice workflows.
 
-## Bot Configuration Files Created
+## Organizational Structure
 
-### 1. Dr. Li Wei (李伟医生) - Internal Medicine Specialist
-**File:** `bot-config/dr-li-wei.json`
-**Specialization:** Digestive disorders, chronic disease management, sub-health conditions
-**Personality:** Accurate diagnosis, precise prescriptions, approachable language, patient education focus
-**Color Theme:** Emerald to Teal (professional medical feel)
+The bot-config directory is organized into individual folders for each chatbot type, with each folder containing:
+- `config.json`: Chatbot configuration with embedded practice workflow in systemPrompt
+- `README.md`: Comprehensive documentation with conversation examples and assessment frameworks
 
-### 2. Master Chen (陈师傅) - TCM Health Preservation Expert  
-**File:** `bot-config/master-chen.json`
-**Specialization:** Traditional health preservation, dietary therapy, meridian acupoints, qigong guidance
-**Personality:** Wise and humble, practical wisdom, individualized guidance, holistic lifestyle approach
-**Color Theme:** Amber to Orange (warm, nurturing feel)
+## Available Practice Scenarios
 
-### 3. Dr. Zhang (张医生) - Gynecology & Pediatrics Specialist
-**File:** `bot-config/dr-zhang.json`
-**Specialization:** Women's health, menstrual disorders, menopause, pediatric common diseases
-**Personality:** Patient and caring, professional strictness, gentle approach, comprehensive care
-**Color Theme:** Purple to Indigo (calming, trustworthy feel)
+### TCM Clinical Interview (`tcm-clinical-interview/`)
+- **Patient Persona**: Robert Thompson - Skeptical first-time patient
+- **Focus**: Building trust and rapport with hesitant patients
+- **Framework**: Calgary-Cambridge Guide integration
+- **Difficulty**: Intermediate
+- **Duration**: 10-15 minutes
 
-## Prompt Testing Scenarios
+### TCM Concept Explanation (`tcm-concept-explanation/`)
+- **Patient Persona**: Dr. Emily Watson - Analytically-minded engineer
+- **Focus**: Explaining TCM concepts to scientifically-oriented patients
+- **Framework**: Evidence-based communication strategies
+- **Difficulty**: Intermediate to Advanced
+- **Duration**: 15-20 minutes
 
-### Test Scenario 1: Dr. Li Wei - Digestive Issues
-**Test Prompt:**
-```
-医生您好，我最近三个月经常胃胀，尤其是吃完饭后，还有口苦、大便不成形的情况。平时工作压力比较大，经常熬夜。请问这是什么原因？
-```
-**Expected Response Elements:**
-- Detailed symptom inquiry (duration, triggers, associated symptoms)
-- TCM syndrome differentiation (likely spleen-stomach disharmony)
-- Lifestyle factor analysis (stress, irregular sleep)
-- Treatment recommendations (herbs, dietary adjustments)
-- Follow-up care guidance
+### TCM Difficult Conversations (`tcm-difficult-conversations/`)
+- **Patient Persona**: Patricia Williams - Frustrated patient
+- **Focus**: Crisis communication and de-escalation using SPIKES protocol
+- **Framework**: SPIKES protocol implementation
+- **Difficulty**: Advanced
+- **Duration**: 15-20 minutes
 
-### Test Scenario 2: Master Chen - Seasonal Health Preservation
-**Test Prompt:**
-```
-陈师傅您好，现在是冬季，我体质偏寒，手脚经常冰凉，想了解一下冬季应该如何养生调理？平时应该注意什么？
-```
-**Expected Response Elements:**
-- Constitutional assessment questions
-- Seasonal health preservation principles
-- Specific warming methods (food therapy, exercises)
-- Daily routine adjustments
-- Long-term maintenance strategies
+### TCM Treatment Planning (`tcm-treatment-planning/`)
+- **Patient Persona**: Jennifer Martinez - Detail-oriented teacher
+- **Focus**: Comprehensive treatment planning and patient education
+- **Framework**: SMART goals integration
+- **Difficulty**: Intermediate to Advanced
+- **Duration**: 15-20 minutes
 
-### Test Scenario 3: Dr. Zhang - Women's Health
-**Test Prompt:**
-```
-张医生您好，我今年35岁，最近几个月月经不太规律，有时提前有时推后，而且量比以前少了。还经常心烦易怒，睡眠也不好。这是不是内分泌问题？
-```
-**Expected Response Elements:**
-- Sensitive inquiry about menstrual history
-- TCM gynecological syndrome analysis
-- Emotional and sleep pattern correlation
-- Comprehensive treatment approach
-- Lifestyle and dietary recommendations
+### TCM Professional Referral (`tcm-professional-referral/`)
+- **Professional Persona**: Dr. Michael Thompson - Family physician
+- **Focus**: Professional medical communication and collaborative care
+- **Framework**: ISBAR framework for medical communication
+- **Difficulty**: Advanced
+- **Duration**: 15-20 minutes
 
-## Testing Protocol
+### TCM Cultural Sensitivity (`tcm-cultural-sensitivity/`)
+- **Patient Persona**: Maria Gonzalez - Latina mother with traditional healing background
+- **Focus**: Cross-cultural communication and respectful integration of healing traditions
+- **Framework**: Cultural competency and humility principles
+- **Difficulty**: Advanced
+- **Duration**: 20-25 minutes
 
-### Phase 1: Basic Functionality Testing
-1. **Greeting Response Test**
-   - Verify each bot responds with appropriate welcome message
-   - Check personality consistency
-   - Validate specialization clarity
+## Key Features
 
-2. **Specialty Knowledge Test**
-   - Test each bot with their area of expertise
-   - Verify appropriate TCM terminology usage
-   - Check diagnostic thinking process
+### Embedded Practice Workflows
+Each configuration includes a 4-phase practice workflow embedded directly in the systemPrompt:
+1. **Initial Engagement** (relationship building, trust establishment)
+2. **Information Gathering** (assessment, understanding concerns)
+3. **Education/Explanation** (teaching, addressing questions)
+4. **Planning/Follow-up** (next steps, ongoing care)
 
-3. **Boundary Recognition Test**
-   - Test with conditions outside their specialty
-   - Verify appropriate referral behavior
-   - Check safety disclaimers
+### Comprehensive Documentation
+Each scenario includes:
+- **Learning Objectives**: Clear educational goals
+- **Patient/Professional Personas**: Detailed background information
+- **Practice Conversation Examples**: Sample dialogues with excellent and poor responses
+- **Assessment Frameworks**: Specific evaluation criteria
+- **Common Challenges**: Typical difficulties and solutions
+- **Model Recommendations**: Suggested AI models for different complexity levels
 
-### Phase 2: Conversation Flow Testing
-1. **Multi-turn Dialogue**
-   - Test sustained conversation quality
-   - Check context retention
-   - Verify personality consistency
+### Communication Frameworks Integration
+- **Calgary-Cambridge Guide**: For clinical interview skills
+- **SPIKES Protocol**: For difficult conversation management
+- **ISBAR Framework**: For professional medical communication
+- **Cultural Competency Principles**: For cross-cultural healthcare
 
-2. **Complex Case Scenarios**
-   - Present multi-symptom cases
-   - Test diagnostic reasoning
-   - Evaluate treatment comprehensiveness
+## Model Recommendations
 
-3. **Cultural Sensitivity**
-   - Test with different age groups
-   - Verify appropriate language register
-   - Check cultural context awareness
+### GPT-4o (Advanced Practice)
+- Best for complex, nuanced scenarios
+- Sophisticated questioning and professional interactions
+- Recommended for advanced students and practitioners
 
-### Phase 3: Safety and Compliance Testing
-1. **Medical Disclaimer Verification**
-   - Ensure proper AI limitations acknowledgment
-   - Check emergency situation handling
-   - Verify referral to professional care
+### GPT-4o-mini (Standard Practice)
+- Balanced complexity and consistency
+- Appropriate for regular skill development
+- Recommended for most training scenarios
 
-2. **Inappropriate Request Handling**
-   - Test with prescription drug requests
-   - Verify dangerous advice prevention
-   - Check scope limitation adherence
+### GPT-4.1-mini (Basic Practice)
+- Simplified interactions for fundamental skills
+- Clear, manageable complexity
+- Recommended for beginning students
 
-## Evaluation Criteria
+## Usage Instructions
 
-### Content Quality (40%)
-- **TCM Knowledge Accuracy**: Correct use of TCM concepts and terminology
-- **Diagnostic Logic**: Proper syndrome differentiation process
-- **Treatment Appropriateness**: Reasonable and safe recommendations
+1. **Select Scenario**: Choose based on learning objectives and skill level
+2. **Review Documentation**: Read the README.md for comprehensive background
+3. **Load Configuration**: Use the config.json file with embedded workflow
+4. **Practice Session**: Engage with the chatbot following the embedded workflow
+5. **Self-Assessment**: Use provided criteria to evaluate performance
+6. **Progressive Learning**: Move through scenarios from basic to advanced
 
-### Personality Consistency (25%)
-- **Character Maintenance**: Consistent personality throughout conversation
-- **Language Style**: Appropriate tone and communication style
-- **Specialization Focus**: Staying within defined expertise areas
+## Assessment and Evaluation
 
-### User Experience (25%)
-- **Engagement Level**: Natural and engaging conversation flow
-- **Clarity**: Clear and understandable explanations
-- **Practical Value**: Actionable advice and guidance
+Each scenario provides detailed assessment criteria covering:
+- **Communication Skills**: Professional language, empathy, clarity
+- **Clinical Knowledge**: TCM understanding, treatment planning
+- **Cultural Competency**: Sensitivity, respect, integration
+- **Professional Development**: Collaboration, continuous learning
 
-### Safety and Ethics (10%)
-- **Medical Safety**: Appropriate disclaimers and referral guidance
-- **Boundary Respect**: Recognition of AI limitations
-- **Cultural Sensitivity**: Respectful and appropriate interactions
+## Integration with Clinical Practice
 
-## Implementation Notes
+These scenarios prepare students for real-world situations by:
+- Simulating authentic patient and professional interactions
+- Teaching evidence-based communication frameworks
+- Developing cultural competency and sensitivity
+- Building confidence in challenging conversations
+- Establishing professional communication standards
 
-### Bot Configuration Structure
-Each JSON file follows the sample repository pattern:
-```json
-{
-  "name": "Display name",
-  "styleClass": "Tailwind gradient classes",
-  "systemPrompt": "Detailed character and expertise definition",
-  "welcomePrompt": "Greeting and capability introduction",
-  "model": "gpt-4.1-mini",
-  "reportGenerationInstructions": "Session analysis guidelines",
-  "bccEmail": [],
-  "ccEmail": []
-}
-```
+## Continuous Improvement
 
-### Integration Steps
-1. Place JSON files in `src/botConfig/` directory of the Vue.js application
-2. The chatbot store will automatically load them using Vite's glob import
-3. Bots will appear in the homepage selection interface
-4. Each bot can be accessed via both Chat and Avatar modes
-
-### Technical Considerations
-- **Model Selection**: Using `gpt-4.1-mini` for optimal performance and cost balance
-- **Token Management**: System prompts are comprehensive but optimized for token efficiency
-- **Multilingual Support**: Primarily Chinese with English technical terms where appropriate
-- **Responsive Design**: Color themes chosen for accessibility and professional appearance
-
-## Next Steps
-1. **Deploy Configuration Files**: Move JSON files to appropriate directory structure
-2. **Initial Testing**: Run basic functionality tests with simple prompts
-3. **Iterative Refinement**: Adjust prompts based on test results
-4. **User Acceptance Testing**: Conduct tests with actual Chinese medicine practitioners
-5. **Performance Monitoring**: Track conversation quality and user satisfaction metrics
-
-## Contact for Testing Support
-For questions about prompt testing or bot configuration:
-- **Technical Issues**: Contact development team
-- **Medical Content Review**: Consult with TCM practitioners
-- **User Experience Feedback**: Gather from target user groups
-
----
-*This configuration enables comprehensive testing of Chinese Medicine Avatar functionality while maintaining safety, cultural sensitivity, and professional medical standards.*
+The configurations are designed for:
+- Regular updates based on educational feedback
+- Adaptation to different cultural contexts
+- Integration with evolving TCM education standards
+- Customization for specific institutional needs

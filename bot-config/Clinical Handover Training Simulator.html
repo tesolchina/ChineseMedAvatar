@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)https://lessons.hkbu.tech/api/AccessLessons/Clinical_handover -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">:root{--toastify-color-light: #fff;--toastify-color-dark: #121212;--toastify-color-info: #3498db;--toastify-color-success: #07bc0c;--toastify-color-warning: #f1c40f;--toastify-color-error: hsl(6, 78%, 57%);--toastify-color-transparent: rgba(255, 255, 255, .7);--toastify-icon-color-info: var(--toastify-color-info);--toastify-icon-color-success: var(--toastify-color-success);--toastify-icon-color-warning: var(--toastify-color-warning);--toastify-icon-color-error: var(--toastify-color-error);--toastify-container-width: fit-content;--toastify-toast-width: 320px;--toastify-toast-offset: 16px;--toastify-toast-top: max(var(--toastify-toast-offset), env(safe-area-inset-top));--toastify-toast-right: max(var(--toastify-toast-offset), env(safe-area-inset-right));--toastify-toast-left: max(var(--toastify-toast-offset), env(safe-area-inset-left));--toastify-toast-bottom: max(var(--toastify-toast-offset), env(safe-area-inset-bottom));--toastify-toast-background: #fff;--toastify-toast-padding: 14px;--toastify-toast-min-height: 64px;--toastify-toast-max-height: 800px;--toastify-toast-bd-radius: 6px;--toastify-toast-shadow: 0px 4px 12px rgba(0, 0, 0, .1);--toastify-font-family: sans-serif;--toastify-z-index: 9999;--toastify-text-color-light: #757575;--toastify-text-color-dark: #fff;--toastify-text-color-info: #fff;--toastify-text-color-success: #fff;--toastify-text-color-warning: #fff;--toastify-text-color-error: #fff;--toastify-spinner-color: #616161;--toastify-spinner-color-empty-area: #e0e0e0;--toastify-color-progress-light: linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);--toastify-color-progress-dark: #bb86fc;--toastify-color-progress-info: var(--toastify-color-info);--toastify-color-progress-success: var(--toastify-color-success);--toastify-color-progress-warning: var(--toastify-color-warning);--toastify-color-progress-error: var(--toastify-color-error);--toastify-color-progress-bgo: .2}.Toastify__toast-container{z-index:var(--toastify-z-index);-webkit-transform:translate3d(0,0,var(--toastify-z-index));position:fixed;width:var(--toastify-container-width);box-sizing:border-box;color:#fff;display:flex;flex-direction:column}.Toastify__toast-container--top-left{top:var(--toastify-toast-top);left:var(--toastify-toast-left)}.Toastify__toast-container--top-center{top:var(--toastify-toast-top);left:50%;transform:translate(-50%);align-items:center}.Toastify__toast-container--top-right{top:var(--toastify-toast-top);right:var(--toastify-toast-right);align-items:end}.Toastify__toast-container--bottom-left{bottom:var(--toastify-toast-bottom);left:var(--toastify-toast-left)}.Toastify__toast-container--bottom-center{bottom:var(--toastify-toast-bottom);left:50%;transform:translate(-50%);align-items:center}.Toastify__toast-container--bottom-right{bottom:var(--toastify-toast-bottom);right:var(--toastify-toast-right);align-items:end}.Toastify__toast{--y: 0;position:relative;touch-action:none;width:var(--toastify-toast-width);min-height:var(--toastify-toast-min-height);box-sizing:border-box;margin-bottom:1rem;padding:var(--toastify-toast-padding);border-radius:var(--toastify-toast-bd-radius);box-shadow:var(--toastify-toast-shadow);max-height:var(--toastify-toast-max-height);font-family:var(--toastify-font-family);z-index:0;display:flex;flex:1 auto;align-items:center;word-break:break-word}@media only screen and (max-width: 480px){.Toastify__toast-container{width:100vw;left:env(safe-area-inset-left);margin:0}.Toastify__toast-container--top-left,.Toastify__toast-container--top-center,.Toastify__toast-container--top-right{top:env(safe-area-inset-top);transform:translate(0)}.Toastify__toast-container--bottom-left,.Toastify__toast-container--bottom-center,.Toastify__toast-container--bottom-right{bottom:env(safe-area-inset-bottom);transform:translate(0)}.Toastify__toast-container--rtl{right:env(safe-area-inset-right);left:initial}.Toastify__toast{--toastify-toast-width: 100%;margin-bottom:0;border-radius:0}}.Toastify__toast-container[data-stacked=true]{width:var(--toastify-toast-width)}.Toastify__toast--stacked{position:absolute;width:100%;transform:translate3d(0,var(--y),0) scale(var(--s));transition:transform .3s}.Toastify__toast--stacked[data-collapsed] .Toastify__toast-body,.Toastify__toast--stacked[data-collapsed] .Toastify__close-button{transition:opacity .1s}.Toastify__toast--stacked[data-collapsed=false]{overflow:visible}.Toastify__toast--stacked[data-collapsed=true]:not(:last-child)>*{opacity:0}.Toastify__toast--stacked:after{content:"";position:absolute;left:0;right:0;height:calc(var(--g) * 1px);bottom:100%}.Toastify__toast--stacked[data-pos=top]{top:0}.Toastify__toast--stacked[data-pos=bot]{bottom:0}.Toastify__toast--stacked[data-pos=bot].Toastify__toast--stacked:before{transform-origin:top}.Toastify__toast--stacked[data-pos=top].Toastify__toast--stacked:before{transform-origin:bottom}.Toastify__toast--stacked:before{content:"";position:absolute;left:0;right:0;bottom:0;height:100%;transform:scaleY(3);z-index:-1}.Toastify__toast--rtl{direction:rtl}.Toastify__toast--close-on-click{cursor:pointer}.Toastify__toast-icon{margin-inline-end:10px;width:22px;flex-shrink:0;display:flex}.Toastify--animate{animation-fill-mode:both;animation-duration:.5s}.Toastify--animate-icon{animation-fill-mode:both;animation-duration:.3s}.Toastify__toast-theme--dark{background:var(--toastify-color-dark);color:var(--toastify-text-color-dark)}.Toastify__toast-theme--light,.Toastify__toast-theme--colored.Toastify__toast--default{background:var(--toastify-color-light);color:var(--toastify-text-color-light)}.Toastify__toast-theme--colored.Toastify__toast--info{color:var(--toastify-text-color-info);background:var(--toastify-color-info)}.Toastify__toast-theme--colored.Toastify__toast--success{color:var(--toastify-text-color-success);background:var(--toastify-color-success)}.Toastify__toast-theme--colored.Toastify__toast--warning{color:var(--toastify-text-color-warning);background:var(--toastify-color-warning)}.Toastify__toast-theme--colored.Toastify__toast--error{color:var(--toastify-text-color-error);background:var(--toastify-color-error)}.Toastify__progress-bar-theme--light{background:var(--toastify-color-progress-light)}.Toastify__progress-bar-theme--dark{background:var(--toastify-color-progress-dark)}.Toastify__progress-bar--info{background:var(--toastify-color-progress-info)}.Toastify__progress-bar--success{background:var(--toastify-color-progress-success)}.Toastify__progress-bar--warning{background:var(--toastify-color-progress-warning)}.Toastify__progress-bar--error{background:var(--toastify-color-progress-error)}.Toastify__progress-bar-theme--colored.Toastify__progress-bar--info,.Toastify__progress-bar-theme--colored.Toastify__progress-bar--success,.Toastify__progress-bar-theme--colored.Toastify__progress-bar--warning,.Toastify__progress-bar-theme--colored.Toastify__progress-bar--error{background:var(--toastify-color-transparent)}.Toastify__close-button{color:#fff;position:absolute;top:6px;right:6px;background:transparent;outline:none;border:none;padding:0;cursor:pointer;opacity:.7;transition:.3s ease;z-index:1}.Toastify__toast--rtl .Toastify__close-button{left:6px;right:unset}.Toastify__close-button--light{color:#000;opacity:.3}.Toastify__close-button>svg{fill:currentColor;height:16px;width:14px}.Toastify__close-button:hover,.Toastify__close-button:focus{opacity:1}@keyframes Toastify__trackProgress{0%{transform:scaleX(1)}to{transform:scaleX(0)}}.Toastify__progress-bar{position:absolute;bottom:0;left:0;width:100%;height:100%;z-index:1;opacity:.7;transform-origin:left}.Toastify__progress-bar--animated{animation:Toastify__trackProgress linear 1 forwards}.Toastify__progress-bar--controlled{transition:transform .2s}.Toastify__progress-bar--rtl{right:0;left:initial;transform-origin:right;border-bottom-left-radius:initial}.Toastify__progress-bar--wrp{position:absolute;overflow:hidden;bottom:0;left:0;width:100%;height:5px;border-bottom-left-radius:var(--toastify-toast-bd-radius);border-bottom-right-radius:var(--toastify-toast-bd-radius)}.Toastify__progress-bar--wrp[data-hidden=true]{opacity:0}.Toastify__progress-bar--bg{opacity:var(--toastify-color-progress-bgo);width:100%;height:100%}.Toastify__spinner{width:20px;height:20px;box-sizing:border-box;border:2px solid;border-radius:100%;border-color:var(--toastify-spinner-color-empty-area);border-right-color:var(--toastify-spinner-color);animation:Toastify__spin .65s linear infinite}@keyframes Toastify__bounceInRight{0%,60%,75%,90%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;transform:translate3d(3000px,0,0)}60%{opacity:1;transform:translate3d(-25px,0,0)}75%{transform:translate3d(10px,0,0)}90%{transform:translate3d(-5px,0,0)}to{transform:none}}@keyframes Toastify__bounceOutRight{20%{opacity:1;transform:translate3d(-20px,var(--y),0)}to{opacity:0;transform:translate3d(2000px,var(--y),0)}}@keyframes Toastify__bounceInLeft{0%,60%,75%,90%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;transform:translate3d(-3000px,0,0)}60%{opacity:1;transform:translate3d(25px,0,0)}75%{transform:translate3d(-10px,0,0)}90%{transform:translate3d(5px,0,0)}to{transform:none}}@keyframes Toastify__bounceOutLeft{20%{opacity:1;transform:translate3d(20px,var(--y),0)}to{opacity:0;transform:translate3d(-2000px,var(--y),0)}}@keyframes Toastify__bounceInUp{0%,60%,75%,90%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;transform:translate3d(0,3000px,0)}60%{opacity:1;transform:translate3d(0,-20px,0)}75%{transform:translate3d(0,10px,0)}90%{transform:translate3d(0,-5px,0)}to{transform:translateZ(0)}}@keyframes Toastify__bounceOutUp{20%{transform:translate3d(0,calc(var(--y) - 10px),0)}40%,45%{opacity:1;transform:translate3d(0,calc(var(--y) + 20px),0)}to{opacity:0;transform:translate3d(0,-2000px,0)}}@keyframes Toastify__bounceInDown{0%,60%,75%,90%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;transform:translate3d(0,-3000px,0)}60%{opacity:1;transform:translate3d(0,25px,0)}75%{transform:translate3d(0,-10px,0)}90%{transform:translate3d(0,5px,0)}to{transform:none}}@keyframes Toastify__bounceOutDown{20%{transform:translate3d(0,calc(var(--y) - 10px),0)}40%,45%{opacity:1;transform:translate3d(0,calc(var(--y) + 20px),0)}to{opacity:0;transform:translate3d(0,2000px,0)}}.Toastify__bounce-enter--top-left,.Toastify__bounce-enter--bottom-left{animation-name:Toastify__bounceInLeft}.Toastify__bounce-enter--top-right,.Toastify__bounce-enter--bottom-right{animation-name:Toastify__bounceInRight}.Toastify__bounce-enter--top-center{animation-name:Toastify__bounceInDown}.Toastify__bounce-enter--bottom-center{animation-name:Toastify__bounceInUp}.Toastify__bounce-exit--top-left,.Toastify__bounce-exit--bottom-left{animation-name:Toastify__bounceOutLeft}.Toastify__bounce-exit--top-right,.Toastify__bounce-exit--bottom-right{animation-name:Toastify__bounceOutRight}.Toastify__bounce-exit--top-center{animation-name:Toastify__bounceOutUp}.Toastify__bounce-exit--bottom-center{animation-name:Toastify__bounceOutDown}@keyframes Toastify__zoomIn{0%{opacity:0;transform:scale3d(.3,.3,.3)}50%{opacity:1}}@keyframes Toastify__zoomOut{0%{opacity:1}50%{opacity:0;transform:translate3d(0,var(--y),0) scale3d(.3,.3,.3)}to{opacity:0}}.Toastify__zoom-enter{animation-name:Toastify__zoomIn}.Toastify__zoom-exit{animation-name:Toastify__zoomOut}@keyframes Toastify__flipIn{0%{transform:perspective(400px) rotateX(90deg);animation-timing-function:ease-in;opacity:0}40%{transform:perspective(400px) rotateX(-20deg);animation-timing-function:ease-in}60%{transform:perspective(400px) rotateX(10deg);opacity:1}80%{transform:perspective(400px) rotateX(-5deg)}to{transform:perspective(400px)}}@keyframes Toastify__flipOut{0%{transform:translate3d(0,var(--y),0) perspective(400px)}30%{transform:translate3d(0,var(--y),0) perspective(400px) rotateX(-20deg);opacity:1}to{transform:translate3d(0,var(--y),0) perspective(400px) rotateX(90deg);opacity:0}}.Toastify__flip-enter{animation-name:Toastify__flipIn}.Toastify__flip-exit{animation-name:Toastify__flipOut}@keyframes Toastify__slideInRight{0%{transform:translate3d(110%,0,0);visibility:visible}to{transform:translate3d(0,var(--y),0)}}@keyframes Toastify__slideInLeft{0%{transform:translate3d(-110%,0,0);visibility:visible}to{transform:translate3d(0,var(--y),0)}}@keyframes Toastify__slideInUp{0%{transform:translate3d(0,110%,0);visibility:visible}to{transform:translate3d(0,var(--y),0)}}@keyframes Toastify__slideInDown{0%{transform:translate3d(0,-110%,0);visibility:visible}to{transform:translate3d(0,var(--y),0)}}@keyframes Toastify__slideOutRight{0%{transform:translate3d(0,var(--y),0)}to{visibility:hidden;transform:translate3d(110%,var(--y),0)}}@keyframes Toastify__slideOutLeft{0%{transform:translate3d(0,var(--y),0)}to{visibility:hidden;transform:translate3d(-110%,var(--y),0)}}@keyframes Toastify__slideOutDown{0%{transform:translate3d(0,var(--y),0)}to{visibility:hidden;transform:translate3d(0,500px,0)}}@keyframes Toastify__slideOutUp{0%{transform:translate3d(0,var(--y),0)}to{visibility:hidden;transform:translate3d(0,-500px,0)}}.Toastify__slide-enter--top-left,.Toastify__slide-enter--bottom-left{animation-name:Toastify__slideInLeft}.Toastify__slide-enter--top-right,.Toastify__slide-enter--bottom-right{animation-name:Toastify__slideInRight}.Toastify__slide-enter--top-center{animation-name:Toastify__slideInDown}.Toastify__slide-enter--bottom-center{animation-name:Toastify__slideInUp}.Toastify__slide-exit--top-left,.Toastify__slide-exit--bottom-left{animation-name:Toastify__slideOutLeft;animation-timing-function:ease-in;animation-duration:.3s}.Toastify__slide-exit--top-right,.Toastify__slide-exit--bottom-right{animation-name:Toastify__slideOutRight;animation-timing-function:ease-in;animation-duration:.3s}.Toastify__slide-exit--top-center{animation-name:Toastify__slideOutUp;animation-timing-function:ease-in;animation-duration:.3s}.Toastify__slide-exit--bottom-center{animation-name:Toastify__slideOutDown;animation-timing-function:ease-in;animation-duration:.3s}@keyframes Toastify__spin{0%{transform:rotate(0)}to{transform:rotate(360deg)}}
+</style><meta http-equiv="Content-Security-Policy" content="default-src &#39;self&#39; &#39;unsafe-inline&#39; &#39;unsafe-eval&#39; data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src &#39;self&#39; https://www.youtube.com https://trytako.com; child-src &#39;self&#39;; manifest-src &#39;self&#39;; worker-src &#39;self&#39;; upgrade-insecure-requests; block-all-mixed-content;">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Handover Training Simulator</title>
+    <script src="./Clinical Handover Training Simulator_files/saved_resource"></script>
+    <script src="./Clinical Handover Training Simulator_files/marked.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        'primary-dark': '#4A49C7'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .isbar-annotation {
+            border-left: 4px solid;
+            padding-left: 12px;
+            margin: 8px 0;
+        }
+        .introduction { border-color: #ef4444; background: #fef2f2; }
+        .situation { border-color: #f97316; background: #fff7ed; }
+        .background { border-color: #eab308; background: #fefce8; }
+        .assessment { border-color: #22c55e; background: #f0fdf4; }
+        .recommendation { border-color: #3b82f6; background: #eff6ff; }
+        .dark .introduction { background: #7f1d1d; }
+        .dark .situation { background: #9a3412; }
+        .dark .background { background: #854d0e; }
+        .dark .assessment { background: #166534; }
+        .dark .recommendation { background: #1e40af; }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.mx-auto{margin-left:auto;margin-right:auto}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mb-8{margin-bottom:2rem}.mt-6{margin-top:1.5rem}.mb-1{margin-bottom:0.25rem}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-full{height:100%}.min-h-96{min-height:24rem}.min-h-screen{min-height:100vh}.w-full{width:100%}.max-w-6xl{max-width:72rem}.flex-1{flex:1 1 0%}.cursor-pointer{cursor:pointer}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.gap-2{gap:0.5rem}.gap-6{gap:1.5rem}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.overflow-y-auto{overflow-y:auto}.rounded-lg{border-radius:0.5rem}.rounded-full{border-radius:9999px}.border{border-width:1px}.border-gray-300{--tw-border-opacity:1;border-color:rgb(209 213 219 / var(--tw-border-opacity, 1))}.bg-blue-50{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.bg-gray-200{--tw-bg-opacity:1;background-color:rgb(229 231 235 / var(--tw-bg-opacity, 1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.bg-gray-500{--tw-bg-opacity:1;background-color:rgb(107 114 128 / var(--tw-bg-opacity, 1))}.bg-primary{--tw-bg-opacity:1;background-color:rgb(93 92 222 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-orange-100{--tw-bg-opacity:1;background-color:rgb(255 237 213 / var(--tw-bg-opacity, 1))}.bg-red-100{--tw-bg-opacity:1;background-color:rgb(254 226 226 / var(--tw-bg-opacity, 1))}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-8{padding-top:2rem;padding-bottom:2rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.text-center{text-align:center}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-base{font-size:1rem;line-height:1.5rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-semibold{font-weight:600}.font-medium{font-weight:500}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-gray-900{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity, 1))}.text-primary{--tw-text-opacity:1;color:rgb(93 92 222 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-orange-800{--tw-text-opacity:1;color:rgb(154 52 18 / var(--tw-text-opacity, 1))}.text-red-800{--tw-text-opacity:1;color:rgb(153 27 27 / var(--tw-text-opacity, 1))}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:bg-gray-300:hover{--tw-bg-opacity:1;background-color:rgb(209 213 219 / var(--tw-bg-opacity, 1))}.hover\:bg-gray-600:hover{--tw-bg-opacity:1;background-color:rgb(75 85 99 / var(--tw-bg-opacity, 1))}.hover\:bg-primary-dark:hover{--tw-bg-opacity:1;background-color:rgb(74 73 199 / var(--tw-bg-opacity, 1))}.hover\:bg-gray-100:hover{--tw-bg-opacity:1;background-color:rgb(243 244 246 / var(--tw-bg-opacity, 1))}.disabled\:opacity-50:disabled{opacity:0.5}@media (min-width: 1024px){.lg\:col-span-1{grid-column:span 1 / span 1}.lg\:col-span-2{grid-column:span 2 / span 2}.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}}@media (prefers-color-scheme: dark){.dark\:border-gray-600{--tw-border-opacity:1;border-color:rgb(75 85 99 / var(--tw-border-opacity, 1))}.dark\:bg-blue-900\/30{background-color:rgb(30 58 138 / 0.3)}.dark\:bg-gray-600{--tw-bg-opacity:1;background-color:rgb(75 85 99 / var(--tw-bg-opacity, 1))}.dark\:bg-gray-700{--tw-bg-opacity:1;background-color:rgb(55 65 81 / var(--tw-bg-opacity, 1))}.dark\:bg-gray-800{--tw-bg-opacity:1;background-color:rgb(31 41 55 / var(--tw-bg-opacity, 1))}.dark\:bg-gray-900{--tw-bg-opacity:1;background-color:rgb(17 24 39 / var(--tw-bg-opacity, 1))}.dark\:bg-orange-900{--tw-bg-opacity:1;background-color:rgb(124 45 18 / var(--tw-bg-opacity, 1))}.dark\:bg-red-900{--tw-bg-opacity:1;background-color:rgb(127 29 29 / var(--tw-bg-opacity, 1))}.dark\:text-gray-100{--tw-text-opacity:1;color:rgb(243 244 246 / var(--tw-text-opacity, 1))}.dark\:text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.dark\:text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.dark\:text-orange-200{--tw-text-opacity:1;color:rgb(254 215 170 / var(--tw-text-opacity, 1))}.dark\:text-red-200{--tw-text-opacity:1;color:rgb(254 202 202 / var(--tw-text-opacity, 1))}.dark\:hover\:bg-gray-500:hover{--tw-bg-opacity:1;background-color:rgb(107 114 128 / var(--tw-bg-opacity, 1))}.dark\:hover\:bg-gray-700:hover{--tw-bg-opacity:1;background-color:rgb(55 65 81 / var(--tw-bg-opacity, 1))}}</style></head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-6 max-w-6xl">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-primary mb-2">Clinical Handover Training Simulator</h1>
+            <p class="text-gray-600 dark:text-gray-400">Practice structured communication using the ISBAR framework</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Left Panel: Case Selection & Guidelines -->
+            <div class="lg:col-span-1 space-y-6">
+                <!-- Case Selection -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+                    <h2 class="text-xl font-semibold mb-4">Select a Case</h2>
+                    <div id="caseList" class="space-y-2"><div class="p-3 border border-gray-300 dark:border-gray-600 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                    <h3 class="font-medium text-sm mb-1">70-year-old Male with Chest Pain</h3>
+                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-2">History of coronary artery disease, currently on medication for hypertension and...</p>
+                    <span class="inline-block px-2 py-1 text-xs rounded-full bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200">Urgent</span>
+                </div><div class="p-3 border border-gray-300 dark:border-gray-600 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                    <h3 class="font-medium text-sm mb-1">25-year-old Female with Multiple Trauma</h3>
+                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-2">Motor vehicle accident, currently unconscious with GCS score of 3. CT scan shows...</p>
+                    <span class="inline-block px-2 py-1 text-xs rounded-full bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">Critical</span>
+                </div><div class="p-3 border border-gray-300 dark:border-gray-600 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                    <h3 class="font-medium text-sm mb-1">68-year-old Male with COPD Exacerbation</h3>
+                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-2">History of chronic obstructive pulmonary disease. Currently on inhaled bronchodi...</p>
+                    <span class="inline-block px-2 py-1 text-xs rounded-full bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200">Urgent</span>
+                </div></div>
+                </div>
+
+                <!-- ISBAR Guidelines -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+                    <h2 class="text-xl font-semibold mb-4">ISBAR Framework</h2>
+                    <div class="space-y-3 text-sm">
+                        <div class="isbar-annotation introduction">
+                            <strong>Introduction:</strong> Name, unit, role, patient name, purpose
+                        </div>
+                        <div class="isbar-annotation situation">
+                            <strong>Situation:</strong> Concise statement of the problem
+                        </div>
+                        <div class="isbar-annotation background">
+                            <strong>Background:</strong> Pertinent information about the situation
+                        </div>
+                        <div class="isbar-annotation assessment">
+                            <strong>Assessment:</strong> Analysis and considerations
+                        </div>
+                        <div class="isbar-annotation recommendation">
+                            <strong>Recommendation:</strong> Request or recommended action
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Role Selection -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+                    <h2 class="text-xl font-semibold mb-4">Your Role</h2>
+                    <select id="roleSelect" class="w-full p-3 border rounded-lg text-base bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600">
+                        <option value="resident">Resident Doctor</option>
+                        <option value="nurse">Nurse</option>
+                        <option value="emergency_doctor">Emergency Doctor</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Center Panel: Chat Interface -->
+            <div class="lg:col-span-2">
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 h-full flex flex-col">
+                    <!-- Case Info -->
+                    <div id="caseInfo" class="mb-4 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg hidden">
+                        <h3 class="font-semibold mb-2">Case Details</h3>
+                        <div id="caseDetails" class="text-sm"></div>
+                    </div>
+
+                    <!-- Chat Messages -->
+                    <div id="chatContainer" class="flex-1 overflow-y-auto mb-4 min-h-96">
+                        <div id="chatMessages" class="space-y-4">
+                            <div class="text-center text-gray-500 py-8">
+                                Select a case to begin the simulation
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Control Area -->
+                    <div class="space-y-3">
+                        <div class="flex gap-2 flex-wrap">
+                            <button id="playConversationBtn" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors text-sm disabled:opacity-50" disabled="">
+                                ▶ Play Conversation
+                            </button>
+                            <button id="pauseBtn" class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors text-sm hidden">
+                                ⏸ Pause
+                            </button>
+                            <button id="resetBtn" class="px-4 py-2 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors text-sm disabled:opacity-50" disabled="">
+                                🔄 Reset
+                            </button>
+                            <select id="studentSelect" class="px-3 py-2 border rounded-lg text-sm bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 disabled:opacity-50" disabled="">
+                                <option value="good">Good Student Example</option>
+                                <option value="needs_improvement">Needs Improvement</option>
+                                <option value="poor">Poor Communication</option>
+                            </select>
+                        </div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">
+                            Select a case and student example to view simulated avatar conversation with pedagogical analysis
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ISBAR Analysis Panel -->
+        <div id="analysisPanel" class="mt-6 bg-gray-50 dark:bg-gray-800 rounded-lg p-6 hidden">
+            <h2 class="text-xl font-semibold mb-4">ISBAR Analysis</h2>
+            <div id="analysisContent" class="space-y-4">
+                <!-- Analysis will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Clinical cases data
+        const clinicalCases = {
+            case1: {
+                title: "70-year-old Male with Chest Pain",
+                description: "History of coronary artery disease, currently on medication for hypertension and angina. ECG shows ST-segment depression, elevated troponin levels. Family history of heart disease. Needs immediate transfer to cardiac catheterisation lab.",
+                rolePlay: "Emergency department doctor to cardiologist",
+                recipient: "Cardiologist",
+                urgency: "Urgent",
+                details: {
+                    vitals: "BP 140/90, HR 92, Temp 37.2°C, O2 Sat 96%",
+                    medications: "Metoprolol, Aspirin, Atorvastatin",
+                    allergies: "NKDA"
+                }
+            },
+            case2: {
+                title: "25-year-old Female with Multiple Trauma",
+                description: "Motor vehicle accident, currently unconscious with GCS score of 3. CT scan shows multiple fractures and internal bleeding. Hypotensive and tachycardic. Open fracture in left leg. Needs urgent transfer to operating room.",
+                rolePlay: "Emergency department nurse to surgeon",
+                recipient: "Surgeon",
+                urgency: "Critical",
+                details: {
+                    vitals: "BP 80/45, HR 130, Temp 36.5°C, O2 Sat 88%",
+                    injuries: "Multiple rib fractures, splenic laceration, open tibia fracture",
+                    treatments: "IV fluids, pain management, blood transfusion ordered"
+                }
+            },
+            case3: {
+                title: "68-year-old Male with COPD Exacerbation",
+                description: "History of chronic obstructive pulmonary disease. Currently on inhaled bronchodilators and corticosteroids. Experiencing severe dyspnea and hypoxia. Requires supplemental oxygen. Needs transfer to intensive care unit.",
+                rolePlay: "Respiratory therapist to emergency department doctor",
+                recipient: "ICU Doctor",
+                urgency: "Urgent",
+                details: {
+                    vitals: "BP 150/85, HR 110, Temp 38.1°C, O2 Sat 85% on room air",
+                    medications: "Salbutamol, Prednisolone",
+                    history: "Smoker for 40 years, previous ICU admissions"
+                }
+            }
+        };
+
+        let currentCase = null;
+        let conversationHistory = [];
+        let currentRole = 'resident';
+
+        // Initialize the application
+        function init() {
+            populateCaseList();
+            setupEventListeners();
+        }
+
+        function populateCaseList() {
+            const caseList = document.getElementById('caseList');
+            caseList.innerHTML = '';
+
+            Object.keys(clinicalCases).forEach(caseId => {
+                const caseData = clinicalCases[caseId];
+                const caseItem = document.createElement('div');
+                caseItem.className = 'p-3 border border-gray-300 dark:border-gray-600 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors';
+                caseItem.innerHTML = `
+                    <h3 class="font-medium text-sm mb-1">${caseData.title}</h3>
+                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-2">${caseData.description.substring(0, 80)}...</p>
+                    <span class="inline-block px-2 py-1 text-xs rounded-full ${
+                        caseData.urgency === 'Critical' ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200' :
+                        caseData.urgency === 'Urgent' ? 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200' :
+                        'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                    }">${caseData.urgency}</span>
+                `;
+                caseItem.onclick = () => selectCase(caseId);
+                caseList.appendChild(caseItem);
+            });
+        }
+
+        function selectCase(caseId) {
+            currentCase = caseId;
+            const caseData = clinicalCases[caseId];
+            
+            // Update case info
+            const caseInfo = document.getElementById('caseInfo');
+            const caseDetails = document.getElementById('caseDetails');
+            caseInfo.classList.remove('hidden');
+            caseDetails.innerHTML = `
+                <strong>${caseData.title}</strong><br>
+                <em>Role Play:</em> ${caseData.rolePlay}<br>
+                <em>Urgency:</em> ${caseData.urgency}<br>
+                <em>Description:</em> ${caseData.description}
+            `;
+
+            // Enable controls
+            document.getElementById('playConversationBtn').disabled = false;
+            document.getElementById('resetBtn').disabled = false;
+            document.getElementById('studentSelect').disabled = false;
+
+            // Reset conversation
+            resetConversation();
+            
+            // Show instructions
+            addSystemMessage(`Avatar Training Simulation: ${caseData.title}. Select a student performance level and click "Play Conversation" to view recorded interaction.`);
+        }
+
+        function setupEventListeners() {
+            const roleSelect = document.getElementById('roleSelect');
+            const playBtn = document.getElementById('playConversationBtn');
+            const pauseBtn = document.getElementById('pauseBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const studentSelect = document.getElementById('studentSelect');
+
+            roleSelect.onchange = (e) => {
+                currentRole = e.target.value;
+            };
+
+            playBtn.onclick = playSimulatedConversation;
+            pauseBtn.onclick = pauseConversation;
+            resetBtn.onclick = resetSimulation;
+            studentSelect.onchange = resetSimulation;
+        }
+
+        function addMessage(content, isUser = false, annotation = null) {
+            const chatMessages = document.getElementById('chatMessages');
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `p-4 rounded-lg ${isUser ? 'bg-primary text-white ml-8' : 'bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 mr-8'}`;
+            
+            let messageHTML = `<div class="mb-2">${marked.parse(content)}</div>`;
+            
+            if (annotation) {
+                messageHTML += `<div class="isbar-annotation ${annotation.type} text-xs mt-2">
+                    <strong>${annotation.type.toUpperCase()}:</strong> ${annotation.note}
+                </div>`;
+            }
+
+            messageDiv.innerHTML = messageHTML;
+            chatMessages.appendChild(messageDiv);
+            
+            // Scroll to bottom
+            const chatContainer = document.getElementById('chatContainer');
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function addSystemMessage(content) {
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.innerHTML = ''; // Clear previous messages
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'p-4 bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700 rounded-lg text-center';
+            messageDiv.innerHTML = `<div class="text-blue-800 dark:text-blue-200">${content}</div>`;
+            chatMessages.appendChild(messageDiv);
+        }
+
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const message = messageInput.value.trim();
+            
+            if (!message || !currentCase) return;
+
+            // Add user message
+            addMessage(message, true);
+            conversationHistory.push({ role: 'user', content: message });
+            
+            // Clear input
+            messageInput.value = '';
+            
+            // Analyze message for ISBAR components
+            analyzeMessage(message);
+            
+            // Send to bot for response
+            getBotResponse(message);
+        }
+
+        function analyzeMessage(message) {
+            const lowerMessage = message.toLowerCase();
+            let annotation = null;
+
+            // Simple ISBAR detection based on keywords and structure
+            if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('my name') || lowerMessage.includes('calling from')) {
+                annotation = { type: 'introduction', note: 'Good introduction with identification' };
+            } else if (lowerMessage.includes('patient') && (lowerMessage.includes('has') || lowerMessage.includes('presenting'))) {
+                annotation = { type: 'situation', note: 'Clear situation statement' };
+            } else if (lowerMessage.includes('history') || lowerMessage.includes('background') || lowerMessage.includes('medical')) {
+                annotation = { type: 'background', note: 'Relevant background information provided' };
+            } else if (lowerMessage.includes('assessment') || lowerMessage.includes('think') || lowerMessage.includes('appears')) {
+                annotation = { type: 'assessment', note: 'Clinical assessment shared' };
+            } else if (lowerMessage.includes('recommend') || lowerMessage.includes('need') || lowerMessage.includes('request')) {
+                annotation = { type: 'recommendation', note: 'Clear recommendation made' };
+            }
+
+            if (annotation) {
+                // Update the last message with annotation
+                const messages = document.getElementById('chatMessages').children;
+                const lastMessage = messages[messages.length - 1];
+                lastMessage.innerHTML += `<div class="isbar-annotation ${annotation.type} text-xs mt-2">
+                    <strong>${annotation.type.toUpperCase()}:</strong> ${annotation.note}
+                </div>`;
+            }
+        }
+
+        function getBotResponse(userMessage) {
+            const caseData = clinicalCases[currentCase];
+            const conversationStage = getConversationStage();
+            
+            // Simulate typing delay
+            setTimeout(() => {
+                const response = generateContextualResponse(userMessage, conversationStage, caseData);
+                addMessage(response.content, false, response.pedagogicalNote);
+                conversationHistory.push({ role: 'assistant', content: response.content });
+                
+                // Provide pedagogical feedback
+                providePedagogicalFeedback(userMessage, conversationStage);
+            }, 1000 + Math.random() * 1000); // 1-2 second delay
+        }
+
+        function generateContextualResponse(userMessage, stage, caseData) {
+            const responses = getResponseDatabase();
+            const caseResponses = responses[currentCase] || responses.default;
+            
+            // Analyze user message for keywords and structure
+            const messageAnalysis = analyzeUserMessage(userMessage);
+            
+            // Select appropriate response based on stage and content
+            let response = selectBestResponse(caseResponses, stage, messageAnalysis);
+            
+            return {
+                content: response.content,
+                pedagogicalNote: response.pedagogicalNote
+            };
+        }
+
+        function getResponseDatabase() {
+            return {
+                case1: {
+                    introduction: [
+                        {
+                            content: "Thank you for calling. This is Dr. Matthews, the cardiologist on call. I understand you have a patient for me?",
+                            triggers: ["hello", "hi", "calling", "name"],
+                            pedagogicalNote: { type: "positive", note: "Recipient appropriately identifies themselves and shows readiness to receive handover" }
+                        },
+                        {
+                            content: "Good morning, this is the cardiology department. How can I help you?",
+                            triggers: ["general"],
+                            pedagogicalNote: { type: "neutral", note: "Professional greeting, waiting for proper introduction" }
+                        }
+                    ],
+                    situation: [
+                        {
+                            content: "I see, chest pain in a 70-year-old. What's his current status? Is he stable?",
+                            triggers: ["chest pain", "70", "male", "patient"],
+                            pedagogicalNote: { type: "positive", note: "Appropriate clarifying question about patient stability" }
+                        },
+                        {
+                            content: "Okay, can you give me more details about the presentation?",
+                            triggers: ["situation", "presenting"],
+                            pedagogicalNote: { type: "neutral", note: "Seeking more specific information" }
+                        }
+                    ],
+                    background: [
+                        {
+                            content: "Right, so he has a cardiac history. What about his current medications? Any recent changes?",
+                            triggers: ["history", "coronary", "medication"],
+                            pedagogicalNote: { type: "positive", note: "Following up on relevant background information" }
+                        },
+                        {
+                            content: "That's important background. What do the current investigations show?",
+                            triggers: ["background", "history"],
+                            pedagogicalNote: { type: "positive", note: "Transitioning appropriately to current clinical findings" }
+                        }
+                    ],
+                    assessment: [
+                        {
+                            content: "Based on what you're telling me, this does sound like an acute coronary syndrome. What's your assessment?",
+                            triggers: ["ecg", "troponin", "elevated"],
+                            pedagogicalNote: { type: "positive", note: "Confirming clinical impression and seeking student's assessment" }
+                        },
+                        {
+                            content: "Those findings are concerning. What do you think we should do?",
+                            triggers: ["assessment", "think"],
+                            pedagogicalNote: { type: "positive", note: "Encouraging student to provide recommendation" }
+                        }
+                    ],
+                    recommendation: [
+                        {
+                            content: "I agree. We'll accept the patient for urgent catheterization. Please ensure he's stable for transport and has continuous monitoring.",
+                            triggers: ["recommend", "transfer", "catheter"],
+                            pedagogicalNote: { type: "positive", note: "Accepting recommendation and providing clear instructions" }
+                        },
+                        {
+                            content: "Yes, that sounds appropriate. What's the timeframe you're thinking?",
+                            triggers: ["urgent", "immediate"],
+                            pedagogicalNote: { type: "positive", note: "Confirming urgency and planning logistics" }
+                        }
+                    ]
+                },
+                default: {
+                    general: [
+                        {
+                            content: "I'm ready to receive your handover. Please go ahead.",
+                            triggers: ["general"],
+                            pedagogicalNote: { type: "neutral", note: "Standard opening response" }
+                        },
+                        {
+                            content: "Can you repeat that last part? I want to make sure I have all the details.",
+                            triggers: ["unclear"],
+                            pedagogicalNote: { type: "positive", note: "Seeking clarification - good practice" }
+                        },
+                        {
+                            content: "Thank you for that information. What's your main concern?",
+                            triggers: ["information"],
+                            pedagogicalNote: { type: "positive", note: "Acknowledging information and focusing discussion" }
+                        }
+                    ]
+                }
+            };
+        }
+
+        function selectBestResponse(caseResponses, stage, messageAnalysis) {
+            let candidateResponses = [];
+            
+            // Try to match stage-specific responses first
+            if (caseResponses[stage]) {
+                candidateResponses = caseResponses[stage];
+            } else if (caseResponses.general) {
+                candidateResponses = caseResponses.general;
+            } else {
+                // Fallback to default responses
+                candidateResponses = getResponseDatabase().default.general;
+            }
+            
+            // Find best matching response based on triggers
+            let bestMatch = candidateResponses[0];
+            let bestScore = 0;
+            
+            candidateResponses.forEach(response => {
+                let score = 0;
+                response.triggers.forEach(trigger => {
+                    if (messageAnalysis.keywords.includes(trigger)) {
+                        score++;
+                    }
+                });
+                
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestMatch = response;
+                }
+            });
+            
+            return bestMatch;
+        }
+
+        function showExample() {
+            if (!currentCase) return;
+            
+            const caseData = clinicalCases[currentCase];
+            let example = '';
+            
+            if (currentCase === 'case1') {
+                example = `**Example ISBAR Handover:**
+
+**Introduction:** "Hi, this is Dr. Smith from the Emergency Department. I'm calling about John Toder who came in overnight with chest pain."
+
+**Situation:** "He's a 70-year-old male presenting with chest pain and shortness of breath."
+
+**Background:** "He has a history of coronary artery disease, currently on metoprolol and aspirin. ECG shows ST-segment depression and his troponin levels are elevated."
+
+**Assessment:** "I believe this is an acute coronary syndrome requiring immediate intervention."
+
+**Recommendation:** "I recommend urgent transfer to the cardiac catheterization lab for evaluation and possible intervention."`;
+            } else {
+                example = `**ISBAR Framework Example:**
+
+**Introduction:** Identify yourself, your role, and the patient
+
+**Situation:** Briefly state what's happening with the patient
+
+**Background:** Provide relevant medical history and current status  
+
+**Assessment:** Share your clinical judgment
+
+**Recommendation:** State what action you think should be taken`;
+            }
+            
+            addMessage(example, false);
+        }
+
+        function resetConversation() {
+            conversationHistory = [];
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.innerHTML = '';
+            
+            if (currentCase) {
+                const caseData = clinicalCases[currentCase];
+                addSystemMessage(`Clinical handover simulation: ${caseData.title}. You are the ${currentRole}. Begin your handover using ISBAR framework.`);
+            }
+        }
+
+        function analyzeUserMessage(message) {
+            const lowerMessage = message.toLowerCase();
+            const keywords = lowerMessage.split(/\s+/).filter(word => word.length > 2);
+            
+            return {
+                keywords: keywords,
+                isbar_detected: detectISBARComponent(lowerMessage),
+                communication_quality: assessCommunicationQuality(lowerMessage),
+                length: message.length,
+                clarity: assessClarity(lowerMessage)
+            };
+        }
+
+        function detectISBARComponent(message) {
+            const patterns = {
+                introduction: /\b(hello|hi|name|calling|from|department|i am)\b/,
+                situation: /\b(patient|presenting|has|current|status|condition)\b/,
+                background: /\b(history|background|medical|previous|chronic|medication)\b/,
+                assessment: /\b(assessment|think|believe|appears|seems|clinical)\b/,
+                recommendation: /\b(recommend|need|request|suggest|transfer|urgent)\b/
+            };
+
+            for (const [component, pattern] of Object.entries(patterns)) {
+                if (pattern.test(message)) {
+                    return component;
+                }
+            }
+            return 'unclear';
+        }
+
+        function assessCommunicationQuality(message) {
+            let score = 0;
+            const issues = [];
+            
+            // Check for clarity indicators
+            if (message.includes('um') || message.includes('uh') || message.includes('...')) {
+                issues.push('Contains hesitation markers');
+            } else {
+                score += 1;
+            }
+            
+            // Check for completeness
+            if (message.length < 10) {
+                issues.push('Message too brief');
+            } else if (message.length > 200) {
+                issues.push('Message might be too lengthy');
+            } else {
+                score += 1;
+            }
+            
+            // Check for professional language
+            if (/\b(please|thank you|urgent|patient)\b/.test(message)) {
+                score += 1;
+            }
+            
+            return { score: score, issues: issues };
+        }
+
+        function assessClarity(message) {
+            // Simple clarity assessment based on sentence structure
+            const sentences = message.split(/[.!?]+/).filter(s => s.trim().length > 0);
+            const avgSentenceLength = message.length / Math.max(sentences.length, 1);
+            
+            if (avgSentenceLength > 100) {
+                return 'complex';
+            } else if (avgSentenceLength < 20) {
+                return 'simple';
+            }
+            return 'appropriate';
+        }
+
+        function getConversationStage() {
+            const userMessages = conversationHistory.filter(msg => msg.role === 'user');
+            
+            if (userMessages.length === 0) return 'introduction';
+            if (userMessages.length === 1) return 'situation';
+            if (userMessages.length === 2) return 'background';
+            if (userMessages.length === 3) return 'assessment';
+            if (userMessages.length >= 4) return 'recommendation';
+            
+            return 'general';
+        }
+
+        function providePedagogicalFeedback(userMessage, stage) {
+            setTimeout(() => {
+                const analysis = analyzeUserMessage(userMessage);
+                const feedback = generateDetailedFeedback(analysis, stage, userMessage);
+                
+                // Show analysis panel
+                const analysisPanel = document.getElementById('analysisPanel');
+                const analysisContent = document.getElementById('analysisContent');
+                
+                analysisPanel.classList.remove('hidden');
+                
+                // Add new feedback entry
+                const feedbackDiv = document.createElement('div');
+                feedbackDiv.className = 'border border-gray-200 dark:border-gray-600 rounded-lg p-4 bg-white dark:bg-gray-700';
+                feedbackDiv.innerHTML = `
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-semibold text-sm">Message Analysis</h3>
+                        <span class="text-xs text-gray-500">${new Date().toLocaleTimeString()}</span>
+                    </div>
+                    <div class="space-y-3">
+                        ${feedback.map(item => `
+                            <div class="flex items-start gap-3">
+                                <div class="w-2 h-2 rounded-full mt-1.5 ${
+                                    item.type === 'positive' ? 'bg-green-500' : 
+                                    item.type === 'warning' ? 'bg-yellow-500' : 'bg-red-500'
+                                }"></div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium">${item.category}</p>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400">${item.feedback}</p>
+                                    ${item.suggestion ? `<p class="text-xs text-blue-600 dark:text-blue-400 mt-1"><strong>Tip:</strong> ${item.suggestion}</p>` : ''}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                
+                analysisContent.insertBefore(feedbackDiv, analysisContent.firstChild);
+                
+                // Keep only last 5 feedback entries
+                while (analysisContent.children.length > 5) {
+                    analysisContent.removeChild(analysisContent.lastChild);
+                }
+            }, 2000); // Show feedback after bot response
+        }
+
+        function generateDetailedFeedback(analysis, expectedStage, userMessage) {
+            const feedback = [];
+            
+            // ISBAR Component Analysis
+            const detectedComponent = analysis.isbar_detected;
+            if (detectedComponent === expectedStage) {
+                feedback.push({
+                    type: 'positive',
+                    category: 'ISBAR Structure',
+                    feedback: `Correctly identified as ${expectedStage.toUpperCase()} component`,
+                    suggestion: null
+                });
+            } else if (detectedComponent === 'unclear') {
+                feedback.push({
+                    type: 'warning',
+                    category: 'ISBAR Structure',
+                    feedback: `Component not clearly identified. Expected ${expectedStage.toUpperCase()}`,
+                    suggestion: `Try starting with key words like "${getISBARStarters(expectedStage)}"`
+                });
+            } else {
+                feedback.push({
+                    type: 'negative',
+                    category: 'ISBAR Structure',
+                    feedback: `Detected as ${detectedComponent.toUpperCase()} but expected ${expectedStage.toUpperCase()}`,
+                    suggestion: `Focus on ${expectedStage} information at this stage`
+                });
+            }
+            
+            // Communication Quality
+            const quality = analysis.communication_quality;
+            if (quality.score >= 2) {
+                feedback.push({
+                    type: 'positive',
+                    category: 'Communication Quality',
+                    feedback: 'Clear and professional communication',
+                    suggestion: null
+                });
+            } else {
+                feedback.push({
+                    type: 'warning',
+                    category: 'Communication Quality',
+                    feedback: `Issues: ${quality.issues.join(', ')}`,
+                    suggestion: 'Use clear, concise language and professional terminology'
+                });
+            }
+            
+            // Length and Clarity
+            if (analysis.clarity === 'appropriate') {
+                feedback.push({
+                    type: 'positive',
+                    category: 'Message Clarity',
+                    feedback: 'Appropriate message length and structure',
+                    suggestion: null
+                });
+            } else if (analysis.clarity === 'complex') {
+                feedback.push({
+                    type: 'warning',
+                    category: 'Message Clarity',
+                    feedback: 'Message may be too complex or lengthy',
+                    suggestion: 'Break down information into shorter, clearer statements'
+                });
+            } else {
+                feedback.push({
+                    type: 'warning',
+                    category: 'Message Clarity',
+                    feedback: 'Message might be too brief',
+                    suggestion: 'Provide more specific details relevant to the handover'
+                });
+            }
+            
+            // Stage-specific feedback
+            const stageSpecificFeedback = getStageSpecificFeedback(expectedStage, userMessage);
+            if (stageSpecificFeedback) {
+                feedback.push(stageSpecificFeedback);
+            }
+            
+            return feedback;
+        }
+
+        function getISBARStarters(stage) {
+            const starters = {
+                introduction: '"Hello, this is [name] from [department]"',
+                situation: '"The patient is..." or "We have a patient who..."',
+                background: '"The patient has a history of..." or "Background includes..."',
+                assessment: '"My assessment is..." or "I believe..."',
+                recommendation: '"I recommend..." or "We need to..."'
+            };
+            return starters[stage] || 'appropriate opening phrases';
+        }
+
+        function getStageSpecificFeedback(stage, message) {
+            const lowerMessage = message.toLowerCase();
+            
+            switch (stage) {
+                case 'introduction':
+                    if (!lowerMessage.includes('name') && !lowerMessage.includes('calling')) {
+                        return {
+                            type: 'warning',
+                            category: 'Introduction Requirements',
+                            feedback: 'Missing personal identification',
+                            suggestion: 'Include your name, role, and department'
+                        };
+                    }
+                    break;
+                    
+                case 'situation':
+                    if (!lowerMessage.includes('patient') && !lowerMessage.includes('year') && !lowerMessage.includes('old')) {
+                        return {
+                            type: 'warning',
+                            category: 'Situation Requirements',
+                            feedback: 'Missing key patient demographics',
+                            suggestion: 'Include patient age, gender, and presenting complaint'
+                        };
+                    }
+                    break;
+                    
+                case 'background':
+                    if (!lowerMessage.includes('history') && !lowerMessage.includes('medication') && !lowerMessage.includes('previous')) {
+                        return {
+                            type: 'warning',
+                            category: 'Background Requirements',
+                            feedback: 'Limited background information provided',
+                            suggestion: 'Include relevant medical history, medications, and previous treatments'
+                        };
+                    }
+                    break;
+                    
+                case 'assessment':
+                    if (!lowerMessage.includes('think') && !lowerMessage.includes('believe') && !lowerMessage.includes('assessment')) {
+                        return {
+                            type: 'warning',
+                            category: 'Assessment Requirements',
+                            feedback: 'Clinical assessment not clearly stated',
+                            suggestion: 'Share your clinical impression and reasoning'
+                        };
+                    }
+                    break;
+                    
+                case 'recommendation':
+                    if (!lowerMessage.includes('recommend') && !lowerMessage.includes('need') && !lowerMessage.includes('transfer')) {
+                        return {
+                            type: 'warning',
+                            category: 'Recommendation Requirements',
+                            feedback: 'No clear recommendation provided',
+                            suggestion: 'State specific actions needed and urgency level'
+                        };
+                    }
+                    break;
+            }
+            
+            return null;
+        }
+
+        // Simulated conversations database
+        const simulatedConversations = {
+            case1: {
+                good: [
+                    {
+                        speaker: 'student',
+                        message: 'Hello, this is Dr. Emily Smith from the Emergency Department. I\'m calling about a 70-year-old male patient, John Toder, who presented with chest pain.',
+                        isbar: 'introduction',
+                        quality: 'excellent',
+                        notes: 'Clear identification, patient name, presenting complaint'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'Thank you Dr. Smith. This is Dr. Matthews, cardiology. I\'m ready to receive the handover. What\'s the current situation?',
+                        pedagogy: 'Professional acknowledgment, appropriate follow-up question'
+                    },
+                    {
+                        speaker: 'student',
+                        message: 'The patient is currently stable but experiencing ongoing chest pain. He arrived 2 hours ago with severe substernal chest pain radiating to his left arm.',
+                        isbar: 'situation',
+                        quality: 'good',
+                        notes: 'Clear situation description with relevant details'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'I understand. Can you tell me about his background and any relevant medical history?',
+                        pedagogy: 'Appropriate transition to background information'
+                    },
+                    {
+                        speaker: 'student',
+                        message: 'He has a significant history of coronary artery disease with previous MI in 2018. Currently on metoprolol 50mg BD, aspirin 100mg daily, and atorvastatin 40mg. ECG shows ST-segment depression in leads II, III, and aVF. Troponin levels are elevated at 2.5.',
+                        isbar: 'background',
+                        quality: 'excellent',
+                        notes: 'Comprehensive background with medications and investigation results'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'Those are concerning findings. What\'s your clinical assessment?',
+                        pedagogy: 'Encouraging student to provide assessment'
+                    },
+                    {
+                        speaker: 'student',
+                        message: 'Based on his history, presentation, and investigations, I believe this is an acute coronary syndrome, likely NSTEMI. He requires urgent cardiology intervention.',
+                        isbar: 'assessment',
+                        quality: 'excellent',
+                        notes: 'Clear clinical reasoning and appropriate assessment'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'I agree with your assessment. What are you recommending?',
+                        pedagogy: 'Confirming assessment and seeking recommendation'
+                    },
+                    {
+                        speaker: 'student',
+                        message: 'I recommend urgent transfer to the cardiac catheterization lab for coronary angiography and possible PCI. He\'s currently stable for transport with continuous cardiac monitoring.',
+                        isbar: 'recommendation',
+                        quality: 'excellent',
+                        notes: 'Specific recommendation with consideration for patient safety'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'Excellent handover. We\'ll accept the patient urgently. Please ensure dual antiplatelet therapy is initiated and arrange immediate transfer. ETA?',
+                        pedagogy: 'Accepting recommendation with clear instructions'
+                    }
+                ],
+                needs_improvement: [
+                    {
+                        speaker: 'student',
+                        message: 'Hi, um, this is someone from Emergency about a patient with chest pain.',
+                        isbar: 'introduction',
+                        quality: 'poor',
+                        notes: 'Lacks professional introduction, name, and specific details'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'Hello. Could you please identify yourself properly and give me more details about the patient?',
+                        pedagogy: 'Requesting proper identification - teaching moment'
+                    },
+                    {
+                        speaker: 'student',
+                        message: 'Oh right, I\'m Dr. Johnson. We have this old guy, maybe 70s, who came in with chest pain. He seems okay now.',
+                        isbar: 'situation',
+                        quality: 'poor',
+                        notes: 'Informal language, vague description, lacks urgency'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'Thank you Dr. Johnson. Can you be more specific about the patient\'s presentation and current vital signs?',
+                        pedagogy: 'Requesting specific clinical information'
+                    },
+                    {
+                        speaker: 'student',
+                        message: 'Well, he has some heart problems before. ECG looks a bit abnormal. His blood tests are high.',
+                        isbar: 'background',
+                        quality: 'poor',
+                        notes: 'Vague medical history, lacks specific details about investigations'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'I need more specific information. What exactly do you mean by "heart problems" and "high blood tests"?',
+                        pedagogy: 'Teaching moment - requesting clinical precision'
+                    },
+                    {
+                        speaker: 'student',
+                        message: 'I think it might be a heart attack or something. Should we send him up to you?',
+                        isbar: 'assessment',
+                        quality: 'poor',
+                        notes: 'Uncertain assessment, lacks clinical reasoning'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'Let\'s review the specific ECG changes and troponin levels first. Can you give me those details?',
+                        pedagogy: 'Guiding toward systematic approach'
+                    }
+                ],
+                poor: [
+                    {
+                        speaker: 'student',
+                        message: 'Hello, we need to send someone up.',
+                        isbar: 'introduction',
+                        quality: 'very_poor',
+                        notes: 'No identification, no patient details, unclear purpose'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'I need you to start again with a proper handover. Please identify yourself, the patient, and the reason for the call.',
+                        pedagogy: 'Complete restart required - fundamental structure missing'
+                    },
+                    {
+                        speaker: 'student',
+                        message: 'Patient has chest pain. He\'s old.',
+                        isbar: 'situation',
+                        quality: 'very_poor',
+                        notes: 'Minimal information, unprofessional, lacks clinical detail'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'This handover lacks essential information. Let me guide you through the ISBAR structure. First, tell me your name and department.',
+                        pedagogy: 'Educational intervention - teaching ISBAR framework'
+                    },
+                    {
+                        speaker: 'student',
+                        message: 'I\'m from Emergency. The patient, uh, he came in.',
+                        isbar: 'background',
+                        quality: 'very_poor',
+                        notes: 'Still missing critical information, poor communication continues'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'I need specific clinical information. What are his vital signs? What investigations have been done? This patient needs proper assessment.',
+                        pedagogy: 'Continued educational guidance - emphasizing clinical requirements'
+                    },
+                    {
+                        speaker: 'student',
+                        message: 'He needs to go upstairs. Can you take him?',
+                        isbar: 'recommendation',
+                        quality: 'very_poor',
+                        notes: 'No assessment provided, inappropriate recommendation without clinical basis'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'I cannot accept a patient without proper handover information. Please get your supervisor to call me with complete details.',
+                        pedagogy: 'Professional boundary - refusing unsafe handover'
+                    }
+                ]
+            },
+            case2: {
+                good: [
+                    {
+                        speaker: 'student',
+                        message: 'Hello, this is Nurse Sarah from Emergency Department. I need to hand over a 25-year-old female trauma patient to surgery urgently.',
+                        isbar: 'introduction',
+                        quality: 'excellent',
+                        notes: 'Clear professional introduction with urgency indication'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'Thank you Sarah. This is Dr. Chen from surgery. I\'m ready for the handover. What\'s the current situation?',
+                        pedagogy: 'Professional acknowledgment, ready to receive information'
+                    },
+                    {
+                        speaker: 'student',
+                        message: 'The patient was involved in a high-speed motor vehicle accident 30 minutes ago. She\'s currently unconscious with a GCS of 3, hypotensive at 80/45, and tachycardic at 130 BPM.',
+                        isbar: 'situation',
+                        quality: 'excellent',
+                        notes: 'Specific mechanism of injury with critical vital signs'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'That\'s very concerning. What do the imaging studies show?',
+                        pedagogy: 'Appropriate follow-up seeking diagnostic information'
+                    },
+                    {
+                        speaker: 'student',
+                        message: 'CT scan shows multiple rib fractures, splenic laceration with active bleeding, and an open fracture of the left tibia. We\'ve initiated two large-bore IVs, blood transfusion is running, and she\'s intubated.',
+                        isbar: 'background',
+                        quality: 'excellent',
+                        notes: 'Comprehensive imaging results with current interventions'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'What\'s your assessment of her condition?',
+                        pedagogy: 'Seeking clinical assessment from the handover provider'
+                    },
+                    {
+                        speaker: 'student',
+                        message: 'This is a critically injured patient with polytrauma and ongoing internal hemorrhage. She needs immediate surgical intervention for damage control.',
+                        isbar: 'assessment',
+                        quality: 'excellent',
+                        notes: 'Clear assessment with appropriate clinical reasoning'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'Agreed. We\'ll take her to OR 3 immediately. Any other recommendations?',
+                        pedagogy: 'Accepting patient and seeking additional input'
+                    },
+                    {
+                        speaker: 'student',
+                        message: 'I recommend immediate laparotomy for splenic repair, and orthopedics will need to be involved for the open fracture. Blood bank has 6 units ready.',
+                        isbar: 'recommendation',
+                        quality: 'excellent',
+                        notes: 'Specific surgical recommendations with resource preparation'
+                    }
+                ],
+                needs_improvement: [
+                    {
+                        speaker: 'student',
+                        message: 'Hi, we have a trauma patient that needs to go to surgery.',
+                        isbar: 'introduction',
+                        quality: 'poor',
+                        notes: 'Lacks identification and specific patient details'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'Please identify yourself and give me more specific information about the patient.',
+                        pedagogy: 'Requesting proper introduction and specifics'
+                    },
+                    {
+                        speaker: 'student',
+                        message: 'Sorry, I\'m Nurse Mike. It\'s a young woman, car accident, she\'s pretty bad.',
+                        isbar: 'situation',
+                        quality: 'poor',
+                        notes: 'Informal language, lacks specific clinical details'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'Can you give me her vital signs and level of consciousness?',
+                        pedagogy: 'Requesting essential clinical parameters'
+                    }
+                ],
+                poor: [
+                    {
+                        speaker: 'student',
+                        message: 'Surgery needs to take this patient.',
+                        isbar: 'introduction',
+                        quality: 'very_poor',
+                        notes: 'No identification, no patient information, command rather than handover'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'I need a proper handover. Please start with identifying yourself and the patient.',
+                        pedagogy: 'Educational redirection to proper handover structure'
+                    },
+                    {
+                        speaker: 'student',
+                        message: 'It\'s a trauma. Car crash. She\'s bleeding.',
+                        isbar: 'situation',
+                        quality: 'very_poor',
+                        notes: 'Extremely vague, no clinical details, unprofessional communication'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'I need specific information. What are her vital signs? What\'s her level of consciousness? What injuries have been identified?',
+                        pedagogy: 'Educational intervention - requesting essential clinical data'
+                    },
+                    {
+                        speaker: 'student',
+                        message: 'She\'s unconscious. Blood pressure is low. Just take her.',
+                        isbar: 'background',
+                        quality: 'very_poor',
+                        notes: 'Minimal information, no specific values, demanding tone continues'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'This is completely inadequate. I cannot accept a critically injured patient without proper clinical information. Get your senior colleague now.',
+                        pedagogy: 'Professional refusal - unsafe practice intervention'
+                    }
+                ]
+            },
+            case3: {
+                good: [
+                    {
+                        speaker: 'student',
+                        message: 'Hello, this is respiratory therapist Mark calling about a 68-year-old male COPD patient who needs ICU transfer.',
+                        isbar: 'introduction',
+                        quality: 'excellent',
+                        notes: 'Clear professional introduction with patient summary'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'Thank you Mark. This is Dr. Williams from ICU. Please tell me about the current situation.',
+                        pedagogy: 'Professional acknowledgment and request for details'
+                    },
+                    {
+                        speaker: 'student',
+                        message: 'The patient presented with severe dyspnea and hypoxia. He\'s currently on high-flow oxygen at 15L, oxygen saturation 88%, respiratory rate 35, using accessory muscles.',
+                        isbar: 'situation',
+                        quality: 'excellent',
+                        notes: 'Specific respiratory status with objective measurements'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'What\'s his medical history and current treatment?',
+                        pedagogy: 'Seeking background and current management'
+                    },
+                    {
+                        speaker: 'student',
+                        message: 'He has severe COPD, 40-year smoking history with multiple previous ICU admissions. Currently on salbutamol nebulizers, prednisolone 40mg, and we\'ve started him on BiPAP.',
+                        isbar: 'background',
+                        quality: 'excellent',
+                        notes: 'Relevant history with current therapeutic interventions'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'What\'s your assessment of his respiratory status?',
+                        pedagogy: 'Seeking clinical assessment'
+                    },
+                    {
+                        speaker: 'student',
+                        message: 'This appears to be a severe COPD exacerbation with impending respiratory failure. Despite maximal therapy, he\'s not improving and may need intubation.',
+                        isbar: 'assessment',
+                        quality: 'excellent',
+                        notes: 'Clear assessment with prognosis and escalation needs'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'I agree. We\'ll accept him for close monitoring. What are your recommendations?',
+                        pedagogy: 'Accepting patient and seeking recommendations'
+                    },
+                    {
+                        speaker: 'student',
+                        message: 'I recommend ICU monitoring with consideration for intubation if no improvement in 2 hours. Continue current bronchodilators and steroids.',
+                        isbar: 'recommendation',
+                        quality: 'excellent',
+                        notes: 'Specific timeline and treatment recommendations'
+                    }
+                ],
+                needs_improvement: [
+                    {
+                        speaker: 'student',
+                        message: 'Hi, we have a COPD patient having trouble breathing.',
+                        isbar: 'introduction',
+                        quality: 'poor',
+                        notes: 'Missing identification and specific patient details'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'Please identify yourself and give me more details about the patient\'s condition.',
+                        pedagogy: 'Requesting proper identification and specifics'
+                    }
+                ],
+                poor: [
+                    {
+                        speaker: 'student',
+                        message: 'Patient can\'t breathe. ICU needs to take him.',
+                        isbar: 'introduction',
+                        quality: 'very_poor',
+                        notes: 'No identification, minimal information, demanding tone'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'I need a complete handover. Please start by identifying yourself and providing structured information.',
+                        pedagogy: 'Complete restart with educational guidance'
+                    },
+                    {
+                        speaker: 'student',
+                        message: 'He has COPD. He\'s wheezing.',
+                        isbar: 'situation',
+                        quality: 'very_poor',
+                        notes: 'Extremely limited information, no vital signs or assessment'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'What are his vital signs? Oxygen saturation? Respiratory rate? I need specific clinical parameters.',
+                        pedagogy: 'Educational intervention - requesting essential respiratory data'
+                    },
+                    {
+                        speaker: 'student',
+                        message: 'He\'s on oxygen. Been smoking for years.',
+                        isbar: 'background',
+                        quality: 'very_poor',
+                        notes: 'Vague information, no specific treatment details or clinical values'
+                    },
+                    {
+                        speaker: 'avatar',
+                        message: 'This is inadequate for a respiratory emergency. I cannot accept a COPD patient without proper clinical assessment and vital signs. Please get your charge nurse.',
+                        pedagogy: 'Professional refusal - patient safety priority'
+                    }
+                ]
+            }
+        };
+
+        let currentConversation = [];
+        let currentMessageIndex = 0;
+        let isPlaying = false;
+        let playbackTimer = null;
+
+        function playSimulatedConversation() {
+            if (!currentCase) return;
+            
+            const studentLevel = document.getElementById('studentSelect').value;
+            currentConversation = simulatedConversations[currentCase][studentLevel];
+            currentMessageIndex = 0;
+            isPlaying = true;
+            
+            // Clear chat
+            document.getElementById('chatMessages').innerHTML = '';
+            
+            // Show controls
+            document.getElementById('playConversationBtn').classList.add('hidden');
+            document.getElementById('pauseBtn').classList.remove('hidden');
+            
+            // Start playback
+            playNextMessage();
+        }
+
+        function playNextMessage() {
+            if (!isPlaying || currentMessageIndex >= currentConversation.length) {
+                endPlayback();
+                return;
+            }
+            
+            const messageData = currentConversation[currentMessageIndex];
+            const isStudent = messageData.speaker === 'student';
+            
+            // Add message to chat
+            addConversationMessage(messageData, isStudent);
+            
+            // Add pedagogical analysis for student messages
+            if (isStudent) {
+                setTimeout(() => {
+                    addPedagogicalAnalysis(messageData, currentMessageIndex);
+                }, 1000);
+            }
+            
+            currentMessageIndex++;
+            
+            // Schedule next message
+            playbackTimer = setTimeout(playNextMessage, isStudent ? 3000 : 2000);
+        }
+
+        function addConversationMessage(messageData, isStudent) {
+            const chatMessages = document.getElementById('chatMessages');
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `p-4 rounded-lg ${isStudent ? 'bg-primary text-white ml-8' : 'bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 mr-8'}`;
+            
+            let messageHTML = `
+                <div class="flex justify-between items-start mb-2">
+                    <strong class="text-sm">${isStudent ? 'Student' : 'Avatar (Cardiologist)'}</strong>
+                    <span class="text-xs opacity-75">${new Date().toLocaleTimeString()}</span>
+                </div>
+                <div class="mb-2">${messageData.message}</div>
+            `;
+            
+            // Add ISBAR annotation for student messages
+            if (isStudent && messageData.isbar) {
+                const qualityColor = messageData.quality === 'excellent' ? 'bg-green-100 text-green-800' :
+                                  messageData.quality === 'good' ? 'bg-blue-100 text-blue-800' :
+                                  messageData.quality === 'poor' ? 'bg-yellow-100 text-yellow-800' :
+                                  'bg-red-100 text-red-800';
+                
+                messageHTML += `
+                    <div class="isbar-annotation ${messageData.isbar} text-xs mt-2">
+                        <strong>${messageData.isbar.toUpperCase()}</strong>
+                    </div>
+                    <div class="mt-2 text-xs">
+                        <span class="inline-block px-2 py-1 rounded-full text-xs ${qualityColor}">${messageData.quality.replace('_', ' ')}</span>
+                    </div>
+                `;
+            }
+            
+            messageDiv.innerHTML = messageHTML;
+            chatMessages.appendChild(messageDiv);
+            
+            // Scroll to bottom
+            const chatContainer = document.getElementById('chatContainer');
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function addPedagogicalAnalysis(messageData, messageIndex) {
+            const analysisPanel = document.getElementById('analysisPanel');
+            const analysisContent = document.getElementById('analysisContent');
+            
+            analysisPanel.classList.remove('hidden');
+            
+            const analysisDiv = document.createElement('div');
+            analysisDiv.className = 'border border-gray-200 dark:border-gray-600 rounded-lg p-4 bg-white dark:bg-gray-700';
+            
+            const qualityScore = messageData.quality === 'excellent' ? 95 :
+                               messageData.quality === 'good' ? 80 :
+                               messageData.quality === 'poor' ? 40 : 20;
+            
+            const qualityColor = qualityScore >= 80 ? 'text-green-600' :
+                               qualityScore >= 60 ? 'text-blue-600' :
+                               qualityScore >= 40 ? 'text-yellow-600' : 'text-red-600';
+            
+            analysisDiv.innerHTML = `
+                <div class="flex justify-between items-start mb-3">
+                    <h3 class="font-semibold text-sm">Message ${messageIndex + 1} Analysis</h3>
+                    <div class="text-right">
+                        <div class="text-xs text-gray-500">${new Date().toLocaleTimeString()}</div>
+                        <div class="text-sm font-semibold ${qualityColor}">${qualityScore}%</div>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <h4 class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Original Message</h4>
+                    <div class="p-2 bg-gray-50 dark:bg-gray-800 rounded text-xs italic border-l-2 border-primary">
+                        "${messageData.message}"
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                    <div>
+                        <h4 class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">ISBAR Component</h4>
+                        <span class="inline-block px-2 py-1 rounded text-xs bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+                            ${messageData.isbar ? messageData.isbar.toUpperCase() : 'N/A'}
+                        </span>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Communication Quality</h4>
+                        <span class="inline-block px-2 py-1 rounded text-xs ${
+                            messageData.quality === 'excellent' ? 'bg-green-100 text-green-800' :
+                            messageData.quality === 'good' ? 'bg-blue-100 text-blue-800' :
+                            messageData.quality === 'poor' ? 'bg-yellow-100 text-yellow-800' :
+                            'bg-red-100 text-red-800'
+                        }">
+                            ${messageData.quality.replace('_', ' ').toUpperCase()}
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="space-y-2">
+                    <div>
+                        <h4 class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Detailed Analysis</h4>
+                        <p class="text-xs text-gray-600 dark:text-gray-400">${messageData.notes}</p>
+                    </div>
+                    
+                    ${getDetailedFeedbackForMessage(messageData)}
+                </div>
+            `;
+            
+            analysisContent.insertBefore(analysisDiv, analysisContent.firstChild);
+            
+            // Keep only last 8 analysis entries
+            while (analysisContent.children.length > 8) {
+                analysisContent.removeChild(analysisContent.lastChild);
+            }
+        }
+
+        function getDetailedFeedbackForMessage(messageData) {
+            const suggestions = [];
+            
+            if (messageData.quality === 'poor' || messageData.quality === 'very_poor') {
+                suggestions.push({
+                    type: 'improvement',
+                    text: 'Consider using more specific medical terminology and clear structure'
+                });
+                
+                if (messageData.isbar === 'introduction') {
+                    suggestions.push({
+                        type: 'template',
+                        text: 'Use format: "Hello, this is [Name] from [Department], calling about [Patient]"'
+                    });
+                }
+            }
+            
+            if (messageData.quality === 'excellent') {
+                suggestions.push({
+                    type: 'positive',
+                    text: 'Excellent communication demonstrates professional standards'
+                });
+            }
+            
+            return suggestions.map(suggestion => `
+                <div class="flex items-start gap-2 mt-2">
+                    <div class="w-2 h-2 rounded-full mt-1 ${
+                        suggestion.type === 'positive' ? 'bg-green-500' :
+                        suggestion.type === 'improvement' ? 'bg-yellow-500' : 'bg-blue-500'
+                    }"></div>
+                    <p class="text-xs text-gray-600 dark:text-gray-400">${suggestion.text}</p>
+                </div>
+            `).join('');
+        }
+
+        function pauseConversation() {
+            isPlaying = false;
+            if (playbackTimer) {
+                clearTimeout(playbackTimer);
+                playbackTimer = null;
+            }
+            
+            document.getElementById('playConversationBtn').classList.remove('hidden');
+            document.getElementById('pauseBtn').classList.add('hidden');
+            document.getElementById('playConversationBtn').textContent = '▶ Resume';
+        }
+
+        function endPlayback() {
+            isPlaying = false;
+            if (playbackTimer) {
+                clearTimeout(playbackTimer);
+                playbackTimer = null;
+            }
+            
+            document.getElementById('playConversationBtn').classList.remove('hidden');
+            document.getElementById('pauseBtn').classList.add('hidden');
+            document.getElementById('playConversationBtn').textContent = '▶ Play Conversation';
+            
+            // Add session summary
+            setTimeout(() => {
+                addSessionSummary();
+            }, 2000);
+        }
+
+        function addSessionSummary() {
+            const analysisPanel = document.getElementById('analysisPanel');
+            const analysisContent = document.getElementById('analysisContent');
+            
+            const studentLevel = document.getElementById('studentSelect').value;
+            const totalMessages = currentConversation.filter(msg => msg.speaker === 'student').length;
+            
+            const summaryDiv = document.createElement('div');
+            summaryDiv.className = 'border-2 border-primary rounded-lg p-4 bg-primary/5 dark:bg-primary/10';
+            summaryDiv.innerHTML = `
+                <h3 class="font-semibold text-lg mb-3 text-primary">Session Summary</h3>
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Performance Level</div>
+                        <div class="font-medium">${studentLevel.replace('_', ' ').toUpperCase()}</div>
+                    </div>
+                    <div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Messages Analyzed</div>
+                        <div class="font-medium">${totalMessages}</div>
+                    </div>
+                </div>
+                
+                <div class="text-sm">
+                    <h4 class="font-medium mb-2">Pedagogical Insights:</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400">
+                        ${getPedagogicalInsights(studentLevel)}
+                    </ul>
+                </div>
+                
+                <div class="mt-4 text-xs text-gray-500">
+                    This session demonstrates how avatar solutions can record, analyze, and provide detailed feedback on clinical communication skills for educational purposes.
+                </div>
+            `;
+            
+            analysisContent.insertBefore(summaryDiv, analysisContent.firstChild);
+        }
+
+        function getPedagogicalInsights(level) {
+            const insights = {
+                good: [
+                    '<li>• Student demonstrates strong ISBAR structure throughout handover</li>',
+                    '<li>• Professional language and clear communication evident</li>',
+                    '<li>• Appropriate level of clinical detail provided</li>',
+                    '<li>• Ready for independent practice with minimal supervision</li>'
+                ],
+                needs_improvement: [
+                    '<li>• ISBAR structure present but inconsistent application</li>',
+                    '<li>• Communication lacks precision in medical terminology</li>',
+                    '<li>• Requires practice with structured handover protocols</li>',
+                    '<li>• Would benefit from additional training sessions</li>'
+                ],
+                poor: [
+                    '<li>• Fundamental gaps in handover structure and content</li>',
+                    '<li>• Requires intensive training on ISBAR framework</li>',
+                    '<li>• Communication skills need significant development</li>',
+                    '<li>• Recommend supervised practice before independent handovers</li>'
+                ]
+            };
+            
+            return insights[level].join('');
+        }
+
+        function resetSimulation() {
+            isPlaying = false;
+            if (playbackTimer) {
+                clearTimeout(playbackTimer);
+                playbackTimer = null;
+            }
+            
+            currentConversation = [];
+            currentMessageIndex = 0;
+            
+            // Reset UI
+            document.getElementById('playConversationBtn').classList.remove('hidden');
+            document.getElementById('pauseBtn').classList.add('hidden');
+            document.getElementById('playConversationBtn').textContent = '▶ Play Conversation';
+            
+            // Clear messages
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.innerHTML = '';
+            
+            // Clear analysis
+            const analysisContent = document.getElementById('analysisContent');
+            analysisContent.innerHTML = '';
+            document.getElementById('analysisPanel').classList.add('hidden');
+            
+            if (currentCase) {
+                const caseData = clinicalCases[currentCase];
+                addSystemMessage(`Avatar Training Simulation: ${caseData.title}. Select a student performance level and click "Play Conversation" to view recorded interaction.`);
+            }
+        }
+
+        // Initialize when page loads
+        window.addEventListener('load', init);
+    </script>
+
+
+<div id="__LARK_CLIPPER__"></div></body></html>
