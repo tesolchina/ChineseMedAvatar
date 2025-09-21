@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCM Avatar Iframe Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+        }
+        h1 {
+            color: #2d3748;
+            text-align: center;
+        }
+        h2 {
+            color: #4a5568;
+            margin-bottom: 10px;
+        }
+        .status {
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .success { background: #c6f6d5; color: #22543d; border: 1px solid #9ae6b4; }
+        .loading { background: #fed7d7; color: #742a2a; border: 1px solid #feb2b2; }
+        .url-info {
+            background: #e6fffa;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            border-left: 4px solid #38b2ac;
+        }
+    </style>
+</head>
+<body>
+    <h1>🩺 TCM Avatar Iframe Functionality Test</h1>
+    
+    <div class="test-container">
+        <h2>Test 1: Clinical Interview Avatar (/chat/ URL)</h2>
+        <div class="url-info">
+            <strong>URL:</strong> https://textbot.hkbu.tech/chat/tcm-clinical-interview
+        </div>
+        <div class="status loading" id="status1">⏳ Loading iframe...</div>
+        <iframe 
+            id="iframe1"
+            src="https://textbot.hkbu.tech/chat/tcm-clinical-interview"
+            title="TCM Clinical Interview"
+            onload="updateStatus('status1', 'success', '✅ Iframe loaded successfully!')"
+            onerror="updateStatus('status1', 'error', '❌ Iframe failed to load')">
+        </iframe>
+    </div>
+
+    <div class="test-container">
+        <h2>Test 2: Concept Explanation Avatar (/chat/ URL)</h2>
+        <div class="url-info">
+            <strong>URL:</strong> https://textbot.hkbu.tech/chat/tcm-concept-explanation
+        </div>
+        <div class="status loading" id="status2">⏳ Loading iframe...</div>
+        <iframe 
+            id="iframe2"
+            src="https://textbot.hkbu.tech/chat/tcm-concept-explanation"
+            title="TCM Concept Explanation"
+            onload="updateStatus('status2', 'success', '✅ Iframe loaded successfully!')"
+            onerror="updateStatus('status2', 'error', '❌ Iframe failed to load')">
+        </iframe>
+    </div>
+
+    <div class="test-container">
+        <h2>Results Summary</h2>
+        <div id="summary">
+            <p><strong>Test Status:</strong> <span id="overall-status">Running tests...</span></p>
+            <p><strong>Expected Behavior:</strong> Both iframes should load the chat interfaces for TCM practice scenarios.</p>
+            <p><strong>What to Look For:</strong></p>
+            <ul>
+                <li>Chat interface loads properly inside the iframe</li>
+                <li>No CORS errors in browser console</li>
+                <li>Avatar responds to user input</li>
+                <li>Microphone permissions work if needed</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let loadedCount = 0;
+        let errorCount = 0;
+
+        function updateStatus(statusId, type, message) {
+            const element = document.getElementById(statusId);
+            element.className = `status ${type}`;
+            element.textContent = message;
+            
+            if (type === 'success') {
+                loadedCount++;
+            } else if (type === 'error') {
+                errorCount++;
+            }
+            
+            updateOverallStatus();
+        }
+
+        function updateOverallStatus() {
+            const totalTests = 2;
+            const overallStatus = document.getElementById('overall-status');
+            
+            if (loadedCount === totalTests) {
+                overallStatus.textContent = `✅ All ${totalTests} tests passed! Iframes are working correctly.`;
+                overallStatus.style.color = '#22543d';
+            } else if (errorCount > 0) {
+                overallStatus.textContent = `⚠️ ${errorCount} test(s) failed, ${loadedCount} passed.`;
+                overallStatus.style.color = '#742a2a';
+            } else {
+                overallStatus.textContent = `⏳ ${loadedCount}/${totalTests} tests completed...`;
+                overallStatus.style.color = '#4a5568';
+            }
+        }
+
+        // Timeout fallback
+        setTimeout(() => {
+            updateOverallStatus();
+        }, 10000);
+
+        console.log('TCM Avatar Iframe Test initialized');
+        console.log('Testing URLs with /chat/ path for iframe compatibility');
+    </script>
+</body>
+</html>

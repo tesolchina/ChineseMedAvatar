@@ -16,7 +16,7 @@ class AvatarSelectionApp {
                 framework: 'HEAL framework + TCM diagnostic inquiry',
                 duration: '15-20 minutes',
                 difficulty: 'intermediate',
-                url: 'https://textbot.hkbu.tech/tcm-clinical-interview',
+                url: 'https://textbot.hkbu.tech/chat/tcm-clinical-interview',
                 tips: [
                     'Start with open-ended questions about the chief complaint',
                     'Explore both physical symptoms and emotional state',
@@ -34,7 +34,7 @@ class AvatarSelectionApp {
                 framework: 'TEACH-BACK method with cultural bridging',
                 duration: '10-15 minutes',
                 difficulty: 'intermediate',
-                url: 'https://textbot.hkbu.tech/tcm-concept-explanation',
+                url: 'https://textbot.hkbu.tech/chat/tcm-concept-explanation',
                 tips: [
                     'Use analogies and metaphors familiar to patients',
                     'Avoid overwhelming with too much theory at once',
@@ -52,7 +52,7 @@ class AvatarSelectionApp {
                 framework: 'Cultural competency + respectful dialogue',
                 duration: '15-20 minutes',
                 difficulty: 'advanced',
-                url: 'https://textbot.hkbu.tech/tcm-cultural-sensitivity',
+                url: 'https://textbot.hkbu.tech/chat/tcm-cultural-sensitivity',
                 tips: [
                     'Acknowledge and respect different health beliefs',
                     'Avoid dismissing conventional medical approaches',
@@ -70,7 +70,7 @@ class AvatarSelectionApp {
                 framework: 'SPIKES protocol adapted for TCM',
                 duration: '20-25 minutes',
                 difficulty: 'advanced',
-                url: 'https://textbot.hkbu.tech/tcm-difficult-conversations',
+                url: 'https://textbot.hkbu.tech/chat/tcm-difficult-conversations',
                 tips: [
                     'Prepare for emotional reactions and disappointment',
                     'Use the SPIKES framework: Setting, Perception, Information, Knowledge, Emotions, Strategy',
@@ -88,7 +88,7 @@ class AvatarSelectionApp {
                 framework: 'Collaborative care model',
                 duration: '10-15 minutes',
                 difficulty: 'intermediate',
-                url: 'https://textbot.hkbu.tech/tcm-professional-referral',
+                url: 'https://textbot.hkbu.tech/chat/tcm-professional-referral',
                 tips: [
                     'Recognize scope of practice limitations',
                     'Frame referrals as complementary, not replacement',
@@ -106,7 +106,7 @@ class AvatarSelectionApp {
                 framework: 'Shared decision-making + TCM principles',
                 duration: '20-25 minutes',
                 difficulty: 'advanced',
-                url: 'https://textbot.hkbu.tech/tcm-treatment-planning',
+                url: 'https://textbot.hkbu.tech/chat/tcm-treatment-planning',
                 tips: [
                     'Involve patients in treatment planning decisions',
                     'Consider patient\'s lifestyle and preferences',
