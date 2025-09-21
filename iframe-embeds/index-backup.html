@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCM Communication Practice Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🩺</text></svg>">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🩺</span>
+                    <span class="logo-text">TCM Communication Practice</span>
+                </div>
+                <div class="header-info">
+                    <span class="institution">Hong Kong Baptist University</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="tab-navigation">
+            <button class="tab-btn active" data-tab="selection">
+                📋 Avatar Selection
+            </button>
+            <button class="tab-btn" data-tab="practice" disabled>
+                💬 Practice Session
+            </button>
+            <button class="tab-btn" data-tab="about">
+                ℹ️ About
+            </button>
+        </nav>
+
+        <!-- Tab Contents -->
+        <main class="tab-content-container">
+            
+            <!-- Avatar Selection Tab -->
+            <div id="selection" class="tab-content active">
+                <div class="selection-header">
+                    <h1>Select Your Practice Scenario</h1>
+                    <p class="selection-subtitle">
+                        Choose an AI-powered patient avatar to practice your Traditional Chinese Medicine communication skills. 
+                        Each scenario focuses on different communication challenges and frameworks.
+                    </p>
+                </div>
+
+                <div class="avatar-grid">
+                    <!-- Clinical Interview -->
+                    <div class="avatar-card" data-avatar="tcm-clinical-interview">
+                        <div class="card-header">
+                            <div class="card-icon">🩺</div>
+                            <h3 class="card-title">Clinical Interview Practice</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">
+                                Practice building trust and rapport with skeptical first-time patients using the Calgary-Cambridge framework.
+                            </p>
+                            <div class="card-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">Patient:</span>
+                                    <span class="detail-value">Robert Thompson (Skeptical Insurance Adjuster)</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Framework:</span>
+                                    <span class="detail-value">Calgary-Cambridge</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Duration:</span>
+                                    <span class="detail-value">15-20 minutes</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Difficulty:</span>
+                                    <span class="difficulty intermediate">Intermediate</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="select-btn" onclick="selectAvatar('tcm-clinical-interview')">
+                                Start Practice
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Concept Explanation -->
+                    <div class="avatar-card" data-avatar="tcm-concept-explanation">
+                        <div class="card-header">
+                            <div class="card-icon">🧠</div>
+                            <h3 class="card-title">Concept Explanation Practice</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">
+                                Learn to explain TCM concepts clearly to analytically-minded, scientifically-oriented patients.
+                            </p>
+                            <div class="card-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">Patient:</span>
+                                    <span class="detail-value">Michael Chen (Software Engineer)</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Focus:</span>
+                                    <span class="detail-value">Scientific Explanations</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Duration:</span>
+                                    <span class="detail-value">15-20 minutes</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Difficulty:</span>
+                                    <span class="difficulty intermediate">Intermediate</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="select-btn" onclick="selectAvatar('tcm-concept-explanation')">
+                                Start Practice
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Cultural Sensitivity -->
+                    <div class="avatar-card" data-avatar="tcm-cultural-sensitivity">
+                        <div class="card-header">
+                            <div class="card-icon">🌍</div>
+                            <h3 class="card-title">Cultural Sensitivity Practice</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">
+                                Navigate cultural diversity and respectfully integrate different traditional healing practices.
+                            </p>
+                            <div class="card-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">Patient:</span>
+                                    <span class="detail-value">Maria Gonzalez (Latina Healthcare Worker)</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Focus:</span>
+                                    <span class="detail-value">Cultural Competency</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Duration:</span>
+                                    <span class="detail-value">20-25 minutes</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Difficulty:</span>
+                                    <span class="difficulty advanced">Advanced</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="select-btn" onclick="selectAvatar('tcm-cultural-sensitivity')">
+                                Start Practice
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Difficult Conversations -->
+                    <div class="avatar-card" data-avatar="tcm-difficult-conversations">
+                        <div class="card-header">
+                            <div class="card-icon">😤</div>
+                            <h3 class="card-title">Difficult Conversations</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">
+                                Handle challenging patient interactions and frustrations using the SPIKES protocol.
+                            </p>
+                            <div class="card-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">Patient:</span>
+                                    <span class="detail-value">Robert Williams (Frustrated Retiree)</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Framework:</span>
+                                    <span class="detail-value">SPIKES Protocol</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Duration:</span>
+                                    <span class="detail-value">10-15 minutes</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Difficulty:</span>
+                                    <span class="difficulty advanced">Advanced</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="select-btn" onclick="selectAvatar('tcm-difficult-conversations')">
+                                Start Practice
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Professional Referral -->
+                    <div class="avatar-card" data-avatar="tcm-professional-referral">
+                        <div class="card-header">
+                            <div class="card-icon">👨‍⚕️</div>
+                            <h3 class="card-title">Professional Referral Communication</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">
+                                Practice communicating with medical professionals about TCM treatments using ISBAR framework.
+                            </p>
+                            <div class="card-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">Role:</span>
+                                    <span class="detail-value">Dr. Michael Thompson (Family Physician)</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Framework:</span>
+                                    <span class="detail-value">ISBAR Communication</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Duration:</span>
+                                    <span class="detail-value">15-20 minutes</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Difficulty:</span>
+                                    <span class="difficulty advanced">Advanced</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="select-btn" onclick="selectAvatar('tcm-professional-referral')">
+                                Start Practice
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Treatment Planning -->
+                    <div class="avatar-card" data-avatar="tcm-treatment-planning">
+                        <div class="card-header">
+                            <div class="card-icon">📋</div>
+                            <h3 class="card-title">Treatment Planning Practice</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">
+                                Develop and explain comprehensive TCM treatment plans with detailed patient education.
+                            </p>
+                            <div class="card-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">Patient:</span>
+                                    <span class="detail-value">Jennifer Martinez (Teacher)</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Focus:</span>
+                                    <span class="detail-value">Treatment Planning</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Duration:</span>
+                                    <span class="detail-value">20-25 minutes</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Difficulty:</span>
+                                    <span class="difficulty intermediate">Intermediate</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="select-btn" onclick="selectAvatar('tcm-treatment-planning')">
+                                Start Practice
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Practice Session Tab -->
+            <div id="practice" class="tab-content">
+                <div class="practice-header">
+                    <div class="practice-info">
+                        <h2 id="practice-title">Practice Session</h2>
+                        <p id="practice-description">Select an avatar to begin your practice session.</p>
+                    </div>
+                    <div class="practice-controls">
+                        <button class="control-btn" onclick="resetSession()" id="reset-btn" disabled>
+                            🔄 Reset Session
+                        </button>
+                        <button class="control-btn" onclick="switchTab('selection')" id="change-btn">
+                            ← Change Avatar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="practice-demo-section" id="demo-section">
+                    <div class="demo-content">
+                        <h3>📚 About This Practice Session</h3>
+                        <div id="demo-details">
+                            <!-- Dynamic content will be inserted here -->
+                        </div>
+                        <div class="demo-tips">
+                            <h4>💡 Practice Tips:</h4>
+                            <ul id="practice-tips">
+                                <!-- Dynamic tips will be inserted here -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="iframe-container" id="iframe-container">
+                    <div class="loading-message" id="loading-message">
+                        <div class="loading-spinner"></div>
+                        <p>Loading your practice session...</p>
+                    </div>
+                    <iframe id="practice-iframe" 
+                            src="" 
+                            title="TCM Practice Session"
+                            allow="microphone; camera; fullscreen"
+                            style="display: none;">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- About Tab -->
+            <div id="about" class="tab-content">
+                <div class="about-content">
+                    <h1>About TCM Communication Practice Platform</h1>
+                    
+                    <section class="about-section">
+                        <h2>🎯 Purpose</h2>
+                        <p>
+                            This platform provides Traditional Chinese Medicine students and practitioners with 
+                            AI-powered patient avatars to practice essential communication skills. Each scenario 
+                            is designed around evidence-based communication frameworks and real-world clinical situations.
+                        </p>
+                    </section>
+
+                    <section class="about-section">
+                        <h2>🏗️ Communication Frameworks</h2>
+                        <div class="framework-grid">
+                            <div class="framework-item">
+                                <h3>Calgary-Cambridge Framework</h3>
+                                <p>Structured approach to clinical interviews focusing on relationship building and information gathering.</p>
+                            </div>
+                            <div class="framework-item">
+                                <h3>SPIKES Protocol</h3>
+                                <p>Systematic approach for handling difficult conversations and delivering challenging news.</p>
+                            </div>
+                            <div class="framework-item">
+                                <h3>ISBAR Communication</h3>
+                                <p>Professional healthcare communication standard for interdisciplinary collaboration.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="about-section">
+                        <h2>📊 Learning Outcomes</h2>
+                        <ul class="outcomes-list">
+                            <li>Develop rapport with diverse patient populations</li>
+                            <li>Explain TCM concepts in accessible language</li>
+                            <li>Navigate cultural sensitivity in healthcare</li>
+                            <li>Handle challenging patient interactions professionally</li>
+                            <li>Communicate effectively with medical colleagues</li>
+                            <li>Create comprehensive treatment plans with patient involvement</li>
+                        </ul>
+                    </section>
+
+                    <section class="about-section">
+                        <h2>🎓 Created By</h2>
+                        <div class="creator-info">
+                            <p><strong>Dr. Simon Wang</strong>, Innovation Officer<br>
+                            Language Centre, Hong Kong Baptist University<br>
+                            📧 <a href="mailto:simonwang@hkbu.edu.hk">simonwang@hkbu.edu.hk</a></p>
+                        </div>
+                    </section>
+
+                    <section class="about-section">
+                        <h2>🔧 Technical Information</h2>
+                        <div class="tech-info">
+                            <p><strong>Platform:</strong> AI-powered conversational avatars</p>
+                            <p><strong>Compatibility:</strong> Modern web browsers with microphone support</p>
+                            <p><strong>Assessment:</strong> Real-time feedback and performance reporting</p>
+                            <p><strong>Privacy:</strong> GDPR compliant, no personal data storage</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

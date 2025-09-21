@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug TCM Interface</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .debug-panel {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #fff;
+            border: 2px solid #667eea;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            z-index: 1000;
+            max-width: 300px;
+        }
+        .debug-panel h3 {
+            margin: 0 0 10px 0;
+            color: #667eea;
+        }
+        .debug-panel button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            margin: 2px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        #debug-output {
+            background: #f0f0f0;
+            padding: 5px;
+            margin-top: 10px;
+            border-radius: 3px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="debug-panel">
+        <h3>🐛 Debug Panel</h3>
+        <button onclick="testAppInit()">Test App Init</button>
+        <button onclick="testAvatarRender()">Test Avatar Render</button>
+        <button onclick="testSelectAvatar()">Test Select Avatar</button>
+        <button onclick="testIframeLoad()">Test Iframe Load</button>
+        <button onclick="clearDebugOutput()">Clear Log</button>
+        <div id="debug-output"></div>
+    </div>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🩺</span>
+                    <span class="logo-text">TCM Communication Practice (DEBUG)</span>
+                </div>
+                <div class="header-info">
+                    <span class="institution">Debug Mode</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="tab-navigation">
+            <button class="tab-btn active" data-tab="selection">
+                📋 Avatar Selection
+            </button>
+            <button class="tab-btn" data-tab="practice" disabled>
+                💬 Practice Session
+            </button>
+            <button class="tab-btn" data-tab="about">
+                ℹ️ About
+            </button>
+        </nav>
+
+        <!-- Tab Contents -->
+        <main class="tab-content-container">
+            
+            <!-- Avatar Selection Tab -->
+            <div id="selection-tab" class="tab-content active">
+                <div class="selection-header">
+                    <h1>Select Your Practice Scenario</h1>
+                    <p class="selection-subtitle">
+                        Choose an AI-powered patient avatar to practice your Traditional Chinese Medicine communication skills. 
+                        Each scenario focuses on different communication challenges and frameworks.
+                    </p>
+                </div>
+
+                <div id="avatar-grid" class="avatar-grid">
+                </div>
+            </div>
+
+            <!-- Practice Session Tab -->
+            <div id="practice-tab" class="tab-content">
+                <div class="practice-header">
+                    <div class="practice-info">
+                        <h2>Select an Avatar to Begin</h2>
+                        <p>Choose a practice scenario from the Avatar Selection tab to start your session.</p>
+                    </div>
+                    <div class="practice-controls">
+                        <button class="control-btn" id="reset-session" disabled>
+                            🔄 Reset Session
+                        </button>
+                        <button class="control-btn" id="new-session">
+                            🆕 Change Avatar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- iFrame Container -->
+                <div class="iframe-container">
+                    <div class="loading-message">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">📋</div>
+                        <p><strong>Practice Session Area</strong></p>
+                        <p>Your selected avatar will appear here once you choose a scenario.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Tab -->
+            <div id="about-tab" class="tab-content">
+                <div class="about-content">
+                    <h1>Debug Mode - About TCM Communication Practice</h1>
+                    <p>This is a debug version to test functionality.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        function debugLog(message) {
+            const output = document.getElementById('debug-output');
+            const timestamp = new Date().toLocaleTimeString();
+            output.innerHTML += `[${timestamp}] ${message}<br>`;
+            output.scrollTop = output.scrollHeight;
+            console.log(message);
+        }
+
+        function testAppInit() {
+            debugLog('Testing app initialization...');
+            if (typeof app !== 'undefined' && app) {
+                debugLog('✅ App is initialized');
+                debugLog(`App avatars count: ${Object.keys(app.avatars).length}`);
+            } else {
+                debugLog('❌ App not initialized');
+            }
+        }
+
+        function testAvatarRender() {
+            debugLog('Testing avatar rendering...');
+            const gridContainer = document.getElementById('avatar-grid');
+            if (gridContainer) {
+                debugLog(`Grid container found, children: ${gridContainer.children.length}`);
+                if (app) {
+                    app.renderAvatarCards();
+                    debugLog(`After render, children: ${gridContainer.children.length}`);
+                } else {
+                    debugLog('❌ App not available for rendering');
+                }
+            } else {
+                debugLog('❌ Grid container not found');
+            }
+        }
+
+        function testSelectAvatar() {
+            debugLog('Testing avatar selection...');
+            if (window.selectAvatar) {
+                debugLog('Calling selectAvatar with tcm-clinical-interview');
+                window.selectAvatar('tcm-clinical-interview');
+            } else {
+                debugLog('❌ selectAvatar function not available');
+            }
+        }
+
+        function testIframeLoad() {
+            debugLog('Testing direct iframe loading...');
+            const container = document.querySelector('.iframe-container');
+            if (container) {
+                debugLog('Loading iframe directly...');
+                container.innerHTML = `
+                    <iframe 
+                        src="https://textbot.hkbu.tech/tcm-clinical-interview"
+                        style="width: 100%; height: 100%; border: none;"
+                        onload="debugLog('✅ Iframe loaded successfully')"
+                        onerror="debugLog('❌ Iframe load error')">
+                    </iframe>
+                `;
+            } else {
+                debugLog('❌ Iframe container not found');
+            }
+        }
+
+        function clearDebugOutput() {
+            document.getElementById('debug-output').innerHTML = '';
+        }
+
+        // Initial debug info
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                debugLog('🚀 Page loaded, starting debug...');
+                testAppInit();
+                testAvatarRender();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

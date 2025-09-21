@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCM Communication Practice Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🩺</text></svg>">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🩺</span>
+                    <span class="logo-text">TCM Communication Practice</span>
+                </div>
+                <div class="header-info">
+                    <span class="institution">Hong Kong Baptist University</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="tab-navigation">
+            <button class="tab-btn active" data-tab="selection">
+                📋 Avatar Selection
+            </button>
+            <button class="tab-btn" data-tab="practice" disabled>
+                💬 Practice Session
+            </button>
+            <button class="tab-btn" data-tab="about">
+                ℹ️ About
+            </button>
+        </nav>
+
+        <!-- Tab Contents -->
+        <main class="tab-content-container">
+            
+            <!-- Avatar Selection Tab -->
+            <div id="selection-tab" class="tab-content active">
+                <div class="selection-header">
+                    <h1>Select Your Practice Scenario</h1>
+                    <p class="selection-subtitle">
+                        Choose an AI-powered patient avatar to practice your Traditional Chinese Medicine communication skills. 
+                        Each scenario focuses on different communication challenges and frameworks.
+                    </p>
+                </div>
+
+                <div id="avatar-grid" class="avatar-grid">
+                </div>
+            </div>
+
+            <!-- Practice Session Tab -->
+            <div id="practice-tab" class="tab-content">
+                <div class="practice-header">
+                    <div class="practice-info">
+                        <h2>Select an Avatar to Begin</h2>
+                        <p>Choose a practice scenario from the Avatar Selection tab to start your session.</p>
+                    </div>
+                    <div class="practice-controls">
+                        <button class="control-btn" id="reset-session" disabled>
+                            🔄 Reset Session
+                        </button>
+                        <button class="control-btn" id="new-session">
+                            🆕 Change Avatar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Demo Section -->
+                <div class="practice-demo-section">
+                    <div class="demo-content">
+                        <h3>Getting Started</h3>
+                        <div class="demo-details">
+                            <p><strong>Instructions:</strong> Select an avatar from the Avatar Selection tab to begin your practice session.</p>
+                            <p><strong>What to Expect:</strong> Interactive conversation with AI-powered patient avatars using established communication frameworks.</p>
+                        </div>
+                        <div class="demo-tips">
+                            <h4>General Practice Tips:</h4>
+                            <ul id="practice-tips">
+                                <li>Speak clearly and maintain a professional tone</li>
+                                <li>Listen actively and respond empathetically</li>
+                                <li>Apply the specific communication framework for each scenario</li>
+                                <li>Take notes on key insights and areas for improvement</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- iFrame Container -->
+                <div class="iframe-container">
+                    <div class="loading-message">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">📋</div>
+                        <p><strong>Practice Session Area</strong></p>
+                        <p>Your selected avatar will appear here once you choose a scenario.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Tab -->
+            <div id="about-tab" class="tab-content">
+                <div class="about-content">
+                    <h1>About TCM Communication Practice</h1>
+
+                    <section class="about-section">
+                        <h2>🎯 Purpose & Objectives</h2>
+                        <p>This platform provides immersive practice opportunities for Traditional Chinese Medicine (TCM) professionals to develop and refine their communication skills in various clinical scenarios. Using AI-powered patient avatars, practitioners can engage in realistic conversations that mirror real-world challenges.</p>
+                        
+                        <div class="framework-grid">
+                            <div class="framework-item">
+                                <h3>Clinical Excellence</h3>
+                                <p>Practice evidence-based communication frameworks adapted for TCM contexts</p>
+                            </div>
+                            <div class="framework-item">
+                                <h3>Cultural Sensitivity</h3>
+                                <p>Navigate diverse cultural perspectives on health and healing</p>
+                            </div>
+                            <div class="framework-item">
+                                <h3>Professional Integration</h3>
+                                <p>Collaborate effectively with conventional healthcare providers</p>
+                            </div>
+                            <div class="framework-item">
+                                <h3>Patient-Centered Care</h3>
+                                <p>Develop empathetic, individualized communication approaches</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="about-section">
+                        <h2>📚 Communication Frameworks</h2>
+                        <p>Each practice scenario incorporates established communication frameworks adapted for TCM practice:</p>
+                        
+                        <ul class="outcomes-list">
+                            <li><strong>HEAL Framework:</strong> Adapted for TCM clinical interviews focusing on holistic patient assessment</li>
+                            <li><strong>TEACH-BACK Method:</strong> Ensuring patient understanding of complex TCM concepts</li>
+                            <li><strong>SPIKES Protocol:</strong> Managing difficult conversations about treatment limitations</li>
+                            <li><strong>ISBAR Framework:</strong> Professional communication with healthcare colleagues</li>
+                            <li><strong>Cultural Competency Model:</strong> Respectful dialogue across cultural differences</li>
+                            <li><strong>Shared Decision-Making:</strong> Collaborative treatment planning with patients</li>
+                        </ul>
+                    </section>
+
+                    <section class="about-section">
+                        <h2>🎓 Learning Outcomes</h2>
+                        <p>Upon completion of practice sessions, learners will demonstrate improved abilities to:</p>
+                        
+                        <ul class="outcomes-list">
+                            <li>Conduct comprehensive patient interviews using structured frameworks</li>
+                            <li>Explain complex TCM concepts in accessible, patient-friendly language</li>
+                            <li>Navigate cultural differences and diverse health beliefs respectfully</li>
+                            <li>Handle challenging conversations with empathy and professionalism</li>
+                            <li>Collaborate effectively with conventional healthcare providers</li>
+                            <li>Develop individualized, patient-centered treatment plans</li>
+                        </ul>
+                    </section>
+
+                    <section class="about-section">
+                        <h2>👥 Development Team</h2>
+                        <div class="creator-info">
+                            <p><strong>Project Lead:</strong> Dr. Simon Wang, Hong Kong Baptist University</p>
+                            <p><strong>Clinical Consultants:</strong> TCM Faculty, School of Chinese Medicine</p>
+                            <p><strong>Technical Implementation:</strong> AI Communication Lab</p>
+                            <p><strong>Contact:</strong> 
+                            📧 <a href="mailto:simonwang@hkbu.edu.hk">simonwang@hkbu.edu.hk</a></p>
+                        </div>
+                    </section>
+
+                    <section class="about-section">
+                        <h2>🔧 Technical Information</h2>
+                        <div class="tech-info">
+                            <p><strong>Platform:</strong> AI-powered conversational avatars</p>
+                            <p><strong>Compatibility:</strong> Modern web browsers with microphone support</p>
+                            <p><strong>Assessment:</strong> Real-time feedback and performance reporting</p>
+                            <p><strong>Privacy:</strong> GDPR compliant, no personal data storage</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

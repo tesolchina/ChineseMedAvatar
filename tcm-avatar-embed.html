@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCM Communication Practice Avatars</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+        }
+        
+        .avatar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .avatar-card {
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #f7fafc;
+            transition: all 0.3s ease;
+        }
+        
+        .avatar-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .card-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin: 0 0 8px 0;
+        }
+        
+        .card-description {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin: 0;
+        }
+        
+        .iframe-container {
+            width: 100%;
+            height: 600px;
+            border: none;
+            background: white;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        
+        .usage-info {
+            background: #ebf8ff;
+            border: 1px solid #bee3f8;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .usage-title {
+            color: #2b6cb0;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .usage-text {
+            color: #2d3748;
+            line-height: 1.6;
+        }
+        
+        .link-section {
+            background: #f0fff4;
+            border: 1px solid #9ae6b4;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .direct-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .direct-link {
+            background: #68d391;
+            color: white;
+            padding: 12px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        
+        .direct-link:hover {
+            background: #48bb78;
+            text-decoration: none;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .avatar-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .iframe-container {
+                height: 500px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🩺 TCM Communication Practice Avatars</h1>
+        <p class="subtitle">Interactive AI-powered practice sessions for Traditional Chinese Medicine communication skills</p>
+        
+        <div class="usage-info">
+            <div class="usage-title">📋 How to Use These Embedded Avatars</div>
+            <div class="usage-text">
+                Each iframe below contains a fully functional TCM communication practice session. Students can interact directly with AI-powered patient avatars to practice different communication scenarios. Each session includes structured workflows, assessment criteria, and real-time feedback.
+            </div>
+        </div>
+        
+        <div class="link-section">
+            <div class="usage-title">🔗 Direct Access Links</div>
+            <div class="usage-text">Open these links in new tabs for full-screen experience:</div>
+            <div class="direct-links">
+                <a href="https://textbot.hkbu.tech/avatar/tcm-clinical-interview" target="_blank" class="direct-link">Clinical Interview</a>
+                <a href="https://textbot.hkbu.tech/avatar/tcm-concept-explanation" target="_blank" class="direct-link">Concept Explanation</a>
+                <a href="https://textbot.hkbu.tech/avatar/tcm-cultural-sensitivity" target="_blank" class="direct-link">Cultural Sensitivity</a>
+                <a href="https://textbot.hkbu.tech/avatar/tcm-difficult-conversations" target="_blank" class="direct-link">Difficult Conversations</a>
+                <a href="https://textbot.hkbu.tech/avatar/tcm-professional-referral" target="_blank" class="direct-link">Professional Referral</a>
+                <a href="https://textbot.hkbu.tech/avatar/tcm-treatment-planning" target="_blank" class="direct-link">Treatment Planning</a>
+            </div>
+        </div>
+        
+        <div class="avatar-grid">
+            <!-- TCM Clinical Interview Practice -->
+            <div class="avatar-card">
+                <div class="card-header">
+                    <h3 class="card-title">🩺 Clinical Interview Practice</h3>
+                    <p class="card-description">Practice with skeptical patients using Calgary-Cambridge framework</p>
+                </div>
+                <div class="iframe-container">
+                    <iframe src="https://textbot.hkbu.tech/avatar/tcm-clinical-interview" 
+                            title="TCM Clinical Interview Practice"
+                            loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+            
+            <!-- TCM Concept Explanation Practice -->
+            <div class="avatar-card">
+                <div class="card-header">
+                    <h3 class="card-title">🧠 Concept Explanation Practice</h3>
+                    <p class="card-description">Explain TCM concepts to analytically-minded patients</p>
+                </div>
+                <div class="iframe-container">
+                    <iframe src="https://textbot.hkbu.tech/avatar/tcm-concept-explanation" 
+                            title="TCM Concept Explanation Practice"
+                            loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+            
+            <!-- TCM Cultural Sensitivity Communication -->
+            <div class="avatar-card">
+                <div class="card-header">
+                    <h3 class="card-title">🌍 Cultural Sensitivity Practice</h3>
+                    <p class="card-description">Navigate cultural diversity and traditional healing integration</p>
+                </div>
+                <div class="iframe-container">
+                    <iframe src="https://textbot.hkbu.tech/avatar/tcm-cultural-sensitivity" 
+                            title="TCM Cultural Sensitivity Practice"
+                            loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+            
+            <!-- Difficult Conversations in TCM -->
+            <div class="avatar-card">
+                <div class="card-header">
+                    <h3 class="card-title">😤 Difficult Conversations</h3>
+                    <p class="card-description">Handle challenging patient interactions using SPIKES protocol</p>
+                </div>
+                <div class="iframe-container">
+                    <iframe src="https://textbot.hkbu.tech/avatar/tcm-difficult-conversations" 
+                            title="TCM Difficult Conversations Practice"
+                            loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+            
+            <!-- TCM Professional Referral Communication -->
+            <div class="avatar-card">
+                <div class="card-header">
+                    <h3 class="card-title">👨‍⚕️ Professional Referral Practice</h3>
+                    <p class="card-description">Communicate with medical professionals using ISBAR framework</p>
+                </div>
+                <div class="iframe-container">
+                    <iframe src="https://textbot.hkbu.tech/avatar/tcm-professional-referral" 
+                            title="TCM Professional Referral Practice"
+                            loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+            
+            <!-- TCM Treatment Planning Practice -->
+            <div class="avatar-card">
+                <div class="card-header">
+                    <h3 class="card-title">📋 Treatment Planning Practice</h3>
+                    <p class="card-description">Develop comprehensive treatment plans with patient education</p>
+                </div>
+                <div class="iframe-container">
+                    <iframe src="https://textbot.hkbu.tech/avatar/tcm-treatment-planning" 
+                            title="TCM Treatment Planning Practice"
+                            loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 40px; text-align: center; color: #718096; font-size: 0.9em;">
+            <p>🏥 <strong>Created by:</strong> Dr. Simon Wang, Innovation Officer<br>
+            Language Centre, Hong Kong Baptist University<br>
+            📧 <a href="mailto:simonwang@hkbu.edu.hk" style="color: #667eea;">simonwang@hkbu.edu.hk</a></p>
+        </div>
+    </div>
+</body>
+</html>
