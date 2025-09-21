@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iframe Debug Test - Fresh Version</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 1200px;
+        }
+        
+        .test-iframe {
+            width: 100%;
+            height: 500px;
+            border: 2px solid #007cba;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        .url-info {
+            background: #f0f8ff;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 14px;
+            margin: 10px 0;
+            border-left: 4px solid #007cba;
+        }
+        
+        .test-button {
+            background: #007cba;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+            font-weight: 500;
+        }
+        
+        .test-button:hover {
+            background: #005a8b;
+        }
+        
+        .status {
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        
+        .status.loading {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .debug-log {
+            background: #1e1e1e;
+            color: #fff;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            height: 200px;
+            overflow-y: auto;
+            margin: 10px 0;
+        }
+        
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>🔬 Iframe Blank Content Debug Test</h1>
+    <p><strong>Purpose:</strong> Determine why iframes show "loaded successfully" but display blank content</p>
+    
+    <div class="test-container">
+        <h2>🎯 URL Comparison Test</h2>
+        <p>Testing both URL formats to see which one actually displays content in iframes:</p>
+        
+        <div class="comparison">
+            <div>
+                <h3>Test A: Direct URL (Current App Uses)</h3>
+                <div class="url-info">https://textbot.hkbu.tech/tcm-professional-referral</div>
+                <div class="status loading" id="statusA">Loading...</div>
+                <iframe 
+                    class="test-iframe" 
+                    src="https://textbot.hkbu.tech/tcm-professional-referral"
+                    onload="handleLoad('A', 'Direct URL')"
+                    onerror="handleError('A', 'Direct URL')"
+                    id="iframeA">
+                </iframe>
+                <div>
+                    <button class="test-button" onclick="reloadIframe('A')">🔄 Reload</button>
+                    <button class="test-button" onclick="openTab('https://textbot.hkbu.tech/tcm-professional-referral')">🔗 Open in Tab</button>
+                </div>
+            </div>
+            
+            <div>
+                <h3>Test B: Avatar Path URL</h3>
+                <div class="url-info">https://textbot.hkbu.tech/avatar/tcm-professional-referral</div>
+                <div class="status loading" id="statusB">Loading...</div>
+                <iframe 
+                    class="test-iframe" 
+                    src="https://textbot.hkbu.tech/avatar/tcm-professional-referral"
+                    onload="handleLoad('B', 'Avatar Path')"
+                    onerror="handleError('B', 'Avatar Path')"
+                    id="iframeB">
+                </iframe>
+                <div>
+                    <button class="test-button" onclick="reloadIframe('B')">🔄 Reload</button>
+                    <button class="test-button" onclick="openTab('https://textbot.hkbu.tech/avatar/tcm-professional-referral')">🔗 Open in Tab</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h2>🔍 Detailed Iframe Analysis</h2>
+        <div class="debug-log" id="debugLog">
+            Initializing iframe analysis...<br>
+        </div>
+        <div>
+            <button class="test-button" onclick="runDetailedAnalysis()">🔬 Run Analysis</button>
+            <button class="test-button" onclick="clearLog()">🧹 Clear Log</button>
+            <button class="test-button" onclick="testAllUrls()">🌐 Test All URLs</button>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h2>📊 Results Summary</h2>
+        <div id="results">
+            <p><em>Select tests above to see results...</em></p>
+        </div>
+    </div>
+
+    <script>
+        let loadResults = {};
+        
+        function log(message) {
+            const debugLog = document.getElementById('debugLog');
+            const timestamp = new Date().toLocaleTimeString();
+            debugLog.innerHTML += `[${timestamp}] ${message}<br>`;
+            debugLog.scrollTop = debugLog.scrollHeight;
+            console.log(`[IFRAME-DEBUG] ${message}`);
+        }
+
+        function handleLoad(testId, testName) {
+            const status = document.getElementById(`status${testId}`);
+            const iframe = document.getElementById(`iframe${testId}`);
+            
+            status.className = 'status success';
+            status.textContent = `✅ ${testName}: Iframe loaded`;
+            
+            loadResults[testId] = 'loaded';
+            
+            log(`✅ Test ${testId} (${testName}): Iframe onload event fired`);
+            log(`📐 Test ${testId}: Dimensions - ${iframe.offsetWidth}x${iframe.offsetHeight}`);
+            
+            // Check if content is actually visible
+            setTimeout(() => {
+                try {
+                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                    if (iframeDoc) {
+                        log(`📄 Test ${testId}: Can access iframe document`);
+                        log(`📝 Test ${testId}: Body HTML length: ${iframeDoc.body ? iframeDoc.body.innerHTML.length : 'No body'}`);
+                        if (iframeDoc.body && iframeDoc.body.innerHTML.length === 0) {
+                            log(`⚠️ Test ${testId}: BLANK CONTENT - Body is empty!`);
+                            status.className = 'status error';
+                            status.textContent = `⚠️ ${testName}: Loaded but BLANK`;
+                        }
+                    } else {
+                        log(`🔒 Test ${testId}: Cannot access iframe document (CORS)`);
+                    }
+                } catch (error) {
+                    log(`🔒 Test ${testId}: CORS blocked - ${error.message}`);
+                }
+                
+                updateResults();
+            }, 2000);
+        }
+
+        function handleError(testId, testName) {
+            const status = document.getElementById(`status${testId}`);
+            status.className = 'status error';
+            status.textContent = `❌ ${testName}: Failed to load`;
+            
+            loadResults[testId] = 'error';
+            log(`❌ Test ${testId} (${testName}): Iframe onerror event fired`);
+            updateResults();
+        }
+
+        function reloadIframe(testId) {
+            const iframe = document.getElementById(`iframe${testId}`);
+            const status = document.getElementById(`status${testId}`);
+            
+            status.className = 'status loading';
+            status.textContent = 'Reloading...';
+            
+            const currentSrc = iframe.src;
+            iframe.src = '';
+            setTimeout(() => {
+                iframe.src = currentSrc;
+                log(`🔄 Test ${testId}: Iframe reloaded`);
+            }, 100);
+        }
+
+        function openTab(url) {
+            window.open(url, '_blank');
+            log(`🔗 Opening in new tab: ${url}`);
+        }
+
+        function runDetailedAnalysis() {
+            log('🔬 Running detailed iframe analysis...');
+            
+            ['A', 'B'].forEach(testId => {
+                const iframe = document.getElementById(`iframe${testId}`);
+                const container = iframe.parentElement;
+                
+                log(`📊 Test ${testId} Analysis:`);
+                log(`  📐 Iframe: ${iframe.offsetWidth}x${iframe.offsetHeight}`);
+                log(`  📦 Container: ${container.offsetWidth}x${container.offsetHeight}`);
+                log(`  👁️ Visibility: ${getComputedStyle(iframe).visibility}`);
+                log(`  🎨 Display: ${getComputedStyle(iframe).display}`);
+                log(`  💫 Opacity: ${getComputedStyle(iframe).opacity}`);
+                log(`  🔗 Source: ${iframe.src}`);
+                
+                // Test if URL is accessible
+                fetch(iframe.src, { method: 'HEAD', mode: 'no-cors' })
+                    .then(() => log(`  🌐 Test ${testId}: URL is accessible`))
+                    .catch(error => log(`  🚫 Test ${testId}: URL fetch failed - ${error.message}`));
+            });
+        }
+
+        function testAllUrls() {
+            log('🌐 Testing all avatar URLs...');
+            
+            const avatarUrls = [
+                'tcm-clinical-interview',
+                'tcm-concept-explanation', 
+                'tcm-cultural-sensitivity',
+                'tcm-difficult-conversations',
+                'tcm-professional-referral',
+                'tcm-treatment-planning'
+            ];
+            
+            avatarUrls.forEach(avatar => {
+                const directUrl = `https://textbot.hkbu.tech/${avatar}`;
+                const avatarUrl = `https://textbot.hkbu.tech/avatar/${avatar}`;
+                
+                // Test direct URL
+                fetch(directUrl, { method: 'HEAD', mode: 'no-cors' })
+                    .then(() => log(`✅ ${avatar} (direct): Accessible`))
+                    .catch(() => log(`❌ ${avatar} (direct): Not accessible`));
+                    
+                // Test avatar URL  
+                fetch(avatarUrl, { method: 'HEAD', mode: 'no-cors' })
+                    .then(() => log(`✅ ${avatar} (avatar): Accessible`))
+                    .catch(() => log(`❌ ${avatar} (avatar): Not accessible`));
+            });
+        }
+
+        function clearLog() {
+            document.getElementById('debugLog').innerHTML = 'Log cleared...<br>';
+        }
+
+        function updateResults() {
+            const results = document.getElementById('results');
+            const summary = Object.keys(loadResults).map(test => 
+                `Test ${test}: ${loadResults[test]}`
+            ).join(', ');
+            
+            results.innerHTML = `
+                <p><strong>Load Results:</strong> ${summary || 'No tests completed yet'}</p>
+                <p><strong>Key Findings:</strong></p>
+                <ul>
+                    <li>If both tests show "loaded" but display blank: <strong>X-Frame-Options or CSP blocking</strong></li>
+                    <li>If one loads and one fails: <strong>URL path issue</strong></li>
+                    <li>If both fail to load: <strong>Network or CORS issue</strong></li>
+                    <li>If new tab links work but iframes don't: <strong>Iframe embedding blocked</strong></li>
+                </ul>
+            `;
+        }
+
+        // Initialize
+        log('🚀 Iframe debug test initialized');
+        log('📋 This test will determine why iframes appear blank');
+        log('🎯 Compare both URL formats and check for iframe-specific issues');
+        
+        // Set timeout for loading detection
+        setTimeout(() => {
+            ['A', 'B'].forEach(testId => {
+                const status = document.getElementById(`status${testId}`);
+                if (status.textContent === 'Loading...') {
+                    handleError(testId, `Test ${testId}`);
+                    log(`⏱️ Test ${testId}: Timeout after 15 seconds`);
+                }
+            });
+        }, 15000);
+    </script>
+</body>
+</html>
