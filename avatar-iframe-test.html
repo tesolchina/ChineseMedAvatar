@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete TCM Avatar Iframe Test Suite</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f7fafc;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .test-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .test-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .card-icon {
+            font-size: 2rem;
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+        
+        .card-body {
+            padding: 1rem;
+        }
+        
+        .status {
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .status.loading {
+            background: #fef5e7;
+            color: #744210;
+            border: 1px solid #f6e05e;
+        }
+        
+        .status.success {
+            background: #c6f6d5;
+            color: #22543d;
+            border: 1px solid #9ae6b4;
+        }
+        
+        .status.error {
+            background: #fed7d7;
+            color: #742a2a;
+            border: 1px solid #feb2b2;
+        }
+        
+        .url-info {
+            background: #e6fffa;
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #38b2ac;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        
+        .iframe-container {
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            height: 400px;
+            overflow: hidden;
+            background: #f8f9fa;
+            position: relative;
+        }
+        
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255,255,255,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 10;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e2e8f0;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .summary-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: 2px solid #e2e8f0;
+        }
+        
+        .summary-card h2 {
+            color: #2d3748;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .test-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .result-item {
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .result-item.passed {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+        
+        .result-item.failed {
+            background: #fed7d7;
+            color: #742a2a;
+        }
+        
+        .result-item.pending {
+            background: #fef5e7;
+            color: #744210;
+        }
+        
+        .troubleshooting {
+            background: #ebf8ff;
+            border: 1px solid #90cdf4;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .troubleshooting h3 {
+            color: #2c5282;
+            margin-bottom: 0.5rem;
+        }
+        
+        .troubleshooting ul {
+            color: #2d3748;
+            padding-left: 1.5rem;
+        }
+        
+        .troubleshooting li {
+            margin-bottom: 0.25rem;
+        }
+        
+        .direct-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .direct-link {
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        
+        .direct-link:hover {
+            background: #5a67d8;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🩺 TCM Avatar Iframe Test Suite</h1>
+        <p>Comprehensive testing of all avatar scenarios for iframe compatibility</p>
+    </div>
+
+    <div class="test-grid">
+        <!-- Clinical Interview -->
+        <div class="test-card">
+            <div class="card-header">
+                <span class="card-icon">🩺</span>
+                <span class="card-title">Clinical Interview</span>
+            </div>
+            <div class="card-body">
+                <div class="status loading" id="status-1">
+                    <span>⏳</span> Loading iframe...
+                </div>
+                <div class="url-info">
+                    <strong>URL:</strong> https://textbot.hkbu.tech/chat/tcm-clinical-interview
+                </div>
+                <div class="iframe-container">
+                    <div class="loading-overlay" id="loading-1">
+                        <div class="spinner"></div>
+                        <p>Loading Clinical Interview...</p>
+                    </div>
+                    <iframe 
+                        src="https://textbot.hkbu.tech/chat/tcm-clinical-interview"
+                        title="TCM Clinical Interview"
+                        onload="handleIframeLoad(1, 'Clinical Interview')"
+                        onerror="handleIframeError(1, 'Clinical Interview')">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Concept Explanation -->
+        <div class="test-card">
+            <div class="card-header">
+                <span class="card-icon">📚</span>
+                <span class="card-title">Concept Explanation</span>
+            </div>
+            <div class="card-body">
+                <div class="status loading" id="status-2">
+                    <span>⏳</span> Loading iframe...
+                </div>
+                <div class="url-info">
+                    <strong>URL:</strong> https://textbot.hkbu.tech/chat/tcm-concept-explanation
+                </div>
+                <div class="iframe-container">
+                    <div class="loading-overlay" id="loading-2">
+                        <div class="spinner"></div>
+                        <p>Loading Concept Explanation...</p>
+                    </div>
+                    <iframe 
+                        src="https://textbot.hkbu.tech/chat/tcm-concept-explanation"
+                        title="TCM Concept Explanation"
+                        onload="handleIframeLoad(2, 'Concept Explanation')"
+                        onerror="handleIframeError(2, 'Concept Explanation')">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cultural Sensitivity -->
+        <div class="test-card">
+            <div class="card-header">
+                <span class="card-icon">🌏</span>
+                <span class="card-title">Cultural Sensitivity</span>
+            </div>
+            <div class="card-body">
+                <div class="status loading" id="status-3">
+                    <span>⏳</span> Loading iframe...
+                </div>
+                <div class="url-info">
+                    <strong>URL:</strong> https://textbot.hkbu.tech/chat/tcm-cultural-sensitivity
+                </div>
+                <div class="iframe-container">
+                    <div class="loading-overlay" id="loading-3">
+                        <div class="spinner"></div>
+                        <p>Loading Cultural Sensitivity...</p>
+                    </div>
+                    <iframe 
+                        src="https://textbot.hkbu.tech/chat/tcm-cultural-sensitivity"
+                        title="TCM Cultural Sensitivity"
+                        onload="handleIframeLoad(3, 'Cultural Sensitivity')"
+                        onerror="handleIframeError(3, 'Cultural Sensitivity')">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Difficult Conversations -->
+        <div class="test-card">
+            <div class="card-header">
+                <span class="card-icon">💬</span>
+                <span class="card-title">Difficult Conversations</span>
+            </div>
+            <div class="card-body">
+                <div class="status loading" id="status-4">
+                    <span>⏳</span> Loading iframe...
+                </div>
+                <div class="url-info">
+                    <strong>URL:</strong> https://textbot.hkbu.tech/chat/tcm-difficult-conversations
+                </div>
+                <div class="iframe-container">
+                    <div class="loading-overlay" id="loading-4">
+                        <div class="spinner"></div>
+                        <p>Loading Difficult Conversations...</p>
+                    </div>
+                    <iframe 
+                        src="https://textbot.hkbu.tech/chat/tcm-difficult-conversations"
+                        title="TCM Difficult Conversations"
+                        onload="handleIframeLoad(4, 'Difficult Conversations')"
+                        onerror="handleIframeError(4, 'Difficult Conversations')">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Referral -->
+        <div class="test-card">
+            <div class="card-header">
+                <span class="card-icon">🤝</span>
+                <span class="card-title">Professional Referral</span>
+            </div>
+            <div class="card-body">
+                <div class="status loading" id="status-5">
+                    <span>⏳</span> Loading iframe...
+                </div>
+                <div class="url-info">
+                    <strong>URL:</strong> https://textbot.hkbu.tech/chat/tcm-professional-referral
+                </div>
+                <div class="iframe-container">
+                    <div class="loading-overlay" id="loading-5">
+                        <div class="spinner"></div>
+                        <p>Loading Professional Referral...</p>
+                    </div>
+                    <iframe 
+                        src="https://textbot.hkbu.tech/chat/tcm-professional-referral"
+                        title="TCM Professional Referral"
+                        onload="handleIframeLoad(5, 'Professional Referral')"
+                        onerror="handleIframeError(5, 'Professional Referral')">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Treatment Planning -->
+        <div class="test-card">
+            <div class="card-header">
+                <span class="card-icon">📋</span>
+                <span class="card-title">Treatment Planning</span>
+            </div>
+            <div class="card-body">
+                <div class="status loading" id="status-6">
+                    <span>⏳</span> Loading iframe...
+                </div>
+                <div class="url-info">
+                    <strong>URL:</strong> https://textbot.hkbu.tech/chat/tcm-treatment-planning
+                </div>
+                <div class="iframe-container">
+                    <div class="loading-overlay" id="loading-6">
+                        <div class="spinner"></div>
+                        <p>Loading Treatment Planning...</p>
+                    </div>
+                    <iframe 
+                        src="https://textbot.hkbu.tech/chat/tcm-treatment-planning"
+                        title="TCM Treatment Planning"
+                        onload="handleIframeLoad(6, 'Treatment Planning')"
+                        onerror="handleIframeError(6, 'Treatment Planning')">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="summary-card">
+        <h2>📊 Test Results Summary</h2>
+        <div class="test-results" id="test-results">
+            <div class="result-item pending" id="result-1">Clinical Interview: Pending</div>
+            <div class="result-item pending" id="result-2">Concept Explanation: Pending</div>
+            <div class="result-item pending" id="result-3">Cultural Sensitivity: Pending</div>
+            <div class="result-item pending" id="result-4">Difficult Conversations: Pending</div>
+            <div class="result-item pending" id="result-5">Professional Referral: Pending</div>
+            <div class="result-item pending" id="result-6">Treatment Planning: Pending</div>
+        </div>
+        
+        <div id="overall-status">
+            <p><strong>Overall Status:</strong> <span id="status-text">Running tests...</span></p>
+            <p><strong>Passed:</strong> <span id="passed-count">0</span> / 6</p>
+            <p><strong>Failed:</strong> <span id="failed-count">0</span> / 6</p>
+        </div>
+
+        <div class="troubleshooting">
+            <h3>🔧 Troubleshooting Guide</h3>
+            <ul>
+                <li><strong>If iframes don't load:</strong> Check browser console for CORS errors</li>
+                <li><strong>GitHub Pages issues:</strong> Verify HTTPS enforcement and domain settings</li>
+                <li><strong>Mixed content:</strong> Ensure all URLs use HTTPS</li>
+                <li><strong>X-Frame-Options:</strong> Check if textbot.hkbu.tech allows iframe embedding</li>
+                <li><strong>Content Security Policy:</strong> Verify CSP headers don't block iframes</li>
+            </ul>
+        </div>
+
+        <h3>🔗 Direct Links (Test Outside Iframe)</h3>
+        <div class="direct-links">
+            <a href="https://textbot.hkbu.tech/chat/tcm-clinical-interview" target="_blank" class="direct-link">Clinical Interview</a>
+            <a href="https://textbot.hkbu.tech/chat/tcm-concept-explanation" target="_blank" class="direct-link">Concept Explanation</a>
+            <a href="https://textbot.hkbu.tech/chat/tcm-cultural-sensitivity" target="_blank" class="direct-link">Cultural Sensitivity</a>
+            <a href="https://textbot.hkbu.tech/chat/tcm-difficult-conversations" target="_blank" class="direct-link">Difficult Conversations</a>
+            <a href="https://textbot.hkbu.tech/chat/tcm-professional-referral" target="_blank" class="direct-link">Professional Referral</a>
+            <a href="https://textbot.hkbu.tech/chat/tcm-treatment-planning" target="_blank" class="direct-link">Treatment Planning</a>
+        </div>
+    </div>
+
+    <script>
+        let testResults = {
+            passed: 0,
+            failed: 0,
+            total: 6
+        };
+
+        function handleIframeLoad(id, name) {
+            console.log(`✅ ${name} iframe loaded successfully`);
+            
+            // Hide loading overlay
+            const loadingElement = document.getElementById(`loading-${id}`);
+            if (loadingElement) {
+                loadingElement.style.display = 'none';
+            }
+            
+            // Update status
+            const statusElement = document.getElementById(`status-${id}`);
+            statusElement.className = 'status success';
+            statusElement.innerHTML = '<span>✅</span> Iframe loaded successfully!';
+            
+            // Update result
+            const resultElement = document.getElementById(`result-${id}`);
+            resultElement.className = 'result-item passed';
+            resultElement.textContent = `${name}: ✅ Passed`;
+            
+            testResults.passed++;
+            updateOverallStatus();
+        }
+
+        function handleIframeError(id, name) {
+            console.error(`❌ ${name} iframe failed to load`);
+            
+            // Hide loading overlay
+            const loadingElement = document.getElementById(`loading-${id}`);
+            if (loadingElement) {
+                loadingElement.style.display = 'none';
+            }
+            
+            // Update status
+            const statusElement = document.getElementById(`status-${id}`);
+            statusElement.className = 'status error';
+            statusElement.innerHTML = '<span>❌</span> Iframe failed to load';
+            
+            // Update result
+            const resultElement = document.getElementById(`result-${id}`);
+            resultElement.className = 'result-item failed';
+            resultElement.textContent = `${name}: ❌ Failed`;
+            
+            testResults.failed++;
+            updateOverallStatus();
+        }
+
+        function updateOverallStatus() {
+            const passedElement = document.getElementById('passed-count');
+            const failedElement = document.getElementById('failed-count');
+            const statusElement = document.getElementById('status-text');
+            
+            passedElement.textContent = testResults.passed;
+            failedElement.textContent = testResults.failed;
+            
+            const completed = testResults.passed + testResults.failed;
+            
+            if (completed === testResults.total) {
+                if (testResults.passed === testResults.total) {
+                    statusElement.textContent = '✅ All tests passed! Iframes are working correctly.';
+                    statusElement.style.color = '#22543d';
+                } else if (testResults.failed === testResults.total) {
+                    statusElement.textContent = '❌ All tests failed. Check troubleshooting guide.';
+                    statusElement.style.color = '#742a2a';
+                } else {
+                    statusElement.textContent = `⚠️ Mixed results: ${testResults.passed} passed, ${testResults.failed} failed.`;
+                    statusElement.style.color = '#744210';
+                }
+            } else {
+                statusElement.textContent = `⏳ Running tests... ${completed}/${testResults.total} completed`;
+                statusElement.style.color = '#4a5568';
+            }
+        }
+
+        // Timeout fallback for slow loading
+        setTimeout(() => {
+            const loadingElements = document.querySelectorAll('.loading-overlay');
+            loadingElements.forEach((element, index) => {
+                if (element.style.display !== 'none') {
+                    const id = index + 1;
+                    handleIframeError(id, `Avatar ${id}`);
+                }
+            });
+        }, 15000);
+
+        console.log('TCM Avatar Iframe Test Suite initialized');
+        console.log('Testing all 6 avatar scenarios for iframe compatibility');
+        console.log('Check browser network tab for any blocked requests');
+    </script>
+</body>
+</html>
