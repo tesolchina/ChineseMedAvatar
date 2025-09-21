@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pages Iframe Debugging Tool</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .debug-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .debug-section h2 {
+            color: #2d3748;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .test-item {
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            background: #f8f9fa;
+        }
+        
+        .test-item h3 {
+            color: #4a5568;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #fbb6ce;
+        }
+        
+        .status-indicator.loading {
+            background: #fbb6ce;
+            animation: pulse 2s infinite;
+        }
+        
+        .status-indicator.success {
+            background: #68d391;
+        }
+        
+        .status-indicator.error {
+            background: #fc8181;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .iframe-container {
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            height: 300px;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .loading-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255,255,255,0.9);
+            padding: 1rem;
+            border-radius: 6px;
+            border: 2px solid #fbb6ce;
+            z-index: 10;
+        }
+        
+        .url-test {
+            font-family: monospace;
+            background: #e6fffa;
+            padding: 0.75rem;
+            border-radius: 6px;
+            border-left: 4px solid #38b2ac;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .console-output {
+            background: #1a202c;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 1rem;
+        }
+        
+        .error-log {
+            background: #fed7d7;
+            border: 1px solid #feb2b2;
+            color: #742a2a;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+        }
+        
+        .success-log {
+            background: #c6f6d5;
+            border: 1px solid #9ae6b4;
+            color: #22543d;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+        }
+        
+        .info-panel {
+            background: #ebf8ff;
+            border: 1px solid #90cdf4;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+        
+        .info-panel h4 {
+            color: #2c5282;
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-panel ul {
+            color: #2d3748;
+            padding-left: 1.5rem;
+        }
+        
+        .test-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            transition: background 0.3s;
+        }
+        
+        .test-button:hover {
+            background: #5a67d8;
+        }
+        
+        .direct-link {
+            display: inline-block;
+            background: #38b2ac;
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .direct-link:hover {
+            background: #319795;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔍 GitHub Pages Iframe Debug Tool</h1>
+        <p>Systematic debugging of iframe loading issues on GitHub Pages</p>
+        <p><strong>Environment:</strong> <span id="environment-info">GitHub Pages</span></p>
+    </div>
+
+    <div class="debug-section">
+        <h2>🌐 Environment Analysis</h2>
+        <div class="info-panel">
+            <h4>Current Environment Detection:</h4>
+            <ul>
+                <li><strong>Domain:</strong> <span id="current-domain">Loading...</span></li>
+                <li><strong>Protocol:</strong> <span id="current-protocol">Loading...</span></li>
+                <li><strong>User Agent:</strong> <span id="user-agent">Loading...</span></li>
+                <li><strong>GitHub Pages:</strong> <span id="github-pages-detection">Checking...</span></li>
+            </ul>
+        </div>
+        <div class="console-output" id="environment-log">
+            Initializing environment analysis...
+        </div>
+    </div>
+
+    <div class="debug-section">
+        <h2>🧪 Avatar URL Connectivity Tests</h2>
+        <div class="info-panel">
+            <h4>Testing Direct Avatar URLs (Outside Iframe):</h4>
+            <p>First, we test if the avatar URLs are accessible directly from this environment.</p>
+        </div>
+        
+        <div id="connectivity-tests">
+            <div class="test-grid">
+                <div class="test-item">
+                    <h3><span class="status-indicator loading" id="status-clinical"></span>Clinical Interview</h3>
+                    <div class="url-test">https://textbot.hkbu.tech/avatar/tcm-clinical-interview</div>
+                    <button class="test-button" onclick="testDirectAccess('tcm-clinical-interview', 'clinical')">Test Direct Access</button>
+                    <a href="https://textbot.hkbu.tech/avatar/tcm-clinical-interview" target="_blank" class="direct-link">Open in New Tab</a>
+                    <div id="result-clinical"></div>
+                </div>
+                
+                <div class="test-item">
+                    <h3><span class="status-indicator loading" id="status-concept"></span>Concept Explanation</h3>
+                    <div class="url-test">https://textbot.hkbu.tech/avatar/tcm-concept-explanation</div>
+                    <button class="test-button" onclick="testDirectAccess('tcm-concept-explanation', 'concept')">Test Direct Access</button>
+                    <a href="https://textbot.hkbu.tech/avatar/tcm-concept-explanation" target="_blank" class="direct-link">Open in New Tab</a>
+                    <div id="result-concept"></div>
+                </div>
+                
+                <div class="test-item">
+                    <h3><span class="status-indicator loading" id="status-cultural"></span>Cultural Sensitivity</h3>
+                    <div class="url-test">https://textbot.hkbu.tech/avatar/tcm-cultural-sensitivity</div>
+                    <button class="test-button" onclick="testDirectAccess('tcm-cultural-sensitivity', 'cultural')">Test Direct Access</button>
+                    <a href="https://textbot.hkbu.tech/avatar/tcm-cultural-sensitivity" target="_blank" class="direct-link">Open in New Tab</a>
+                    <div id="result-cultural"></div>
+                </div>
+                
+                <div class="test-item">
+                    <h3><span class="status-indicator loading" id="status-difficult"></span>Difficult Conversations</h3>
+                    <div class="url-test">https://textbot.hkbu.tech/avatar/tcm-difficult-conversations</div>
+                    <button class="test-button" onclick="testDirectAccess('tcm-difficult-conversations', 'difficult')">Test Direct Access</button>
+                    <a href="https://textbot.hkbu.tech/avatar/tcm-difficult-conversations" target="_blank" class="direct-link">Open in New Tab</a>
+                    <div id="result-difficult"></div>
+                </div>
+                
+                <div class="test-item">
+                    <h3><span class="status-indicator loading" id="status-referral"></span>Professional Referral</h3>
+                    <div class="url-test">https://textbot.hkbu.tech/avatar/tcm-professional-referral</div>
+                    <button class="test-button" onclick="testDirectAccess('tcm-professional-referral', 'referral')">Test Direct Access</button>
+                    <a href="https://textbot.hkbu.tech/avatar/tcm-professional-referral" target="_blank" class="direct-link">Open in New Tab</a>
+                    <div id="result-referral"></div>
+                </div>
+                
+                <div class="test-item">
+                    <h3><span class="status-indicator loading" id="status-treatment"></span>Treatment Planning</h3>
+                    <div class="url-test">https://textbot.hkbu.tech/avatar/tcm-treatment-planning</div>
+                    <button class="test-button" onclick="testDirectAccess('tcm-treatment-planning', 'treatment')">Test Direct Access</button>
+                    <a href="https://textbot.hkbu.tech/avatar/tcm-treatment-planning" target="_blank" class="direct-link">Open in New Tab</a>
+                    <div id="result-treatment"></div>
+                </div>
+            </div>
+        </div>
+        
+        <button class="test-button" onclick="runAllConnectivityTests()" style="background: #38b2ac; margin-top: 1rem;">🚀 Run All Connectivity Tests</button>
+    </div>
+
+    <div class="debug-section">
+        <h2>🖼️ Iframe Loading Tests</h2>
+        <div class="info-panel">
+            <h4>Testing Iframe Embedding:</h4>
+            <p>Now we test if the avatar URLs can be loaded within iframes on GitHub Pages.</p>
+        </div>
+        
+        <div class="test-grid">
+            <div class="test-item">
+                <h3><span class="status-indicator loading" id="iframe-status-1"></span>Clinical Interview Iframe</h3>
+                <div class="iframe-container">
+                    <div class="loading-message" id="iframe-loading-1">Loading iframe...</div>
+                    <iframe 
+                        src="https://textbot.hkbu.tech/avatar/tcm-clinical-interview"
+                        onload="handleIframeSuccess(1, 'Clinical Interview')"
+                        onerror="handleIframeError(1, 'Clinical Interview')"
+                        style="display: none;"
+                        id="iframe-1">
+                    </iframe>
+                </div>
+                <div id="iframe-result-1"></div>
+            </div>
+            
+            <div class="test-item">
+                <h3><span class="status-indicator loading" id="iframe-status-2"></span>Difficult Conversations Iframe</h3>
+                <div class="iframe-container">
+                    <div class="loading-message" id="iframe-loading-2">Loading iframe...</div>
+                    <iframe 
+                        src="https://textbot.hkbu.tech/avatar/tcm-difficult-conversations"
+                        onload="handleIframeSuccess(2, 'Difficult Conversations')"
+                        onerror="handleIframeError(2, 'Difficult Conversations')"
+                        style="display: none;"
+                        id="iframe-2">
+                    </iframe>
+                </div>
+                <div id="iframe-result-2"></div>
+            </div>
+        </div>
+        
+        <button class="test-button" onclick="loadAllIframes()" style="background: #e53e3e; margin-top: 1rem;">🔄 Reload All Iframes</button>
+    </div>
+
+    <div class="debug-section">
+        <h2>📊 Console & Network Analysis</h2>
+        <div class="info-panel">
+            <h4>Browser Console Messages:</h4>
+            <p>Check for CSP violations, X-Frame-Options errors, CORS issues, and other blocking mechanisms.</p>
+        </div>
+        <div class="console-output" id="console-log">
+            Console monitoring initialized...
+        </div>
+        
+        <button class="test-button" onclick="clearConsoleLog()">🧹 Clear Console</button>
+        <button class="test-button" onclick="exportDebugInfo()" style="background: #38b2ac;">📁 Export Debug Info</button>
+    </div>
+
+    <script>
+        // Environment Analysis
+        function initializeEnvironmentAnalysis() {
+            const domain = window.location.hostname;
+            const protocol = window.location.protocol;
+            const userAgent = navigator.userAgent;
+            const isGitHubPages = domain.includes('github.io') || domain.includes('github.com');
+            
+            document.getElementById('current-domain').textContent = domain;
+            document.getElementById('current-protocol').textContent = protocol;
+            document.getElementById('user-agent').textContent = userAgent.substring(0, 100) + '...';
+            document.getElementById('github-pages-detection').textContent = isGitHubPages ? '✅ Detected' : '❌ Not detected';
+            
+            logToConsole(`Environment: ${domain} (${protocol})`);
+            logToConsole(`GitHub Pages: ${isGitHubPages ? 'Yes' : 'No'}`);
+            logToConsole(`User Agent: ${userAgent}`);
+        }
+        
+        // Console Logging
+        function logToConsole(message) {
+            const consoleLog = document.getElementById('console-log');
+            const timestamp = new Date().toLocaleTimeString();
+            consoleLog.innerHTML += `[${timestamp}] ${message}\n`;
+            consoleLog.scrollTop = consoleLog.scrollHeight;
+            console.log(`[DEBUG] ${message}`);
+        }
+        
+        function logError(message) {
+            const consoleLog = document.getElementById('console-log');
+            const timestamp = new Date().toLocaleTimeString();
+            consoleLog.innerHTML += `[${timestamp}] ❌ ERROR: ${message}\n`;
+            consoleLog.scrollTop = consoleLog.scrollHeight;
+            console.error(`[DEBUG ERROR] ${message}`);
+        }
+        
+        function logSuccess(message) {
+            const consoleLog = document.getElementById('console-log');
+            const timestamp = new Date().toLocaleTimeString();
+            consoleLog.innerHTML += `[${timestamp}] ✅ SUCCESS: ${message}\n`;
+            consoleLog.scrollTop = consoleLog.scrollHeight;
+            console.log(`[DEBUG SUCCESS] ${message}`);
+        }
+        
+        // Direct Access Testing
+        async function testDirectAccess(scenario, id) {
+            const url = `https://textbot.hkbu.tech/avatar/${scenario}`;
+            const statusElement = document.getElementById(`status-${id}`);
+            const resultElement = document.getElementById(`result-${id}`);
+            
+            statusElement.className = 'status-indicator loading';
+            resultElement.innerHTML = '<div style="color: #744210;">Testing connectivity...</div>';
+            
+            logToConsole(`Testing direct access to ${scenario}`);
+            
+            try {
+                const response = await fetch(url, { 
+                    method: 'HEAD',
+                    mode: 'no-cors' // Avoid CORS issues for connectivity test
+                });
+                
+                logSuccess(`Direct access test for ${scenario}: Network request completed`);
+                statusElement.className = 'status-indicator success';
+                resultElement.innerHTML = '<div class="success-log">✅ Direct access test passed - URL is reachable</div>';
+                
+            } catch (error) {
+                logError(`Direct access test for ${scenario}: ${error.message}`);
+                statusElement.className = 'status-indicator error';
+                resultElement.innerHTML = `<div class="error-log">❌ Direct access failed: ${error.message}</div>`;
+            }
+        }
+        
+        async function runAllConnectivityTests() {
+            logToConsole('Running all connectivity tests...');
+            const scenarios = [
+                { scenario: 'tcm-clinical-interview', id: 'clinical' },
+                { scenario: 'tcm-concept-explanation', id: 'concept' },
+                { scenario: 'tcm-cultural-sensitivity', id: 'cultural' },
+                { scenario: 'tcm-difficult-conversations', id: 'difficult' },
+                { scenario: 'tcm-professional-referral', id: 'referral' },
+                { scenario: 'tcm-treatment-planning', id: 'treatment' }
+            ];
+            
+            for (const test of scenarios) {
+                await testDirectAccess(test.scenario, test.id);
+                await new Promise(resolve => setTimeout(resolve, 500)); // Small delay between tests
+            }
+            
+            logSuccess('All connectivity tests completed');
+        }
+        
+        // Iframe Testing
+        function handleIframeSuccess(id, name) {
+            logSuccess(`Iframe ${id} (${name}) loaded successfully`);
+            
+            const statusElement = document.getElementById(`iframe-status-${id}`);
+            const loadingElement = document.getElementById(`iframe-loading-${id}`);
+            const iframeElement = document.getElementById(`iframe-${id}`);
+            const resultElement = document.getElementById(`iframe-result-${id}`);
+            
+            statusElement.className = 'status-indicator success';
+            loadingElement.style.display = 'none';
+            iframeElement.style.display = 'block';
+            resultElement.innerHTML = '<div class="success-log">✅ Iframe loaded successfully!</div>';
+        }
+        
+        function handleIframeError(id, name) {
+            logError(`Iframe ${id} (${name}) failed to load`);
+            
+            const statusElement = document.getElementById(`iframe-status-${id}`);
+            const loadingElement = document.getElementById(`iframe-loading-${id}`);
+            const resultElement = document.getElementById(`iframe-result-${id}`);
+            
+            statusElement.className = 'status-indicator error';
+            loadingElement.innerHTML = 'Failed to load';
+            loadingElement.style.background = '#fed7d7';
+            loadingElement.style.color = '#742a2a';
+            resultElement.innerHTML = '<div class="error-log">❌ Iframe failed to load - Check console for details</div>';
+        }
+        
+        function loadAllIframes() {
+            logToConsole('Reloading all iframes...');
+            
+            for (let i = 1; i <= 2; i++) {
+                const iframeElement = document.getElementById(`iframe-${i}`);
+                const loadingElement = document.getElementById(`iframe-loading-${i}`);
+                const statusElement = document.getElementById(`iframe-status-${i}`);
+                const resultElement = document.getElementById(`iframe-result-${i}`);
+                
+                statusElement.className = 'status-indicator loading';
+                loadingElement.style.display = 'block';
+                loadingElement.innerHTML = 'Loading iframe...';
+                loadingElement.style.background = 'rgba(255,255,255,0.9)';
+                loadingElement.style.color = '#4a5568';
+                iframeElement.style.display = 'none';
+                resultElement.innerHTML = '';
+                
+                // Force reload
+                const currentSrc = iframeElement.src;
+                iframeElement.src = '';
+                setTimeout(() => {
+                    iframeElement.src = currentSrc;
+                }, 100);
+            }
+        }
+        
+        // Utility Functions
+        function clearConsoleLog() {
+            document.getElementById('console-log').innerHTML = 'Console cleared...\n';
+            logToConsole('Console log cleared');
+        }
+        
+        function exportDebugInfo() {
+            const debugInfo = {
+                timestamp: new Date().toISOString(),
+                environment: {
+                    domain: window.location.hostname,
+                    protocol: window.location.protocol,
+                    userAgent: navigator.userAgent,
+                    isGitHubPages: window.location.hostname.includes('github.io')
+                },
+                consoleLog: document.getElementById('console-log').textContent
+            };
+            
+            const blob = new Blob([JSON.stringify(debugInfo, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `github-pages-iframe-debug-${Date.now()}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            logSuccess('Debug information exported');
+        }
+        
+        // Capture console errors
+        window.addEventListener('error', function(event) {
+            logError(`JavaScript Error: ${event.message} at ${event.filename}:${event.lineno}`);
+        });
+        
+        // Capture unhandled promise rejections
+        window.addEventListener('unhandledrejection', function(event) {
+            logError(`Unhandled Promise Rejection: ${event.reason}`);
+        });
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeEnvironmentAnalysis();
+            logToConsole('GitHub Pages Iframe Debug Tool initialized');
+            
+            // Set timeout for iframe loading
+            setTimeout(() => {
+                for (let i = 1; i <= 2; i++) {
+                    const statusElement = document.getElementById(`iframe-status-${i}`);
+                    if (statusElement && statusElement.className.includes('loading')) {
+                        handleIframeError(i, `Iframe ${i}`);
+                        logError(`Iframe ${i} timed out after 15 seconds`);
+                    }
+                }
+            }, 15000);
+        });
+    </script>
+</body>
+</html>
