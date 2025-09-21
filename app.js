@@ -16,7 +16,7 @@ class AvatarSelectionApp {
                 framework: 'HEAL framework + TCM diagnostic inquiry',
                 duration: '15-20 minutes',
                 difficulty: 'intermediate',
-                url: 'https://textbot.hkbu.tech/tcm-clinical-interview',
+                url: 'https://textbot.hkbu.tech/avatar/tcm-clinical-interview',
                 tips: [
                     'Start with open-ended questions about the chief complaint',
                     'Explore both physical symptoms and emotional state',
@@ -34,7 +34,7 @@ class AvatarSelectionApp {
                 framework: 'TEACH-BACK method with cultural bridging',
                 duration: '10-15 minutes',
                 difficulty: 'intermediate',
-                url: 'https://textbot.hkbu.tech/tcm-concept-explanation',
+                url: 'https://textbot.hkbu.tech/avatar/tcm-concept-explanation',
                 tips: [
                     'Use analogies and metaphors familiar to patients',
                     'Avoid overwhelming with too much theory at once',
@@ -52,7 +52,7 @@ class AvatarSelectionApp {
                 framework: 'Cultural competency + respectful dialogue',
                 duration: '15-20 minutes',
                 difficulty: 'advanced',
-                url: 'https://textbot.hkbu.tech/tcm-cultural-sensitivity',
+                url: 'https://textbot.hkbu.tech/avatar/tcm-cultural-sensitivity',
                 tips: [
                     'Acknowledge and respect different health beliefs',
                     'Avoid dismissing conventional medical approaches',
@@ -70,7 +70,7 @@ class AvatarSelectionApp {
                 framework: 'SPIKES protocol adapted for TCM',
                 duration: '20-25 minutes',
                 difficulty: 'advanced',
-                url: 'https://textbot.hkbu.tech/tcm-difficult-conversations',
+                url: 'https://textbot.hkbu.tech/avatar/tcm-difficult-conversations',
                 tips: [
                     'Prepare for emotional reactions and disappointment',
                     'Use the SPIKES framework: Setting, Perception, Information, Knowledge, Emotions, Strategy',
@@ -88,7 +88,7 @@ class AvatarSelectionApp {
                 framework: 'Collaborative care model',
                 duration: '10-15 minutes',
                 difficulty: 'intermediate',
-                url: 'https://textbot.hkbu.tech/tcm-professional-referral',
+                url: 'https://textbot.hkbu.tech/avatar/tcm-professional-referral',
                 tips: [
                     'Recognize scope of practice limitations',
                     'Frame referrals as complementary, not replacement',
@@ -106,7 +106,7 @@ class AvatarSelectionApp {
                 framework: 'Shared decision-making + TCM principles',
                 duration: '20-25 minutes',
                 difficulty: 'advanced',
-                url: 'https://textbot.hkbu.tech/tcm-treatment-planning',
+                url: 'https://textbot.hkbu.tech/avatar/tcm-treatment-planning',
                 tips: [
                     'Involve patients in treatment planning decisions',
                     'Consider patient\'s lifestyle and preferences',
@@ -299,15 +299,27 @@ class AvatarSelectionApp {
             return;
         }
         
-        console.log('Loading iframe for avatar:', this.selectedAvatar.name);
-        console.log('Avatar URL:', this.selectedAvatar.url);
+        console.log('🎯 Loading iframe for avatar:', this.selectedAvatar.name);
+        console.log('🔗 Avatar URL:', this.selectedAvatar.url);
         
         const iframeContainer = document.querySelector('.iframe-container');
         
         if (!iframeContainer) {
-            console.error('Iframe container not found');
+            console.error('💥 Iframe container not found - check HTML structure');
             return;
         }
+        
+        console.log('📦 Iframe container found:', iframeContainer);
+        console.log('📏 Container dimensions:', {
+            offsetWidth: iframeContainer.offsetWidth,
+            offsetHeight: iframeContainer.offsetHeight,
+            style: {
+                width: iframeContainer.style.width,
+                height: iframeContainer.style.height,
+                display: window.getComputedStyle(iframeContainer).display,
+                position: window.getComputedStyle(iframeContainer).position
+            }
+        });
         
         // Show loading state
         iframeContainer.innerHTML = `
@@ -322,7 +334,8 @@ class AvatarSelectionApp {
         
         // Create new iframe
         setTimeout(() => {
-            console.log('Creating iframe with URL:', this.selectedAvatar.url);
+            console.log('🚀 Creating iframe with URL:', this.selectedAvatar.url);
+            console.log('🔍 Avatar data:', this.selectedAvatar);
             
             iframeContainer.innerHTML = `
                 <iframe 
@@ -337,16 +350,88 @@ class AvatarSelectionApp {
             // Handle iframe load
             const newIframe = document.getElementById('practice-iframe');
             if (newIframe) {
+                console.log('📦 Iframe element created successfully');
+                console.log('📐 Iframe dimensions:', {
+                    width: newIframe.style.width,
+                    height: newIframe.style.height,
+                    offsetWidth: newIframe.offsetWidth,
+                    offsetHeight: newIframe.offsetHeight
+                });
+                
                 newIframe.onload = () => {
-                    console.log('Avatar iframe loaded successfully');
+                    console.log('✅ Avatar iframe loaded successfully');
+                    console.log('🔍 Iframe src:', newIframe.src);
+                    console.log('📊 Final iframe dimensions:', {
+                        offsetWidth: newIframe.offsetWidth,
+                        offsetHeight: newIframe.offsetHeight,
+                        clientWidth: newIframe.clientWidth,
+                        clientHeight: newIframe.clientHeight
+                    });
+                    
+                    // Try to debug iframe content (will likely fail due to CORS but worth trying)
+                    try {
+                        const iframeDoc = newIframe.contentDocument || newIframe.contentWindow.document;
+                        console.log('📄 Iframe document:', iframeDoc);
+                        if (iframeDoc && iframeDoc.body) {
+                            console.log('📝 Iframe body HTML length:', iframeDoc.body.innerHTML.length);
+                            console.log('📝 Iframe body classes:', iframeDoc.body.className);
+                            console.log('📝 Iframe document title:', iframeDoc.title);
+                        } else {
+                            console.log('⚠️ Cannot access iframe document body');
+                        }
+                    } catch (error) {
+                        console.log('🔒 Cannot access iframe content (CORS blocked):', error.message);
+                        console.log('🔍 This is normal for cross-origin iframes');
+                    }
+                    
+                    // Check if iframe is visible
+                    const iframeRect = newIframe.getBoundingClientRect();
+                    console.log('👁️ Iframe visibility:', {
+                        display: window.getComputedStyle(newIframe).display,
+                        visibility: window.getComputedStyle(newIframe).visibility,
+                        opacity: window.getComputedStyle(newIframe).opacity,
+                        zIndex: window.getComputedStyle(newIframe).zIndex,
+                        position: iframeRect
+                    });
+                    
+                    // Check container visibility
+                    const container = document.querySelector('.iframe-container');
+                    if (container) {
+                        const containerRect = container.getBoundingClientRect();
+                        console.log('📦 Container visibility:', {
+                            display: window.getComputedStyle(container).display,
+                            visibility: window.getComputedStyle(container).visibility,
+                            opacity: window.getComputedStyle(container).opacity,
+                            position: containerRect
+                        });
+                    }
                 };
                 
                 newIframe.onerror = () => {
-                    console.error('Failed to load avatar iframe');
+                    console.error('❌ Failed to load avatar iframe');
+                    console.error('🔍 Error details - src:', newIframe.src);
                     this.showIframeError();
                 };
+                
+                // Additional timeout check for loading
+                setTimeout(() => {
+                    console.log('⏱️ 5-second check - Iframe status:');
+                    console.log('📍 Iframe exists:', !!document.getElementById('practice-iframe'));
+                    console.log('🔗 Iframe src:', newIframe.src);
+                    console.log('📏 Current dimensions:', {
+                        offsetWidth: newIframe.offsetWidth,
+                        offsetHeight: newIframe.offsetHeight
+                    });
+                    
+                    // Test if URL is accessible
+                    fetch(this.selectedAvatar.url, { method: 'HEAD', mode: 'no-cors' })
+                        .then(() => console.log('🌐 URL is accessible via fetch'))
+                        .catch(error => console.log('🚫 URL fetch failed:', error.message));
+                        
+                }, 5000);
+                
             } else {
-                console.error('Failed to create iframe element');
+                console.error('💥 Failed to create iframe element');
             }
         }, 1500); // Small delay to show loading state
     }
