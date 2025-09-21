@@ -106,7 +106,10 @@ https://tesolchina.github.io/ChineseMedAvatar/
 
 ## 👥 Development Team
 
-- **Project Lead:** Dr. Simon Wang, Hong Kong Baptist University
+- **Project Lead:** Dr. Cissy Li
+- **Team Members:** Dr. Ellie Law, Mr. John Della Pietra
+- **Technical Lead:** Dr. Simon Wang
+- **Programming Staff:** Mr. Kaitai Zhang, Mr. Zian Zheng
 - **Institution:** School of Chinese Medicine, HKBU
 - **Contact:** simonwang@hkbu.edu.hk
 
