@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Iframe Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .test-iframe {
+            width: 100%;
+            height: 500px;
+            border: 2px solid #e0e0e0;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        .url-info {
+            background: #f0f8ff;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+        
+        .test-button {
+            background: #007cba;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        .test-button:hover {
+            background: #005a8b;
+        }
+        
+        .status {
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        
+        .status.loading {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Iframe Loading Debug Test</h1>
+    <p>This page tests iframe loading to identify why content appears blank.</p>
+
+    <div class="test-container">
+        <h2>Test 1: Direct URL (without /avatar/)</h2>
+        <div class="url-info">URL: https://textbot.hkbu.tech/tcm-clinical-interview</div>
+        <div class="status loading" id="status1">Loading...</div>
+        <iframe 
+            class="test-iframe" 
+            src="https://textbot.hkbu.tech/tcm-clinical-interview"
+            onload="handleLoad(1, 'Direct URL')"
+            onerror="handleError(1, 'Direct URL')"
+            id="iframe1">
+        </iframe>
+        <button class="test-button" onclick="reloadIframe(1)">Reload Iframe</button>
+        <button class="test-button" onclick="openInNewTab('https://textbot.hkbu.tech/tcm-clinical-interview')">Open in New Tab</button>
+    </div>
+
+    <div class="test-container">
+        <h2>Test 2: Avatar Path URL</h2>
+        <div class="url-info">URL: https://textbot.hkbu.tech/avatar/tcm-clinical-interview</div>
+        <div class="status loading" id="status2">Loading...</div>
+        <iframe 
+            class="test-iframe" 
+            src="https://textbot.hkbu.tech/avatar/tcm-clinical-interview"
+            onload="handleLoad(2, 'Avatar Path')"
+            onerror="handleError(2, 'Avatar Path')"
+            id="iframe2">
+        </iframe>
+        <button class="test-button" onclick="reloadIframe(2)">Reload Iframe</button>
+        <button class="test-button" onclick="openInNewTab('https://textbot.hkbu.tech/avatar/tcm-clinical-interview')">Open in New Tab</button>
+    </div>
+
+    <div class="test-container">
+        <h2>Test 3: Different Avatar (for comparison)</h2>
+        <div class="url-info">URL: https://textbot.hkbu.tech/avatar/tcm-difficult-conversations</div>
+        <div class="status loading" id="status3">Loading...</div>
+        <iframe 
+            class="test-iframe" 
+            src="https://textbot.hkbu.tech/avatar/tcm-difficult-conversations"
+            onload="handleLoad(3, 'Different Avatar')"
+            onerror="handleError(3, 'Different Avatar')"
+            id="iframe3">
+        </iframe>
+        <button class="test-button" onclick="reloadIframe(3)">Reload Iframe</button>
+        <button class="test-button" onclick="openInNewTab('https://textbot.hkbu.tech/avatar/tcm-difficult-conversations')">Open in New Tab</button>
+    </div>
+
+    <div class="test-container">
+        <h2>Console Debug Information</h2>
+        <div id="console-log" style="background: #1e1e1e; color: #fff; padding: 15px; border-radius: 4px; font-family: monospace; height: 200px; overflow-y: auto;">
+            Initializing debug test...<br>
+        </div>
+        <button class="test-button" onclick="clearConsole()">Clear Console</button>
+        <button class="test-button" onclick="runAllTests()">Run All Tests</button>
+    </div>
+
+    <script>
+        function log(message) {
+            const consoleElement = document.getElementById('console-log');
+            const timestamp = new Date().toLocaleTimeString();
+            consoleElement.innerHTML += `[${timestamp}] ${message}<br>`;
+            consoleElement.scrollTop = consoleElement.scrollHeight;
+            console.log(`[DEBUG] ${message}`);
+        }
+
+        function handleLoad(testNum, testName) {
+            const statusElement = document.getElementById(`status${testNum}`);
+            statusElement.className = 'status success';
+            statusElement.textContent = `✅ ${testName}: Iframe loaded successfully`;
+            log(`Test ${testNum} (${testName}): Iframe onload event fired`);
+            
+            // Check if iframe actually has content
+            setTimeout(() => {
+                try {
+                    const iframe = document.getElementById(`iframe${testNum}`);
+                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                    if (iframeDoc.body && iframeDoc.body.innerHTML.trim() === '') {
+                        log(`Test ${testNum} WARNING: Iframe loaded but body is empty`);
+                        statusElement.className = 'status error';
+                        statusElement.textContent = `⚠️ ${testName}: Loaded but content is empty`;
+                    } else {
+                        log(`Test ${testNum} SUCCESS: Iframe has content`);
+                    }
+                } catch (e) {
+                    log(`Test ${testNum} INFO: Cannot access iframe content (cross-origin) - this is normal`);
+                }
+            }, 2000);
+        }
+
+        function handleError(testNum, testName) {
+            const statusElement = document.getElementById(`status${testNum}`);
+            statusElement.className = 'status error';
+            statusElement.textContent = `❌ ${testName}: Failed to load`;
+            log(`Test ${testNum} (${testName}): Iframe onerror event fired`);
+        }
+
+        function reloadIframe(testNum) {
+            const iframe = document.getElementById(`iframe${testNum}`);
+            const statusElement = document.getElementById(`status${testNum}`);
+            statusElement.className = 'status loading';
+            statusElement.textContent = 'Reloading...';
+            
+            const currentSrc = iframe.src;
+            iframe.src = '';
+            setTimeout(() => {
+                iframe.src = currentSrc;
+                log(`Test ${testNum}: Iframe reloaded`);
+            }, 100);
+        }
+
+        function openInNewTab(url) {
+            window.open(url, '_blank');
+            log(`Opening in new tab: ${url}`);
+        }
+
+        function clearConsole() {
+            document.getElementById('console-log').innerHTML = 'Console cleared...<br>';
+        }
+
+        function runAllTests() {
+            log('Running all tests...');
+            for (let i = 1; i <= 3; i++) {
+                reloadIframe(i);
+            }
+        }
+
+        // Monitor for iframe content issues
+        window.addEventListener('message', function(event) {
+            log(`Received message from iframe: ${JSON.stringify(event.data)}`);
+        });
+
+        // Check for console errors
+        window.addEventListener('error', function(event) {
+            log(`JavaScript Error: ${event.message} at ${event.filename}:${event.lineno}`);
+        });
+
+        log('Iframe debug test initialized');
+        log('Check if iframes load content or remain blank');
+        
+        // Set timeout to check for loading issues
+        setTimeout(() => {
+            for (let i = 1; i <= 3; i++) {
+                const statusElement = document.getElementById(`status${i}`);
+                if (statusElement.textContent === 'Loading...') {
+                    handleError(i, `Test ${i}`);
+                    log(`Test ${i}: Timeout - iframe did not load within 10 seconds`);
+                }
+            }
+        }, 10000);
+    </script>
+</body>
+</html>
