@@ -10,6 +10,7 @@ body {
     line-height: 1.6;
     color: #2d3748;
     background: #f7fafc;
+    font-size: 16px;
 }
 
 /* App Container */
@@ -47,7 +48,7 @@ body {
 }
 
 .logo-text {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: bold;
 }
 
@@ -56,7 +57,7 @@ body {
 }
 
 .institution {
-    font-size: 0.9rem;
+    font-size: 1rem;
     opacity: 0.9;
 }
 
@@ -79,7 +80,7 @@ body {
     cursor: pointer;
     border-bottom: 3px solid transparent;
     transition: all 0.3s ease;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 500;
     color: #718096;
 }
@@ -124,13 +125,13 @@ body {
 }
 
 .selection-header h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: #2d3748;
     margin-bottom: 1rem;
 }
 
 .selection-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: #718096;
     max-width: 80%;
     margin: 0 auto;
@@ -172,7 +173,7 @@ body {
 }
 
 .card-title {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: bold;
 }
 
@@ -181,7 +182,7 @@ body {
 }
 
 .card-description {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #4a5568;
     margin-bottom: 1.5rem;
     line-height: 1.6;
@@ -205,6 +206,7 @@ body {
 .detail-label {
     font-weight: 600;
     color: #2d3748;
+    font-size: 1rem;
 }
 
 .detail-value {
@@ -212,6 +214,7 @@ body {
     text-align: right;
     flex: 1;
     margin-left: 1rem;
+    font-size: 1rem;
 }
 
 .difficulty {
@@ -244,7 +247,7 @@ body {
     border: none;
     padding: 1rem 2rem;
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -266,14 +269,14 @@ body {
 }
 
 .practice-info h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: #2d3748;
     margin-bottom: 0.5rem;
 }
 
 .practice-info p {
     color: #718096;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 
 .practice-controls {
@@ -400,7 +403,7 @@ body {
 }
 
 .about-content h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: #2d3748;
     margin-bottom: 2rem;
     text-align: center;
@@ -411,7 +414,7 @@ body {
 }
 
 .about-section h2 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: #4a5568;
     margin-bottom: 1rem;
     border-bottom: 2px solid #e2e8f0;
@@ -419,7 +422,7 @@ body {
 }
 
 .about-section p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: #4a5568;
     line-height: 1.7;
     margin-bottom: 1rem;
@@ -509,7 +512,7 @@ body {
     
     .tab-btn {
         padding: 0.75rem 1rem;
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
     
     .tab-content-container {
@@ -517,7 +520,7 @@ body {
     }
     
     .selection-header h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
     
     .avatar-grid {
@@ -554,7 +557,7 @@ body {
     }
     
     .selection-subtitle {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
     
     .card-icon {
@@ -566,7 +569,7 @@ body {
     }
     
     .practice-info h2 {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
     
     .iframe-container {
