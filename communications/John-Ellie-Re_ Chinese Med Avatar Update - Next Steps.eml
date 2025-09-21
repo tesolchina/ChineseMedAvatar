@@ -1,0 +1,965 @@
+Received: from TY0PR02MB6217.apcprd02.prod.outlook.com (2603:1096:400:274::14)
+ by SI2PR02MB5225.apcprd02.prod.outlook.com with HTTPS; Wed, 17 Sep 2025
+ 02:17:18 +0000
+Received: from SI1PR02CA0006.apcprd02.prod.outlook.com (2603:1096:4:1f7::11)
+ by TY0PR02MB6217.apcprd02.prod.outlook.com (2603:1096:400:274::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9115.22; Wed, 17 Sep
+ 2025 02:17:13 +0000
+Received: from SG1PEPF000082E5.apcprd02.prod.outlook.com
+ (2603:1096:4:1f7:cafe::fa) by SI1PR02CA0006.outlook.office365.com
+ (2603:1096:4:1f7::11) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9137.13 via Frontend Transport; Wed,
+ 17 Sep 2025 02:17:12 +0000
+Authentication-Results: spf=pass (sender IP is 139.138.29.240)
+ smtp.mailfrom=hkbu.edu.hk; dkim=pass (signature was verified)
+ header.d=hkbu.edu.hk;dmarc=bestguesspass action=none
+ header.from=hkbu.edu.hk;compauth=pass reason=109
+Received-SPF: Pass (protection.outlook.com: domain of hkbu.edu.hk designates
+ 139.138.29.240 as permitted sender) receiver=protection.outlook.com;
+ client-ip=139.138.29.240; helo=esa1.hc196-4.ap.iphmx.com; pr=C
+Received: from esa1.hc196-4.ap.iphmx.com (139.138.29.240) by
+ SG1PEPF000082E5.mail.protection.outlook.com (10.167.240.8) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9137.12 via Frontend Transport; Wed, 17 Sep 2025 02:17:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+  d=hkbu.edu.hk; i=@hkbu.edu.hk; q=dns/txt;
+  s=HKBU-Domain-DKIM; t=1758075432; x=1789611432;
+  h=from:to:subject:date:message-id:references:in-reply-to:
+   mime-version;
+  bh=q5uGWHtqMaZp/gubLi1Oqhf08iYgF3TczMVw0D0HFYM=;
+  b=R0zfBwKowhw2jW7pJvrOwRju71CbjaM21Jrq/mus/ioCLSRSK6vjnkIA
+   aUSHrcZIRHx6p3/ySYGqIUJUEFsCuxAh5vY6ivzDy/ElxmKinFZdRoiE6
+   W6z2LpE4WArr7iZOwre/3NhsRWVSTDpW33Rl5V9F1kUO7Fcvd+ZhpKl3x
+   w=;
+X-CSE-ConnectionGUID: 4eSz9OjzRVqROhDdP6SQHQ==
+X-CSE-MsgGUID: ahuX13bGQJilAV87bhGSPg==
+Authentication-Results-Original: ob1.hc196-4.ap.iphmx.com; dkim=none (message
+ not signed) header.i=none
+X-MassRcpt: False
+X-BlockMassRcpt: False
+X-ThreatScanner-Verdict: Negative
+IronPort-Data: A9a23:fReNZ65Qopk8KOpDITYHlAxRtOPGchMFZxGqfqrLsTDasY5as4F+v
+ mYbXziHaa2DZTPzLdpwPIWxo0oGvcDSnN4yTgo9/yBnEysa+MHIO4iUfxz6V8+wwmwvb67FA
+ +E2MISowBUcFyeEzvuVGuG/6yE6j+fRH+CU5NfsYkhZXRVjRDoqlSVtkus4hp8AqdWiCkaGt
+ MiaT/f3YTdJ4BYqdDtEg06/gEk35qmq6WpG5gdWic1j5zcyqVFEVPrzGonsdxMUcqEMdsamS
+ uDKyq2O/2+x138FFtO/n7/nRVYBS7jUMBLmoiI+t3+K20UqSoQai87XBdJEAatlo2zhc+NZk
+ b2hgaeNpTIBYsUgrgi/vy5wSEmSNYUekFPOzOTWXca7lyUqeFO0qxli4d1f0ST1NY+bDEkXn
+ cH0JgzhYTjfitmkkZW5WNNSn/4ELOXnBN0kg1FZmGSx4fYOGfgvQo321Odg5m9rrf0WRa+YY
+ NcFYz1yahiGewdIJlocFJM5mqGvm2X7dDpb7lmSoMLb4UCPlEogi/6ya5yIILRmRu0M9qqcj
+ mDB/2L1GjkaN9aCjzeJ7zSshYcjmAukBNxLTuTlqJaGhnWaxnEjUUYcemKZoP2QtB7hUdJwE
+ HQbr39GQa8asRbDosPGdwyopH+ssw4ZUttUVe054hzLx6bJpQaabkAfTztGbsMvssAeSCwv3
+ 16N2dPqDyEpvbGID3Kenp+ZqTezNCwcMkcPdSoNTA9D49rpvcc+gg+JTtULOLy1h9v6LjLs6
+ z2aqSE/g/MTjsQWkai34BbHgFqRSoPhSwc04kDVV3qs6A5wf5KsdYiwsAeDtKwYcdzfSUSdt
+ n8ZncTY9PoJEZyGiC2KRqMKAa2t4PGGdjbbhDaDAqUcythkwFb7Fag43d20DB0B3hosEdMxX
+ HLuhA==
+IronPort-HdrOrdr: A9a23:puv1S6O9NxGzUMBcTzP155DYdb4zR+YMi2TDj3oBLSC9Afbo8P
+ xG/c5rpSMc5wxwZJhNo7290ey7MBbhHP1OkPos1NWZLWrbUQKTRekIh7cKgQeQeREWndQz6U
+ 4USclD4arLY2SS4/yX3CCIV/IbhPWX+qGhgunTi19rUAFRcqllqytpFwqBFUVyZQ9eQb40Do
+ CV6MZrryepPS1/VLXPOlA1G8z44/HbnpPvZhALQzYh9Qm1lDutrJLqDhSC2R8acjVXhZMv63
+ LMnQDV7riq99u71hjf/WnO6Ik+oqqS9vJzQOi3zuQFIDTljQilIK57XaeZgTwzqOazrH43jd
+ jluX4bTrNOwkKUWlvwjQrm2gHm3jprwWTl00WkjXzqptG8bC4mCvBGmZlSfnLimjwdVZBHoe
+ t2NlCixtFq5CD77W7ADh/zJlxXf3+P0DIfeCgo/jBiuMUlGfBsRMckjSVo+d87bVvHAcYcYZ
+ 1T5YjnlY1rmV/2VQGggkB/hNOrRXg9BRGAXwwLvdGUySFfmDRjw1If39F3pAZwyHsRceg62w
+ 3/CNUXqFhjdL5rUUsmPpZ6fSKeMB2xfS7x
+X-Talos-CUID: =?us-ascii?q?9a23=3AyOP6yGlpM85DBnOiZ2y/ljzG72LXOSHQ92WBBE2?=
+ =?us-ascii?q?qM1hwcpqVZVOopphds/M7zg=3D=3D?=
+X-Talos-MUID: 9a23:+wSraQv4HDIF5QgHqs2njTF/BJ4z6YuXKkEJuKtW5MOEGhdINGLI
+X-IronPort-AV: E=Sophos;i="6.18,270,1751212800"; 
+   d="scan'208,217";a="74612156"
+BU-Internal-Disclaimer-Header: True
+From: John DELLA PIETRA <johndp@hkbu.edu.hk>
+To: Yuen Yi LAW <ellielaw@hkbu.edu.hk>, Cissy Y X LI <yxli@hkbu.edu.hk>, Simon
+ H WANG <simonwang@hkbu.edu.hk>, "22231153@life.hkbu.edu.hk"
+	<22231153@life.hkbu.edu.hk>, Kaitai ZHANG <zhang_kt@hkbu.edu.hk>
+Subject: Re: Chinese Med Avatar Update - Next Steps
+Thread-Topic: Chinese Med Avatar Update - Next Steps
+Thread-Index: AQHcJxsrwatpbApQ3USRlEliFzLjl7SWfbqogAAWr62AAA67+w==
+Date: Wed, 17 Sep 2025 02:17:04 +0000
+Message-ID: <SEZPR02MB8371B446F0EE70A6C42799F58E17A@SEZPR02MB8371.apcprd02.prod.outlook.com>
+References: <BF1E0E63-3F83-4104-B3F4-913ECFDD677E@hkbu.edu.hk>
+ <JH0PR02MB8488116968D3FF4F33C750B19D14A@JH0PR02MB8488.apcprd02.prod.outlook.com>
+ <TYQPR02MB880911C2959580A0AE3BA52A8A17A@TYQPR02MB8809.apcprd02.prod.outlook.com>
+In-Reply-To: <TYQPR02MB880911C2959580A0AE3BA52A8A17A@TYQPR02MB8809.apcprd02.prod.outlook.com>
+Accept-Language: en-US, zh-TW
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+msip_labels:
+x-ms-traffictypediagnostic: SEZPR02MB8371:EE_|SE2PPF7EBD81B65:EE_|SG1PEPF000082E5:EE_|TY0PR02MB6217:EE_|SI2PR02MB5225:EE_
+X-MS-Office365-Filtering-Correlation-Id: 70fd12cc-b6f9-4236-feaa-08ddf590505d
+X-Microsoft-Antispam-Untrusted: BCL:0;ARA:13230040|69100299015|366016|13003099007|8096899003|7053199007|41050700001;
+X-Microsoft-Antispam-Message-Info-Original: 7g5iciTrVfwtW+cgx26rRmvNmms0e1dfnoXhlzTSCFiqU3+zx9wdnmaVaDaB9fp2ny5SZEiWR5hF/Pl47+WvU6xOpMrmltxAcIfBi+q0dd4luZHHDwQLQB/g2igTrVBPiz1Vi2pm3yU5dpTL+U+T6XQyV2DEJaMtOAfMDR+hVS43oeiYG4JEYR5Xcrt9VGIPpjuDsNOznXulHfJ9mOLuU1LLN0PL/A+4JbYRT2vu26NM6xKVcB3eJHAWKDnaVhTFXb/SePMjWiMUMgLdzp1CuNAVBO1JiTf9RUq0hDRnSju3RvThCo+aS07X3oscQNmeYz5ob+zO+be2aWVyyZmYdI3TgqKAFcuBiHR+Q7qSM3yCu/N/OLDssRLgkmezbf72qzgPpqwxhBCscefrYtzxE7YGOEP4awRvjuCVGIzRZ14EURJvVTH7cvAdNS8IqXE6KE3fUUCGbeuQby7iit1FaSp24FMBhUs5LzVg/i1wpNSWfN+8ZXpCxEmzIRPZiwH9BSgFklFgvHwthwMWeHp2iCqtsuUa6OoRKu6p19vQ8fF68sC6B73XUS/EGCvUTlAT0d2LW9yk9hHqIKgSSnJuAbmQQtU/QgEdefvwn0a7gb/e3k70omRDS4R7bsuyvjHYQZRNVIA1KNs6aWreZX1/Z1GuQIpdxsDsD3/RP4W6BUXZGFweFtDoMfNAK4qF9PnuHCeWyXUlClo7iQCVKv7hQcXVs+R+ae5kzpyaJkOL+gI=
+X-Forefront-Antispam-Report-Untrusted: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR02MB8371.apcprd02.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(69100299015)(366016)(13003099007)(8096899003)(7053199007)(41050700001);DIR:INT;
+Content-Type: multipart/alternative;
+	boundary="_000_SEZPR02MB8371B446F0EE70A6C42799F58E17ASEZPR02MB8371apcp_"
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SE2PPF7EBD81B65
+Return-Path: johndp@hkbu.edu.hk
+X-MS-Exchange-Organization-ExpirationStartTime: 17 Sep 2025 02:17:12.8911
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: 70fd12cc-b6f9-4236-feaa-08ddf590505d
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: ed9ca920-543e-4305-9a64-d6239716efbb:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-Exchange-Transport-CrossTenantHeadersStripped: SG1PEPF000082E5.apcprd02.prod.outlook.com
+X-MS-PublicTrafficType: Email
+X-MS-Exchange-Organization-AuthSource: SG1PEPF000082E5.apcprd02.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id-Prvs: 1edb1b1d-a3b6-4d11-4ab7-08ddf5904b24
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MS-Exchange-Organization-SCL: -1
+X-Microsoft-Antispam: BCL:0;ARA:13230040|35042699022|27102699006|69100299015|7053199007|13003099007|8096899003|4076899003;
+X-Forefront-Antispam-Report: CIP:139.138.29.240;CTRY:US;LANG:en;SCL:-1;SRV:;IPV:CAL;SFV:NSPM;H:esa1.hc196-4.ap.iphmx.com;PTR:esa1.hc196-4.ap.iphmx.com;CAT:NONE;SFS:(13230040)(35042699022)(27102699006)(69100299015)(7053199007)(13003099007)(8096899003)(4076899003);DIR:INB;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Sep 2025 02:17:12.2927
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 70fd12cc-b6f9-4236-feaa-08ddf590505d
+X-MS-Exchange-CrossTenant-Id: ed9ca920-543e-4305-9a64-d6239716efbb
+X-MS-Exchange-CrossTenant-AuthSource: SG1PEPF000082E5.apcprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY0PR02MB6217
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:05.8128906
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.9115.005
+X-Microsoft-Antispam-Mailbox-Delivery:
+	rwl:1;ucf:0;jmr:0;auth:0;dest:I;ENG:(910005)(944506478)(944626604)(920097)(815096)(255002)(410001)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	=?Windows-1252?Q?40EW0srkttFN3gVIT1HKMD2ckxdXoAYlh/Q2vaP4ItAUx2XwntShgS2Z?=
+ =?Windows-1252?Q?1r4eChiGbg9u1knZ73+UNVaq7DUO1aKlweGbj3qlkvRWRC3zxdWiv/99?=
+ =?Windows-1252?Q?AoVaEOidBJXVKb8TKU/8v80qvwZNsQ+7Penr8Iw+vGe6wlSkFbEvkhbz?=
+ =?Windows-1252?Q?vpvGuHLgkofYwBABziBX9L7Yh0IwJPFE4GGyFJ0YOgyRGwzoEhyLu7m9?=
+ =?Windows-1252?Q?udHU6eUOY3dYh/fBecT8EOwVaznNlHFdNzJMzfRid3y5HtAeAwqIxT26?=
+ =?Windows-1252?Q?rX6KU4d89foXRJ63l5walJBrL2WKCn8Af0hCawx/ZJp7Vdg+BkOlcgxs?=
+ =?Windows-1252?Q?wNauj4igHdo+NVn1AeCx38HKYSH7hX7oMwvCb1QapqSUPCRLWEBnpj2u?=
+ =?Windows-1252?Q?iQCmi72FEOX6bIbLfhGdhz28mchIuZ1HNPRpm9EHzaQ5WEsJK80B4Dq1?=
+ =?Windows-1252?Q?0Gv84EuLqTqFsXfU8AhUNnCLaFWatl9LmsoUxLy3bqhgjvghxSer+50E?=
+ =?Windows-1252?Q?7uA+K86tLQEPddhgiQ9PiiKaN62trT6gBZSKUj0ZbQValBzn3JT6M90a?=
+ =?Windows-1252?Q?l5I7u+R5uCQQAda0fMZNH1HWs0Rqh4dKhlUocJ+ThTfQuy7/XxwE4673?=
+ =?Windows-1252?Q?yW03Do17wAMLgE7GuvWw0514nl+DuyPRMpHry0Hj/pD13p1KavyulO6t?=
+ =?Windows-1252?Q?AjZuWeALvm3O7IwJ7XVx7S/HZ6vcZ87P4mRpbQFGARszjOJI+XlXbIe3?=
+ =?Windows-1252?Q?+FktuZsul/4WPDVJlNucZ9BRAwgV4TqK//CxBc6lUY7Bgf/e2Nlhc1hz?=
+ =?Windows-1252?Q?9khPBMFgf7wVvMBTtBj5We8OSJAFTdPn591SpCLxfCgDTmCcZv7wXtCa?=
+ =?Windows-1252?Q?/ELLL4tcnxyKDNF9mXV7xtlvKV3kR0vA+hfrKO6iIPTwemR97JwZWsFB?=
+ =?Windows-1252?Q?/ZJ2RN7s/LJjz95Q3BNhprMeEnPObeG2iZqV4Wcj48jpVAHn7KcQLVk0?=
+ =?Windows-1252?Q?hX52Q+hXX3uzwaKNajvFhMcV3fzKaWFsMeuTWVFYDUma6LVgDkvYSW2K?=
+ =?Windows-1252?Q?c5/j2OlmUksu52JkVilY/4kdRNbqe6CdFkRu8V1+lQ2rKhbwfGQjcnC5?=
+ =?Windows-1252?Q?bU63NBvXkLx61zxCkwjImysewqvFuxZj59ydq0XcjWhoL6qEHfJOjYO4?=
+ =?Windows-1252?Q?uZmtD505oVwqTATwgSDN5u6g4mVgQ8MXpc4yJ38m4t4TsDU7La7IES9S?=
+ =?Windows-1252?Q?YU8wyLRMGpZ+GA1Cw9INdGBRIymdzUU5qw3NMLPSTyGpd0ZdHHS2dDuI?=
+ =?Windows-1252?Q?+/fHMXhNuiZg7+OHz+JU4SFDyyip62NqaOC17JB+HfQD1Rz4lJ8Flpjb?=
+ =?Windows-1252?Q?0/++BfqBAizb+vtvYg0PgHz8/dVvQAvq7vGnCbnhdIucwz278qn1iF74?=
+ =?Windows-1252?Q?XXxM6FT1IAAPnvT7yWDov9J8IWl1bNrihsT+CtdfTIE=3D?=
+MIME-Version: 1.0
+
+--_000_SEZPR02MB8371B446F0EE70A6C42799F58E17ASEZPR02MB8371apcp_
+Content-Type: text/plain; charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+
+      Dear All,
+
+  I also understood the role of the chatbot in the project as an auxiliary =
+tool for the students' to practice speaking in the context of relevant clin=
+ical scenarios. So, I agree the focus should be on testing the chatbot's fu=
+nctionality within the clinical scenarios drawn from/based on the existing =
+materials.
+
+     Best,
+     John
+________________________________
+From: Yuen Yi LAW <ellielaw@hkbu.edu.hk>
+Sent: Wednesday, September 17, 2025 9:41 AM
+To: Cissy Y X LI <yxli@hkbu.edu.hk>; Simon H WANG <simonwang@hkbu.edu.hk>; =
+22231153@life.hkbu.edu.hk <22231153@life.hkbu.edu.hk>; John DELLA PIETRA <j=
+ohndp@hkbu.edu.hk>; Kaitai ZHANG <zhang_kt@hkbu.edu.hk>
+Subject: Re: Chinese Med Avatar Update - Next Steps
+
+Dear Simon and all,
+
+Thank you for the update.
+
+My understanding is that the chatbot in the TCM project is designed for stu=
+dents' independent learning (mainly speaking practice), allowing them to in=
+teract and simulate conversations with English-speaking patients and collea=
+gues. The clinical scenarios, principles of effective TCM communication, an=
+d sample dialogues have been shared with Simon and his team in July (see at=
+tached emails). Since the chatbot is intended for self-directed learning an=
+d practice, I do not think it is necessary to develop formal lesson plans.
+
+I agree that our next step should be to focus on developing different clini=
+cal scenarios based on the materials provided in July and thoroughly testin=
+g the avatar=92s responses in each case.
+
+Many thanks.
+
+Best,
+Ellie
+
+________________________________
+From: Cissy Y X LI <yxli@hkbu.edu.hk>
+Sent: Wednesday, September 17, 2025 8:10 AM
+To: Simon H WANG <simonwang@hkbu.edu.hk>; Yuen Yi LAW <ellielaw@hkbu.edu.hk=
+>; 22231153@life.hkbu.edu.hk <22231153@life.hkbu.edu.hk>; John DELLA PIETRA=
+ <johndp@hkbu.edu.hk>; Kaitai ZHANG <zhang_kt@hkbu.edu.hk>
+Subject: Re: Chinese Med Avatar Update - Next Steps
+
+Dear Simon,
+Thanks very much for the update.
+I was thinking TCM doctors do not have to use English when they communicate=
+ with each other.  They use English when they see an English speaking patie=
+nt or meet with an English speaking colleague from another hospital. If thi=
+s is the case, any clinical scenarios in western medicine would be relevant=
+. Our key objective is oral practice, not acquisition of TCM clinical knowl=
+edge.
+What do Ellie and John think?
+Happy to meet up and discuss more.
+Many thanks.
+Best
+Cissy
+
+
+
+
+Get Outlook for iOS<https://aka.ms/o0ukef>
+________________________________
+From: Simon H WANG <simonwang@hkbu.edu.hk>
+Sent: Tuesday, September 16, 2025 11:04:15 PM
+To: Cissy Y X LI <yxli@hkbu.edu.hk>; Yuen Yi LAW <ellielaw@hkbu.edu.hk>; 22=
+231153@life.hkbu.edu.hk <22231153@life.hkbu.edu.hk>; John DELLA PIETRA <joh=
+ndp@hkbu.edu.hk>; Kaitai ZHANG <zhang_kt@hkbu.edu.hk>
+Subject: Chinese Med Avatar Update - Next Steps
+
+
+Hi Cissy and team,
+
+
+Quick update on our Chinese Medicine Avatar project and where we're heading=
+.
+
+Current Status
+
+Good news - we have HeyGen working for avatar streaming. However, given the=
+ costs, we're planning to develop our own in-house solution longer term.
+
+Two-Path Approach
+
+Option 1: HeyGen Testing (Available Now)
+
+
+  *   We can use HeyGen for immediate testing and demos
+
+  *   Good for validating concepts while we build our own tech
+
+
+Option 2: In-House Development (Medium Term)
+
+
+  *   Custom solution that's cost-effective and tailored to our needs
+
+  *   Will be ready once we nail down the pedagogical approach
+
+Immediate Focus: Text-Based Testing
+
+Let's prioritize testing scenarios and prompts before adding avatar complex=
+ity. We have two platforms ready:
+
+
+Clinical Handover Testing:
+
+
+  *   Updated URL: https://lessons.hkbu.tech/api/AccessLessons/ChineseMedTu=
+torWebsite
+
+  *   Ready for student testing
+
+
+New Prototype Platform:
+
+
+  *   textbot.hkbu.tech - we can set up prototypes here
+
+  *   Perfect for testing different prompts and scenarios
+
+Next Steps
+
+For Cissy & Ellie & John (Pedagogical Focus):
+
+
+  *   Design lesson plans for interactive tutoring scenarios
+
+  *   Test different clinical handover situations
+
+  *   Define what makes a good TCM conversation
+
+
+For Andy (Part-time Student Helper) & Kaitai (Full-time Developer):
+
+
+  *   Set up prototypes on textbot.hkbu.tech
+
+  *   Test various prompts and responses
+
+  *   Support pedagogical team with technical implementation
+
+The Plan Moving Forward
+
+  1.  Focus on scenarios first - get the educational content right
+
+  2.  Test extensively with text-based interactions
+
+  3.  Design lesson plans that actually work for students
+
+  4.  Build tech solution once we know exactly what we need
+
+
+The streaming avatar tech will be ready when our pedagogical solution is so=
+lid. Better to get the teaching approach right first, then add the bells an=
+d whistles.
+
+
+Thoughts? Happy to discuss this week.
+
+
+Simon
+
+
+________________________________
+
+
+Quick Links:
+
+
+  *   Clinical Handover: https://lessons.hkbu.tech/api/AccessLessons/Chines=
+eMedTutorWebsite
+
+  *   Prototype Platform: textbot.hkbu.tech
+
+________________________________
+[Baptist University Logo]
+
+Disclaimer
+
+This message (including any attachments) may contain confidential informati=
+on intended for a specific individual and/or purpose. If you are not the in=
+tended recipient, please delete this message and notify the sender immediat=
+ely. Any disclosure, copying, or distribution of this message, or the takin=
+g of any action based on it, is prohibited as it may be unlawful or may lea=
+d to disciplinary action.
+
+--_000_SEZPR02MB8371B446F0EE70A6C42799F58E17ASEZPR02MB8371apcp_
+Content-Type: text/html; charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DWindows-1=
+252">
+<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
+ttom:0;} </style>
+</head>
+<body dir=3D"ltr">
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+&nbsp; &nbsp; &nbsp; Dear All,</div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+<br>
+</div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+&nbsp; I also understood the role of the chatbot in the project as an auxil=
+iary tool for the students' to practice speaking in the context of relevant=
+ clinical scenarios. So, I agree the focus should be on testing the chatbot=
+'s functionality within the clinical
+ scenarios drawn from/based on the existing materials.&nbsp;</div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+<br>
+</div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+&nbsp; &nbsp; &nbsp;Best,</div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+&nbsp; &nbsp; &nbsp;John</div>
+<div id=3D"appendonsend"></div>
+<hr style=3D"display:inline-block;width:98%" tabindex=3D"-1">
+<div id=3D"divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" st=
+yle=3D"font-size:11pt" color=3D"#000000"><b>From:</b> Yuen Yi LAW &lt;ellie=
+law@hkbu.edu.hk&gt;<br>
+<b>Sent:</b> Wednesday, September 17, 2025 9:41 AM<br>
+<b>To:</b> Cissy Y X LI &lt;yxli@hkbu.edu.hk&gt;; Simon H WANG &lt;simonwan=
+g@hkbu.edu.hk&gt;; 22231153@life.hkbu.edu.hk &lt;22231153@life.hkbu.edu.hk&=
+gt;; John DELLA PIETRA &lt;johndp@hkbu.edu.hk&gt;; Kaitai ZHANG &lt;zhang_k=
+t@hkbu.edu.hk&gt;<br>
+<b>Subject:</b> Re: Chinese Med Avatar Update - Next Steps</font>
+<div>&nbsp;</div>
+</div>
+<style type=3D"text/css" style=3D"display:none">
+<!--
+p
+	{margin-top:0;
+	margin-bottom:0}
+-->
+</style>
+<div dir=3D"ltr">
+<div class=3D"x_elementToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFo=
+nt,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-size:12pt; color:=
+rgb(0,0,0)">
+Dear Simon and all,</div>
+<div class=3D"x_elementToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFo=
+nt,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-size:12pt; color:=
+rgb(0,0,0)">
+<br>
+</div>
+<div class=3D"x_elementToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFo=
+nt,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-size:12pt; color:=
+rgb(0,0,0)">
+Thank you for the update.</div>
+<div class=3D"x_elementToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFo=
+nt,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-size:12pt; color:=
+rgb(0,0,0)">
+<br>
+</div>
+<div class=3D"x_elementToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFo=
+nt,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-size:12pt; color:=
+rgb(0,0,0)">
+My understanding is that the chatbot in the TCM project is designed for stu=
+dents' independent learning (mainly speaking practice), allowing them to in=
+teract and simulate conversations with English-speaking patients and collea=
+gues. The clinical scenarios, principles
+ of effective TCM communication, and sample dialogues have been shared with=
+ Simon and his team in July (see attached emails). Since the chatbot is int=
+ended for self-directed learning and practice, I do not think it is necessa=
+ry to develop formal lesson plans.&nbsp;</div>
+<div class=3D"x_elementToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFo=
+nt,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-size:12pt; color:=
+rgb(0,0,0)">
+<br>
+</div>
+<div class=3D"x_elementToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFo=
+nt,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-size:12pt; color:=
+rgb(0,0,0)">
+I agree that our next step should be to focus on developing different clini=
+cal scenarios based on the materials provided in July and thoroughly testin=
+g the avatar=92s responses in each case.</div>
+<div class=3D"x_elementToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFo=
+nt,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-size:12pt; color:=
+rgb(0,0,0)">
+<br>
+</div>
+<div class=3D"x_elementToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFo=
+nt,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-size:12pt; color:=
+rgb(0,0,0)">
+Many thanks.</div>
+<div class=3D"x_elementToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFo=
+nt,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-size:12pt; color:=
+rgb(0,0,0)">
+<br>
+</div>
+<div class=3D"x_elementToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFo=
+nt,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-size:12pt; color:=
+rgb(0,0,0)">
+Best,</div>
+<div class=3D"x_elementToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFo=
+nt,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-size:12pt; color:=
+rgb(0,0,0)">
+Ellie</div>
+<div class=3D"x_elementToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFo=
+nt,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-size:12pt; color:=
+rgb(0,0,0)">
+<br>
+</div>
+<div id=3D"x_appendonsend"></div>
+<hr tabindex=3D"-1" style=3D"display:inline-block; width:98%">
+<div id=3D"x_divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" =
+color=3D"#000000" style=3D"font-size:11pt"><b>From:</b> Cissy Y X LI &lt;yx=
+li@hkbu.edu.hk&gt;<br>
+<b>Sent:</b> Wednesday, September 17, 2025 8:10 AM<br>
+<b>To:</b> Simon H WANG &lt;simonwang@hkbu.edu.hk&gt;; Yuen Yi LAW &lt;elli=
+elaw@hkbu.edu.hk&gt;; 22231153@life.hkbu.edu.hk &lt;22231153@life.hkbu.edu.=
+hk&gt;; John DELLA PIETRA &lt;johndp@hkbu.edu.hk&gt;; Kaitai ZHANG &lt;zhan=
+g_kt@hkbu.edu.hk&gt;<br>
+<b>Subject:</b> Re: Chinese Med Avatar Update - Next Steps</font>
+<div>&nbsp;</div>
+</div>
+<div>
+<div dir=3D"ltr" style=3D"font-family:Aptos,Aptos_MSFontService,-apple-syst=
+em,Roboto,Arial,Helvetica,sans-serif; font-size:12pt">
+Dear Simon,</div>
+<div dir=3D"ltr" style=3D"font-family:Aptos,Aptos_MSFontService,-apple-syst=
+em,Roboto,Arial,Helvetica,sans-serif; font-size:12pt">
+Thanks very much for the update.&nbsp;</div>
+<div dir=3D"ltr" style=3D"font-family:Aptos,Aptos_MSFontService,-apple-syst=
+em,Roboto,Arial,Helvetica,sans-serif; font-size:12pt">
+I was thinking TCM doctors do not have to use English when they communicate=
+ with each other. &nbsp;They use English when they see an English speaking =
+patient or meet with an English speaking colleague from another hospital. I=
+f this is the case, any clinical scenarios
+ in western medicine would be relevant. Our key objective is oral practice,=
+ not acquisition of TCM clinical knowledge.&nbsp;</div>
+<div dir=3D"ltr" style=3D"font-family:Aptos,Aptos_MSFontService,-apple-syst=
+em,Roboto,Arial,Helvetica,sans-serif; font-size:12pt">
+What do Ellie and John think?</div>
+<div dir=3D"ltr" style=3D"font-family:Aptos,Aptos_MSFontService,-apple-syst=
+em,Roboto,Arial,Helvetica,sans-serif; font-size:12pt">
+Happy to meet up and discuss more.</div>
+<div dir=3D"ltr" style=3D"font-family:Aptos,Aptos_MSFontService,-apple-syst=
+em,Roboto,Arial,Helvetica,sans-serif; font-size:12pt">
+Many thanks.</div>
+<div dir=3D"ltr" style=3D"font-family:Aptos,Aptos_MSFontService,-apple-syst=
+em,Roboto,Arial,Helvetica,sans-serif; font-size:12pt">
+Best</div>
+<div dir=3D"ltr" style=3D"font-family:Aptos,Aptos_MSFontService,-apple-syst=
+em,Roboto,Arial,Helvetica,sans-serif; font-size:12pt">
+Cissy</div>
+<div dir=3D"ltr" style=3D"font-family:Aptos,Aptos_MSFontService,-apple-syst=
+em,Roboto,Arial,Helvetica,sans-serif; font-size:12pt">
+<br>
+</div>
+<div dir=3D"ltr" style=3D"font-family:Aptos,Aptos_MSFontService,-apple-syst=
+em,Roboto,Arial,Helvetica,sans-serif; font-size:12pt">
+<br>
+</div>
+<div dir=3D"ltr" style=3D"font-family:Aptos,Aptos_MSFontService,-apple-syst=
+em,Roboto,Arial,Helvetica,sans-serif; font-size:12pt">
+<br>
+</div>
+<div id=3D"x_x_ms-outlook-mobile-body-separator-line" dir=3D"ltr"><br>
+</div>
+<div id=3D"x_x_ms-outlook-mobile-signature">Get <a href=3D"https://aka.ms/o=
+0ukef">Outlook for iOS</a></div>
+<hr tabindex=3D"-1" style=3D"display:inline-block; width:98%">
+<div id=3D"x_x_divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif=
+" color=3D"#000000" style=3D"font-size:11pt"><b>From:</b> Simon H WANG &lt;=
+simonwang@hkbu.edu.hk&gt;<br>
+<b>Sent:</b> Tuesday, September 16, 2025 11:04:15 PM<br>
+<b>To:</b> Cissy Y X LI &lt;yxli@hkbu.edu.hk&gt;; Yuen Yi LAW &lt;ellielaw@=
+hkbu.edu.hk&gt;; 22231153@life.hkbu.edu.hk &lt;22231153@life.hkbu.edu.hk&gt=
+;; John DELLA PIETRA &lt;johndp@hkbu.edu.hk&gt;; Kaitai ZHANG &lt;zhang_kt@=
+hkbu.edu.hk&gt;<br>
+<b>Subject:</b> Chinese Med Avatar Update - Next Steps</font>
+<div>&nbsp;</div>
+</div>
+<div style=3D"line-break:after-white-space">
+<div class=3D"x_x_x_Apple-Mail-URLShareUserContentTopClass"><span id=3D"x_x=
+_x_docs-internal-guid-ae772bb2-7fff-536e-4608-0dedd20eeef5">
+<p dir=3D"ltr" style=3D"line-height:1.38; margin-top:0pt; margin-bottom:0pt=
+"><span style=3D"font-size:11pt; font-family:Arial,sans-serif; font-variant=
+-ligatures:normal; font-variant-alternates:normal; font-variant-numeric:nor=
+mal; font-variant-east-asian:normal; vertical-align:baseline; white-space:p=
+re-wrap">Hi
+ Cissy and team,</span></p>
+<br>
+<p dir=3D"ltr" style=3D"line-height:1.38; margin-top:0pt; margin-bottom:0pt=
+"><span style=3D"font-size:11pt; font-family:Arial,sans-serif; font-variant=
+-ligatures:normal; font-variant-alternates:normal; font-variant-numeric:nor=
+mal; font-variant-east-asian:normal; vertical-align:baseline; white-space:p=
+re-wrap">Quick
+ update on our Chinese Medicine Avatar project and where we're heading.</sp=
+an></p>
+<h2 dir=3D"ltr" style=3D"line-height:1.38; margin-top:18pt; margin-bottom:6=
+pt"><span style=3D"font-size:16pt; font-family:Arial,sans-serif; font-weigh=
+t:400; font-variant-ligatures:normal; font-variant-alternates:normal; font-=
+variant-numeric:normal; font-variant-east-asian:normal; vertical-align:base=
+line; white-space:pre-wrap">Current
+ Status</span></h2>
+<p dir=3D"ltr" style=3D"line-height:1.38; margin-top:0pt; margin-bottom:0pt=
+"><span style=3D"font-size:11pt; font-family:Arial,sans-serif; font-variant=
+-ligatures:normal; font-variant-alternates:normal; font-variant-numeric:nor=
+mal; font-variant-east-asian:normal; vertical-align:baseline; white-space:p=
+re-wrap">Good
+ news - we have HeyGen working for avatar streaming. However, given the cos=
+ts, we're planning to develop our own in-house solution longer term.</span>=
+</p>
+<h2 dir=3D"ltr" style=3D"line-height:1.38; margin-top:18pt; margin-bottom:6=
+pt"><span style=3D"font-size:16pt; font-family:Arial,sans-serif; font-weigh=
+t:400; font-variant-ligatures:normal; font-variant-alternates:normal; font-=
+variant-numeric:normal; font-variant-east-asian:normal; vertical-align:base=
+line; white-space:pre-wrap">Two-Path
+ Approach</span></h2>
+<p dir=3D"ltr" style=3D"line-height:1.38; margin-top:0pt; margin-bottom:0pt=
+"><span style=3D"font-size:11pt; font-family:Arial,sans-serif; font-weight:=
+700; font-variant-ligatures:normal; font-variant-alternates:normal; font-va=
+riant-numeric:normal; font-variant-east-asian:normal; vertical-align:baseli=
+ne; white-space:pre-wrap">Option
+ 1: HeyGen Testing (Available Now)</span></p>
+<br>
+<ul style=3D"margin-top:0px; margin-bottom:0px">
+<li dir=3D"ltr" aria-level=3D"1" style=3D"list-style-type:disc; font-size:1=
+1pt; font-family:Arial,sans-serif; font-variant-ligatures:normal; font-vari=
+ant-alternates:normal; font-variant-numeric:normal; font-variant-east-asian=
+:normal; vertical-align:baseline; white-space:pre">
+<p dir=3D"ltr" role=3D"presentation" style=3D"line-height:1.38; margin-top:=
+0pt; margin-bottom:0pt">
+<span style=3D"font-size:11pt; font-variant-ligatures:normal; font-variant-=
+alternates:normal; font-variant-numeric:normal; font-variant-east-asian:nor=
+mal; vertical-align:baseline; white-space:pre-wrap">We can use HeyGen for i=
+mmediate testing and demos</span></p>
+</li><li dir=3D"ltr" aria-level=3D"1" style=3D"list-style-type:disc; font-s=
+ize:11pt; font-family:Arial,sans-serif; font-variant-ligatures:normal; font=
+-variant-alternates:normal; font-variant-numeric:normal; font-variant-east-=
+asian:normal; vertical-align:baseline; white-space:pre">
+<p dir=3D"ltr" role=3D"presentation" style=3D"line-height:1.38; margin-top:=
+0pt; margin-bottom:0pt">
+<span style=3D"font-size:11pt; font-variant-ligatures:normal; font-variant-=
+alternates:normal; font-variant-numeric:normal; font-variant-east-asian:nor=
+mal; vertical-align:baseline; white-space:pre-wrap">Good for validating con=
+cepts while we build our own tech</span></p>
+</li></ul>
+<br>
+<p dir=3D"ltr" style=3D"line-height:1.38; margin-top:0pt; margin-bottom:0pt=
+"><span style=3D"font-size:11pt; font-family:Arial,sans-serif; font-weight:=
+700; font-variant-ligatures:normal; font-variant-alternates:normal; font-va=
+riant-numeric:normal; font-variant-east-asian:normal; vertical-align:baseli=
+ne; white-space:pre-wrap">Option
+ 2: In-House Development (Medium Term)</span></p>
+<br>
+<ul style=3D"margin-top:0px; margin-bottom:0px">
+<li dir=3D"ltr" aria-level=3D"1" style=3D"list-style-type:disc; font-size:1=
+1pt; font-family:Arial,sans-serif; font-variant-ligatures:normal; font-vari=
+ant-alternates:normal; font-variant-numeric:normal; font-variant-east-asian=
+:normal; vertical-align:baseline; white-space:pre">
+<p dir=3D"ltr" role=3D"presentation" style=3D"line-height:1.38; margin-top:=
+0pt; margin-bottom:0pt">
+<span style=3D"font-size:11pt; font-variant-ligatures:normal; font-variant-=
+alternates:normal; font-variant-numeric:normal; font-variant-east-asian:nor=
+mal; vertical-align:baseline; white-space:pre-wrap">Custom solution that's =
+cost-effective and tailored to our
+ needs</span></p>
+</li><li dir=3D"ltr" aria-level=3D"1" style=3D"list-style-type:disc; font-s=
+ize:11pt; font-family:Arial,sans-serif; font-variant-ligatures:normal; font=
+-variant-alternates:normal; font-variant-numeric:normal; font-variant-east-=
+asian:normal; vertical-align:baseline; white-space:pre">
+<p dir=3D"ltr" role=3D"presentation" style=3D"line-height:1.38; margin-top:=
+0pt; margin-bottom:0pt">
+<span style=3D"font-size:11pt; font-variant-ligatures:normal; font-variant-=
+alternates:normal; font-variant-numeric:normal; font-variant-east-asian:nor=
+mal; vertical-align:baseline; white-space:pre-wrap">Will be ready once we n=
+ail down the pedagogical approach</span></p>
+</li></ul>
+<h2 dir=3D"ltr" style=3D"line-height:1.38; margin-top:18pt; margin-bottom:6=
+pt"><span style=3D"font-size:16pt; font-family:Arial,sans-serif; font-weigh=
+t:400; font-variant-ligatures:normal; font-variant-alternates:normal; font-=
+variant-numeric:normal; font-variant-east-asian:normal; vertical-align:base=
+line; white-space:pre-wrap">Immediate
+ Focus: Text-Based Testing</span></h2>
+<p dir=3D"ltr" style=3D"line-height:1.38; margin-top:0pt; margin-bottom:0pt=
+"><span style=3D"font-size:11pt; font-family:Arial,sans-serif; font-variant=
+-ligatures:normal; font-variant-alternates:normal; font-variant-numeric:nor=
+mal; font-variant-east-asian:normal; vertical-align:baseline; white-space:p=
+re-wrap">Let's
+ prioritize testing scenarios and prompts before adding avatar complexity. =
+We have two platforms ready:</span></p>
+<br>
+<p dir=3D"ltr" style=3D"line-height:1.38; margin-top:0pt; margin-bottom:0pt=
+"><span style=3D"font-size:11pt; font-family:Arial,sans-serif; font-weight:=
+700; font-variant-ligatures:normal; font-variant-alternates:normal; font-va=
+riant-numeric:normal; font-variant-east-asian:normal; vertical-align:baseli=
+ne; white-space:pre-wrap">Clinical
+ Handover Testing:</span></p>
+<br>
+<ul style=3D"margin-top:0px; margin-bottom:0px">
+<li dir=3D"ltr" aria-level=3D"1" style=3D"list-style-type:disc; font-size:1=
+1pt; font-family:Arial,sans-serif; font-variant-ligatures:normal; font-vari=
+ant-alternates:normal; font-variant-numeric:normal; font-variant-east-asian=
+:normal; vertical-align:baseline; white-space:pre">
+<p dir=3D"ltr" role=3D"presentation" style=3D"line-height:1.38; margin-top:=
+0pt; margin-bottom:0pt">
+<span style=3D"font-size:11pt; font-variant-ligatures:normal; font-variant-=
+alternates:normal; font-variant-numeric:normal; font-variant-east-asian:nor=
+mal; vertical-align:baseline; white-space:pre-wrap">Updated URL:
+</span><a href=3D"https://lessons.hkbu.tech/api/AccessLessons/ChineseMedTut=
+orWebsite" style=3D"text-decoration:none"><span style=3D"font-size:11pt; co=
+lor:rgb(17,85,204); font-variant-ligatures:normal; font-variant-alternates:=
+normal; font-variant-numeric:normal; font-variant-east-asian:normal; text-d=
+ecoration:underline; vertical-align:baseline; white-space:pre-wrap">https:/=
+/lessons.hkbu.tech/api/AccessLessons/ChineseMedTutorWebsite</span></a></p>
+</li><li dir=3D"ltr" aria-level=3D"1" style=3D"list-style-type:disc; font-s=
+ize:11pt; font-family:Arial,sans-serif; font-variant-ligatures:normal; font=
+-variant-alternates:normal; font-variant-numeric:normal; font-variant-east-=
+asian:normal; vertical-align:baseline; white-space:pre">
+<p dir=3D"ltr" role=3D"presentation" style=3D"line-height:1.38; margin-top:=
+0pt; margin-bottom:0pt">
+<span style=3D"font-size:11pt; font-variant-ligatures:normal; font-variant-=
+alternates:normal; font-variant-numeric:normal; font-variant-east-asian:nor=
+mal; vertical-align:baseline; white-space:pre-wrap">Ready for student testi=
+ng</span></p>
+</li></ul>
+<br>
+<p dir=3D"ltr" style=3D"line-height:1.38; margin-top:0pt; margin-bottom:0pt=
+"><span style=3D"font-size:11pt; font-family:Arial,sans-serif; font-weight:=
+700; font-variant-ligatures:normal; font-variant-alternates:normal; font-va=
+riant-numeric:normal; font-variant-east-asian:normal; vertical-align:baseli=
+ne; white-space:pre-wrap">New
+ Prototype Platform:</span></p>
+<br>
+<ul style=3D"margin-top:0px; margin-bottom:0px">
+<li dir=3D"ltr" aria-level=3D"1" style=3D"list-style-type:disc; font-size:1=
+1pt; font-family:Arial,sans-serif; font-variant-ligatures:normal; font-vari=
+ant-alternates:normal; font-variant-numeric:normal; font-variant-east-asian=
+:normal; vertical-align:baseline; white-space:pre">
+<p dir=3D"ltr" role=3D"presentation" style=3D"line-height:1.38; margin-top:=
+0pt; margin-bottom:0pt">
+<span style=3D"font-size:11pt; font-variant-ligatures:normal; font-variant-=
+alternates:normal; font-variant-numeric:normal; font-variant-east-asian:nor=
+mal; vertical-align:baseline; white-space:pre-wrap">textbot.hkbu.tech - we =
+can set up prototypes here</span></p>
+</li><li dir=3D"ltr" aria-level=3D"1" style=3D"list-style-type:disc; font-s=
+ize:11pt; font-family:Arial,sans-serif; font-variant-ligatures:normal; font=
+-variant-alternates:normal; font-variant-numeric:normal; font-variant-east-=
+asian:normal; vertical-align:baseline; white-space:pre">
+<p dir=3D"ltr" role=3D"presentation" style=3D"line-height:1.38; margin-top:=
+0pt; margin-bottom:0pt">
+<span style=3D"font-size:11pt; font-variant-ligatures:normal; font-variant-=
+alternates:normal; font-variant-numeric:normal; font-variant-east-asian:nor=
+mal; vertical-align:baseline; white-space:pre-wrap">Perfect for testing dif=
+ferent prompts and scenarios</span></p>
+</li></ul>
+<h2 dir=3D"ltr" style=3D"line-height:1.38; margin-top:18pt; margin-bottom:6=
+pt"><span style=3D"font-size:16pt; font-family:Arial,sans-serif; font-weigh=
+t:400; font-variant-ligatures:normal; font-variant-alternates:normal; font-=
+variant-numeric:normal; font-variant-east-asian:normal; vertical-align:base=
+line; white-space:pre-wrap">Next
+ Steps</span></h2>
+<p dir=3D"ltr" style=3D"line-height:1.38; margin-top:0pt; margin-bottom:0pt=
+"><span style=3D"font-size:11pt; font-family:Arial,sans-serif; font-weight:=
+700; font-variant-ligatures:normal; font-variant-alternates:normal; font-va=
+riant-numeric:normal; font-variant-east-asian:normal; vertical-align:baseli=
+ne; white-space:pre-wrap">For
+ Cissy &amp; Ellie &amp; John (Pedagogical Focus):</span></p>
+<br>
+<ul style=3D"margin-top:0px; margin-bottom:0px">
+<li dir=3D"ltr" aria-level=3D"1" style=3D"list-style-type:disc; font-size:1=
+1pt; font-family:Arial,sans-serif; font-variant-ligatures:normal; font-vari=
+ant-alternates:normal; font-variant-numeric:normal; font-variant-east-asian=
+:normal; vertical-align:baseline; white-space:pre">
+<p dir=3D"ltr" role=3D"presentation" style=3D"line-height:1.38; margin-top:=
+0pt; margin-bottom:0pt">
+<span style=3D"font-size:11pt; font-variant-ligatures:normal; font-variant-=
+alternates:normal; font-variant-numeric:normal; font-variant-east-asian:nor=
+mal; vertical-align:baseline; white-space:pre-wrap">Design lesson plans for=
+ interactive tutoring scenarios</span></p>
+</li><li dir=3D"ltr" aria-level=3D"1" style=3D"list-style-type:disc; font-s=
+ize:11pt; font-family:Arial,sans-serif; font-variant-ligatures:normal; font=
+-variant-alternates:normal; font-variant-numeric:normal; font-variant-east-=
+asian:normal; vertical-align:baseline; white-space:pre">
+<p dir=3D"ltr" role=3D"presentation" style=3D"line-height:1.38; margin-top:=
+0pt; margin-bottom:0pt">
+<span style=3D"font-size:11pt; font-variant-ligatures:normal; font-variant-=
+alternates:normal; font-variant-numeric:normal; font-variant-east-asian:nor=
+mal; vertical-align:baseline; white-space:pre-wrap">Test different clinical=
+ handover situations</span></p>
+</li><li dir=3D"ltr" aria-level=3D"1" style=3D"list-style-type:disc; font-s=
+ize:11pt; font-family:Arial,sans-serif; font-variant-ligatures:normal; font=
+-variant-alternates:normal; font-variant-numeric:normal; font-variant-east-=
+asian:normal; vertical-align:baseline; white-space:pre">
+<p dir=3D"ltr" role=3D"presentation" style=3D"line-height:1.38; margin-top:=
+0pt; margin-bottom:0pt">
+<span style=3D"font-size:11pt; font-variant-ligatures:normal; font-variant-=
+alternates:normal; font-variant-numeric:normal; font-variant-east-asian:nor=
+mal; vertical-align:baseline; white-space:pre-wrap">Define what makes a goo=
+d TCM conversation</span></p>
+</li></ul>
+<br>
+<p dir=3D"ltr" style=3D"line-height:1.38; margin-top:0pt; margin-bottom:0pt=
+"><span style=3D"font-size:11pt; font-family:Arial,sans-serif; font-weight:=
+700; font-variant-ligatures:normal; font-variant-alternates:normal; font-va=
+riant-numeric:normal; font-variant-east-asian:normal; vertical-align:baseli=
+ne; white-space:pre-wrap">For
+ Andy (Part-time Student Helper) &amp; Kaitai (Full-time Developer):</span>=
+</p>
+<br>
+<ul style=3D"margin-top:0px; margin-bottom:0px">
+<li dir=3D"ltr" aria-level=3D"1" style=3D"list-style-type:disc; font-size:1=
+1pt; font-family:Arial,sans-serif; font-variant-ligatures:normal; font-vari=
+ant-alternates:normal; font-variant-numeric:normal; font-variant-east-asian=
+:normal; vertical-align:baseline; white-space:pre">
+<p dir=3D"ltr" role=3D"presentation" style=3D"line-height:1.38; margin-top:=
+0pt; margin-bottom:0pt">
+<span style=3D"font-size:11pt; font-variant-ligatures:normal; font-variant-=
+alternates:normal; font-variant-numeric:normal; font-variant-east-asian:nor=
+mal; vertical-align:baseline; white-space:pre-wrap">Set up prototypes on te=
+xtbot.hkbu.tech</span></p>
+</li><li dir=3D"ltr" aria-level=3D"1" style=3D"list-style-type:disc; font-s=
+ize:11pt; font-family:Arial,sans-serif; font-variant-ligatures:normal; font=
+-variant-alternates:normal; font-variant-numeric:normal; font-variant-east-=
+asian:normal; vertical-align:baseline; white-space:pre">
+<p dir=3D"ltr" role=3D"presentation" style=3D"line-height:1.38; margin-top:=
+0pt; margin-bottom:0pt">
+<span style=3D"font-size:11pt; font-variant-ligatures:normal; font-variant-=
+alternates:normal; font-variant-numeric:normal; font-variant-east-asian:nor=
+mal; vertical-align:baseline; white-space:pre-wrap">Test various prompts an=
+d responses</span></p>
+</li><li dir=3D"ltr" aria-level=3D"1" style=3D"list-style-type:disc; font-s=
+ize:11pt; font-family:Arial,sans-serif; font-variant-ligatures:normal; font=
+-variant-alternates:normal; font-variant-numeric:normal; font-variant-east-=
+asian:normal; vertical-align:baseline; white-space:pre">
+<p dir=3D"ltr" role=3D"presentation" style=3D"line-height:1.38; margin-top:=
+0pt; margin-bottom:0pt">
+<span style=3D"font-size:11pt; font-variant-ligatures:normal; font-variant-=
+alternates:normal; font-variant-numeric:normal; font-variant-east-asian:nor=
+mal; vertical-align:baseline; white-space:pre-wrap">Support pedagogical tea=
+m with technical implementation</span></p>
+</li></ul>
+<h2 dir=3D"ltr" style=3D"line-height:1.38; margin-top:18pt; margin-bottom:6=
+pt"><span style=3D"font-size:16pt; font-family:Arial,sans-serif; font-weigh=
+t:400; font-variant-ligatures:normal; font-variant-alternates:normal; font-=
+variant-numeric:normal; font-variant-east-asian:normal; vertical-align:base=
+line; white-space:pre-wrap">The
+ Plan Moving Forward</span></h2>
+<ol style=3D"margin-top:0px; margin-bottom:0px">
+<li dir=3D"ltr" aria-level=3D"1" style=3D"list-style-type:decimal; font-siz=
+e:11pt; font-family:Arial,sans-serif; font-variant-ligatures:normal; font-v=
+ariant-alternates:normal; font-variant-numeric:normal; font-variant-east-as=
+ian:normal; vertical-align:baseline; white-space:pre">
+<p dir=3D"ltr" role=3D"presentation" style=3D"line-height:1.38; margin-top:=
+0pt; margin-bottom:0pt">
+<span style=3D"font-size:11pt; font-weight:700; font-variant-ligatures:norm=
+al; font-variant-alternates:normal; font-variant-numeric:normal; font-varia=
+nt-east-asian:normal; vertical-align:baseline; white-space:pre-wrap">Focus =
+on scenarios first</span><span style=3D"font-size:11pt; font-variant-ligatu=
+res:normal; font-variant-alternates:normal; font-variant-numeric:normal; fo=
+nt-variant-east-asian:normal; vertical-align:baseline; white-space:pre-wrap=
+">
+ - get the educational content right</span></p>
+</li><li dir=3D"ltr" aria-level=3D"1" style=3D"list-style-type:decimal; fon=
+t-size:11pt; font-family:Arial,sans-serif; font-variant-ligatures:normal; f=
+ont-variant-alternates:normal; font-variant-numeric:normal; font-variant-ea=
+st-asian:normal; vertical-align:baseline; white-space:pre">
+<p dir=3D"ltr" role=3D"presentation" style=3D"line-height:1.38; margin-top:=
+0pt; margin-bottom:0pt">
+<span style=3D"font-size:11pt; font-weight:700; font-variant-ligatures:norm=
+al; font-variant-alternates:normal; font-variant-numeric:normal; font-varia=
+nt-east-asian:normal; vertical-align:baseline; white-space:pre-wrap">Test e=
+xtensively</span><span style=3D"font-size:11pt; font-variant-ligatures:norm=
+al; font-variant-alternates:normal; font-variant-numeric:normal; font-varia=
+nt-east-asian:normal; vertical-align:baseline; white-space:pre-wrap">
+ with text-based interactions</span></p>
+</li><li dir=3D"ltr" aria-level=3D"1" style=3D"list-style-type:decimal; fon=
+t-size:11pt; font-family:Arial,sans-serif; font-variant-ligatures:normal; f=
+ont-variant-alternates:normal; font-variant-numeric:normal; font-variant-ea=
+st-asian:normal; vertical-align:baseline; white-space:pre">
+<p dir=3D"ltr" role=3D"presentation" style=3D"line-height:1.38; margin-top:=
+0pt; margin-bottom:0pt">
+<span style=3D"font-size:11pt; font-weight:700; font-variant-ligatures:norm=
+al; font-variant-alternates:normal; font-variant-numeric:normal; font-varia=
+nt-east-asian:normal; vertical-align:baseline; white-space:pre-wrap">Design=
+ lesson plans</span><span style=3D"font-size:11pt; font-variant-ligatures:n=
+ormal; font-variant-alternates:normal; font-variant-numeric:normal; font-va=
+riant-east-asian:normal; vertical-align:baseline; white-space:pre-wrap">
+ that actually work for students</span></p>
+</li><li dir=3D"ltr" aria-level=3D"1" style=3D"list-style-type:decimal; fon=
+t-size:11pt; font-family:Arial,sans-serif; font-variant-ligatures:normal; f=
+ont-variant-alternates:normal; font-variant-numeric:normal; font-variant-ea=
+st-asian:normal; vertical-align:baseline; white-space:pre">
+<p dir=3D"ltr" role=3D"presentation" style=3D"line-height:1.38; margin-top:=
+0pt; margin-bottom:0pt">
+<span style=3D"font-size:11pt; font-weight:700; font-variant-ligatures:norm=
+al; font-variant-alternates:normal; font-variant-numeric:normal; font-varia=
+nt-east-asian:normal; vertical-align:baseline; white-space:pre-wrap">Build =
+tech solution</span><span style=3D"font-size:11pt; font-variant-ligatures:n=
+ormal; font-variant-alternates:normal; font-variant-numeric:normal; font-va=
+riant-east-asian:normal; vertical-align:baseline; white-space:pre-wrap">
+ once we know exactly what we need</span></p>
+</li></ol>
+<br>
+<p dir=3D"ltr" style=3D"line-height:1.38; margin-top:0pt; margin-bottom:0pt=
+"><span style=3D"font-size:11pt; font-family:Arial,sans-serif; font-variant=
+-ligatures:normal; font-variant-alternates:normal; font-variant-numeric:nor=
+mal; font-variant-east-asian:normal; vertical-align:baseline; white-space:p=
+re-wrap">The
+ streaming avatar tech will be ready when our pedagogical solution is solid=
+. Better to get the teaching approach right first, then add the bells and w=
+histles.</span></p>
+<br>
+<p dir=3D"ltr" style=3D"line-height:1.38; margin-top:0pt; margin-bottom:0pt=
+"><span style=3D"font-size:11pt; font-family:Arial,sans-serif; font-variant=
+-ligatures:normal; font-variant-alternates:normal; font-variant-numeric:nor=
+mal; font-variant-east-asian:normal; vertical-align:baseline; white-space:p=
+re-wrap">Thoughts?
+ Happy to discuss this week.</span></p>
+<br>
+<p dir=3D"ltr" style=3D"line-height:1.38; margin-top:0pt; margin-bottom:0pt=
+"><span style=3D"font-size:11pt; font-family:Arial,sans-serif; font-variant=
+-ligatures:normal; font-variant-alternates:normal; font-variant-numeric:nor=
+mal; font-variant-east-asian:normal; vertical-align:baseline; white-space:p=
+re-wrap">Simon</span></p>
+<br>
+<p dir=3D"ltr" style=3D"line-height:1.38; margin-top:0pt; margin-bottom:0pt=
+"></p>
+<hr>
+<p></p>
+<br>
+<p dir=3D"ltr" style=3D"line-height:1.38; margin-top:0pt; margin-bottom:0pt=
+"><span style=3D"font-size:11pt; font-family:Arial,sans-serif; font-weight:=
+700; font-variant-ligatures:normal; font-variant-alternates:normal; font-va=
+riant-numeric:normal; font-variant-east-asian:normal; vertical-align:baseli=
+ne; white-space:pre-wrap">Quick
+ Links:</span></p>
+<br>
+<ul style=3D"margin-top:0px; margin-bottom:0px">
+<li dir=3D"ltr" aria-level=3D"1" style=3D"list-style-type:disc; font-size:1=
+1pt; font-family:Arial,sans-serif; font-variant-ligatures:normal; font-vari=
+ant-alternates:normal; font-variant-numeric:normal; font-variant-east-asian=
+:normal; vertical-align:baseline; white-space:pre">
+<p dir=3D"ltr" role=3D"presentation" style=3D"line-height:1.38; margin-top:=
+0pt; margin-bottom:0pt">
+<span style=3D"font-size:11pt; font-variant-ligatures:normal; font-variant-=
+alternates:normal; font-variant-numeric:normal; font-variant-east-asian:nor=
+mal; vertical-align:baseline; white-space:pre-wrap">Clinical Handover:
+</span><a href=3D"https://lessons.hkbu.tech/api/AccessLessons/ChineseMedTut=
+orWebsite" style=3D"text-decoration:none"><span style=3D"font-size:11pt; co=
+lor:rgb(17,85,204); font-variant-ligatures:normal; font-variant-alternates:=
+normal; font-variant-numeric:normal; font-variant-east-asian:normal; text-d=
+ecoration:underline; vertical-align:baseline; white-space:pre-wrap">https:/=
+/lessons.hkbu.tech/api/AccessLessons/ChineseMedTutorWebsite</span></a></p>
+</li><li dir=3D"ltr" aria-level=3D"1" style=3D"list-style-type:disc; font-s=
+ize:11pt; font-family:Arial,sans-serif; font-variant-ligatures:normal; font=
+-variant-alternates:normal; font-variant-numeric:normal; font-variant-east-=
+asian:normal; vertical-align:baseline; white-space:pre">
+<p dir=3D"ltr" role=3D"presentation" style=3D"line-height:1.38; margin-top:=
+0pt; margin-bottom:0pt">
+<span style=3D"font-size:11pt; font-variant-ligatures:normal; font-variant-=
+alternates:normal; font-variant-numeric:normal; font-variant-east-asian:nor=
+mal; vertical-align:baseline; white-space:pre-wrap">Prototype Platform: tex=
+tbot.hkbu.tech</span></p>
+</li></ul>
+<br>
+</span></div>
+<div id=3D"x_x_x_disclaimer">
+<hr>
+<table border=3D"0" style=3D"margin:10px auto; width:95%">
+<tbody>
+<tr bgcolor=3D"#ffffff">
+<td colspan=3D"2"><img width=3D"260" alt=3D"Baptist University Logo" border=
+=3D"0" style=3D"width:260px; max-width:260px; height:auto" src=3D"https://s=
+taffweb.hkbu.edu.hk/BU-logo.png">
+<p style=3D"padding:0px 8px 1px; color:#a0a0a0; line-height:13px; font-fami=
+ly:Calibri,Helvetica,Arial,sans-serif; font-size:10px; font-weight:bolder">
+Disclaimer<br>
+<br>
+This message (including any attachments) may contain confidential informati=
+on intended for a specific individual and/or purpose. If you are not the in=
+tended recipient, please delete this message and notify the sender immediat=
+ely. Any disclosure, copying, or
+ distribution of this message, or the taking of any action based on it, is =
+prohibited as it may be unlawful or may lead to disciplinary action.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
+
+--_000_SEZPR02MB8371B446F0EE70A6C42799F58E17ASEZPR02MB8371apcp_--

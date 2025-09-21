@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCM Communication Practice Simulator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .avatar-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .chat-bubble-user {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .chat-bubble-ai {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen">
+        <!-- Header -->
+        <header class="bg-white shadow-sm border-b">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center py-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-sm">TCM</span>
+                        </div>
+                        <h1 class="text-xl font-semibold text-gray-900">Communication Practice Simulator</h1>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <select id="scenarioSelect" class="border border-gray-300 rounded-md px-3 py-2 text-sm">
+                            <option value="clinical-interview">Clinical Interview</option>
+                            <option value="tcm-concepts">TCM Concepts Explanation</option>
+                            <option value="treatment-plan">Treatment Plan Discussion</option>
+                            <option value="difficult-conversation">Handling Difficult Conversations</option>
+                            <option value="patient-referral">Patient Referral</option>
+                        </select>
+                        <button id="resetBtn" class="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 text-sm">
+                            Reset Session
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                
+                <!-- Avatar Section -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-lg shadow-sm border p-6">
+                        <h2 class="text-lg font-medium text-gray-900 mb-4">Virtual Patient/Colleague</h2>
+                        
+                        <!-- Avatar Display -->
+                        <div class="avatar-container rounded-lg p-8 mb-4 text-center">
+                            <div id="avatarPlaceholder" class="w-32 h-32 mx-auto bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                                <span class="text-white text-4xl">👨‍⚕️</span>
+                            </div>
+                            <div id="avatarVideo" class="hidden w-full h-48 bg-black rounded-lg">
+                                <!-- HeyGen avatar video will be embedded here -->
+                                <video id="avatarVideoElement" class="w-full h-full rounded-lg" autoplay muted></video>
+                            </div>
+                            <p class="text-white mt-3 font-medium" id="avatarName">Dr. Chen Wei</p>
+                            <p class="text-white text-sm opacity-90" id="avatarRole">TCM Practitioner</p>
+                        </div>
+
+                        <!-- Avatar Status -->
+                        <div class="flex items-center space-x-2 mb-4">
+                            <div id="statusIndicator" class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            <span class="text-sm text-gray-600" id="statusText">Ready to practice</span>
+                        </div>
+
+                        <!-- Scenario Information -->
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h3 class="font-medium text-gray-900 mb-2">Current Scenario</h3>
+                            <p class="text-sm text-gray-600" id="scenarioDescription">
+                                You are conducting a clinical interview with a patient who has concerns about traditional Chinese medicine treatments.
+                            </p>
+                        </div>
+
+                        <!-- Voice Controls -->
+                        <div class="mt-4 space-y-3">
+                            <button id="startVoiceBtn" class="w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 flex items-center justify-center space-x-2">
+                                <span>🎤</span>
+                                <span>Start Voice Practice</span>
+                            </button>
+                            <button id="stopVoiceBtn" class="w-full px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 hidden">
+                                Stop Recording
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Interface -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-lg shadow-sm border flex flex-col h-[600px]">
+                        
+                        <!-- Chat Header -->
+                        <div class="border-b px-6 py-4">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-medium text-gray-900">Practice Session</h3>
+                                <div class="flex items-center space-x-3">
+                                    <div class="flex items-center space-x-1">
+                                        <span class="text-sm text-gray-500">Framework:</span>
+                                        <span class="text-sm font-medium text-blue-600" id="currentFramework">Calgary-Cambridge Guide</span>
+                                    </div>
+                                    <button id="showGuidelinesBtn" class="text-sm text-blue-600 hover:text-blue-800">
+                                        Show Guidelines
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chat Messages -->
+                        <div id="chatMessages" class="flex-1 overflow-y-auto p-6 space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-pink-500 rounded-full flex items-center justify-center">
+                                    <span class="text-white text-sm">AI</span>
+                                </div>
+                                <div class="chat-bubble-ai text-white rounded-lg px-4 py-2 max-w-xs">
+                                    <p class="text-sm">Hello! I'm here to practice TCM communication with you. What would you like to focus on today?</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chat Input -->
+                        <div class="border-t px-6 py-4">
+                            <div class="flex space-x-3">
+                                <input 
+                                    type="text" 
+                                    id="messageInput" 
+                                    placeholder="Type your message or use voice input..."
+                                    class="flex-1 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                >
+                                <button id="sendBtn" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+                                    Send
+                                </button>
+                            </div>
+                            <div class="mt-2 flex items-center space-x-4">
+                                <button id="voiceInputBtn" class="text-sm text-gray-600 hover:text-gray-800 flex items-center space-x-1">
+                                    <span>🎤</span>
+                                    <span>Voice Input</span>
+                                </button>
+                                <button id="clearChatBtn" class="text-sm text-gray-600 hover:text-gray-800">
+                                    Clear Chat
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Guidelines Modal -->
+            <div id="guidelinesModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                <div class="bg-white rounded-lg max-w-2xl w-full mx-4 max-h-[80vh] overflow-y-auto">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-medium text-gray-900">Communication Guidelines</h3>
+                            <button id="closeGuidelinesBtn" class="text-gray-400 hover:text-gray-600">
+                                <span class="text-2xl">&times;</span>
+                            </button>
+                        </div>
+                        <div id="guidelinesContent" class="prose prose-sm max-w-none">
+                            <h4>Calgary-Cambridge Guide - Clinical Interview</h4>
+                            <ul>
+                                <li><strong>Building rapport:</strong> Establish connection with appropriate greeting and introduction</li>
+                                <li><strong>Understanding perspective:</strong> Explore patient's ideas, concerns, and expectations</li>
+                                <li><strong>TCM concepts (Items 33-46):</strong> Explain qi, yin-yang, five elements clearly in English</li>
+                                <li><strong>Treatment explanation (Items 47-52):</strong> Describe procedures, benefits, and potential outcomes</li>
+                            </ul>
+                            <h4>ISBAR Framework - Patient Referral</h4>
+                            <ul>
+                                <li><strong>Introduction:</strong> Identify yourself and patient</li>
+                                <li><strong>Situation:</strong> Current status and reason for referral</li>
+                                <li><strong>Background:</strong> Relevant medical history and TCM assessment</li>
+                                <li><strong>Assessment:</strong> Clinical findings and TCM diagnosis</li>
+                                <li><strong>Recommendation:</strong> Proposed actions and follow-up</li>
+                            </ul>
+                            <h4>SPIKES Protocol - Difficult Conversations</h4>
+                            <ul>
+                                <li><strong>Setting:</strong> Ensure appropriate environment</li>
+                                <li><strong>Perception:</strong> Assess patient's understanding</li>
+                                <li><strong>Invitation:</strong> Ask permission to share information</li>
+                                <li><strong>Knowledge:</strong> Share information clearly</li>
+                                <li><strong>Emotions:</strong> Respond to patient's emotional reactions</li>
+                                <li><strong>Strategy:</strong> Plan next steps together</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Scenario configurations
+        const scenarios = {
+            'clinical-interview': {
+                name: 'Clinical Interview',
+                description: 'You are conducting a clinical interview with a patient who has concerns about traditional Chinese medicine treatments.',
+                framework: 'Calgary-Cambridge Guide',
+                avatarName: 'Ms. Liu Ming',
+                avatarRole: 'Patient seeking TCM treatment',
+                initialMessage: 'Hello doctor. I\'ve heard about TCM but I\'m not sure if it\'s right for me. Can you explain how it works?'
+            },
+            'tcm-concepts': {
+                name: 'TCM Concepts Explanation',
+                description: 'Explain key TCM concepts like qi, yin-yang, and five elements to an English-speaking patient.',
+                framework: 'Calgary-Cambridge Guide (Items 33-46)',
+                avatarName: 'Mr. Johnson',
+                avatarRole: 'Western patient new to TCM',
+                initialMessage: 'I keep hearing about "qi" and "meridians" but I don\'t understand what they mean. Could you explain?'
+            },
+            'treatment-plan': {
+                name: 'Treatment Plan Discussion',
+                description: 'Discuss a comprehensive TCM treatment plan with a patient, explaining procedures and expected outcomes.',
+                framework: 'Calgary-Cambridge Guide (Items 47-52)',
+                avatarName: 'Mrs. Chen',
+                avatarRole: 'Patient requiring treatment plan',
+                initialMessage: 'Doctor, you mentioned acupuncture and herbs. How long will the treatment take and what should I expect?'
+            },
+            'difficult-conversation': {
+                name: 'Handling Difficult Conversations',
+                description: 'Navigate a challenging conversation about TCM treatment limitations or side effects.',
+                framework: 'SPIKES Protocol',
+                avatarName: 'Mr. Williams',
+                avatarRole: 'Concerned patient',
+                initialMessage: 'I\'ve been doing this TCM treatment for weeks and I don\'t feel any better. Are you sure this actually works?'
+            },
+            'patient-referral': {
+                name: 'Patient Referral',
+                description: 'Communicate with a Western medicine colleague about referring a TCM patient.',
+                framework: 'ISBAR Framework',
+                avatarName: 'Dr. Smith',
+                avatarRole: 'Western Medicine Physician',
+                initialMessage: 'I have a patient who\'s been seeing you for TCM. Can you update me on their progress and any recommendations?'
+            }
+        };
+
+        // Current scenario state
+        let currentScenario = 'clinical-interview';
+        let isRecording = false;
+        let recognition = null;
+
+        // DOM elements
+        const scenarioSelect = document.getElementById('scenarioSelect');
+        const avatarName = document.getElementById('avatarName');
+        const avatarRole = document.getElementById('avatarRole');
+        const scenarioDescription = document.getElementById('scenarioDescription');
+        const currentFramework = document.getElementById('currentFramework');
+        const chatMessages = document.getElementById('chatMessages');
+        const messageInput = document.getElementById('messageInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const clearChatBtn = document.getElementById('clearChatBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const guidelinesModal = document.getElementById('guidelinesModal');
+        const showGuidelinesBtn = document.getElementById('showGuidelinesBtn');
+        const closeGuidelinesBtn = document.getElementById('closeGuidelinesBtn');
+        const voiceInputBtn = document.getElementById('voiceInputBtn');
+        const startVoiceBtn = document.getElementById('startVoiceBtn');
+        const stopVoiceBtn = document.getElementById('stopVoiceBtn');
+
+        // Initialize scenario
+        function initializeScenario(scenarioKey) {
+            const scenario = scenarios[scenarioKey];
+            currentScenario = scenarioKey;
+            
+            avatarName.textContent = scenario.avatarName;
+            avatarRole.textContent = scenario.avatarRole;
+            scenarioDescription.textContent = scenario.description;
+            currentFramework.textContent = scenario.framework;
+            
+            // Clear chat and add initial message
+            clearChat();
+            addMessage('ai', scenario.initialMessage);
+        }
+
+        // Add message to chat
+        function addMessage(sender, message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'flex items-start space-x-3';
+            
+            if (sender === 'user') {
+                messageDiv.className += ' flex-row-reverse space-x-reverse';
+                messageDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                        <span class="text-white text-sm">You</span>
+                    </div>
+                    <div class="chat-bubble-user text-white rounded-lg px-4 py-2 max-w-xs">
+                        <p class="text-sm">${message}</p>
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-pink-500 rounded-full flex items-center justify-center">
+                        <span class="text-white text-sm">AI</span>
+                    </div>
+                    <div class="chat-bubble-ai text-white rounded-lg px-4 py-2 max-w-xs">
+                        <p class="text-sm">${message}</p>
+                    </div>
+                `;
+            }
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Simulate AI response
+        function simulateAIResponse(userMessage) {
+            const scenario = scenarios[currentScenario];
+            const responses = {
+                'clinical-interview': [
+                    'That\'s a great question. TCM focuses on balancing your body\'s energy, called qi. How are you feeling currently?',
+                    'I understand your concerns. Let me explain how TCM diagnosis works differently from Western medicine.',
+                    'Many patients have similar questions. TCM has been practiced for thousands of years. What specific symptoms brought you here?'
+                ],
+                'tcm-concepts': [
+                    'Qi is your body\'s vital energy that flows through channels called meridians. Think of it like electricity in your body.',
+                    'Yin and yang represent balance - like hot and cold, or rest and activity. When they\'re balanced, you feel healthy.',
+                    'The five elements - wood, fire, earth, metal, water - correspond to different organs and emotions in your body.'
+                ],
+                'treatment-plan': [
+                    'Your treatment will involve acupuncture twice a week and herbal medicine. Most patients see improvement within 4-6 weeks.',
+                    'The acupuncture points I\'ll use target your specific pattern of disharmony. You might feel a slight tingling sensation.',
+                    'The herbs work gradually to restore your body\'s balance. It\'s important to take them consistently as prescribed.'
+                ],
+                'difficult-conversation': [
+                    'I understand your frustration. TCM healing can take time as it addresses root causes, not just symptoms.',
+                    'Let\'s review your progress together. Sometimes improvements are subtle at first. Have you noticed any small changes?',
+                    'Your concerns are valid. Perhaps we need to adjust your treatment approach. Tell me more about how you\'re feeling.'
+                ],
+                'patient-referral': [
+                    'Thank you for the referral. The patient has been responding well to acupuncture and herbal therapy.',
+                    'Based on my TCM assessment, I recommend continued treatment for 4 more weeks, then reassessment.',
+                    'I\'d like to collaborate on this case. The patient might benefit from both approaches working together.'
+                ]
+            };
+            
+            const scenarioResponses = responses[currentScenario] || responses['clinical-interview'];
+            const randomResponse = scenarioResponses[Math.floor(Math.random() * scenarioResponses.length)];
+            
+            setTimeout(() => {
+                addMessage('ai', randomResponse);
+            }, 1000 + Math.random() * 2000);
+        }
+
+        // Clear chat
+        function clearChat() {
+            chatMessages.innerHTML = '';
+        }
+
+        // Initialize speech recognition
+        function initializeSpeechRecognition() {
+            if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                recognition = new SpeechRecognition();
+                recognition.continuous = false;
+                recognition.interimResults = false;
+                recognition.lang = 'en-US';
+                
+                recognition.onresult = function(event) {
+                    const transcript = event.results[0][0].transcript;
+                    messageInput.value = transcript;
+                };
+                
+                recognition.onerror = function(event) {
+                    console.error('Speech recognition error:', event.error);
+                };
+            }
+        }
+
+        // Event listeners
+        scenarioSelect.addEventListener('change', (e) => {
+            initializeScenario(e.target.value);
+        });
+
+        sendBtn.addEventListener('click', () => {
+            const message = messageInput.value.trim();
+            if (message) {
+                addMessage('user', message);
+                messageInput.value = '';
+                simulateAIResponse(message);
+            }
+        });
+
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendBtn.click();
+            }
+        });
+
+        clearChatBtn.addEventListener('click', () => {
+            clearChat();
+            const scenario = scenarios[currentScenario];
+            addMessage('ai', scenario.initialMessage);
+        });
+
+        resetBtn.addEventListener('click', () => {
+            initializeScenario(currentScenario);
+        });
+
+        showGuidelinesBtn.addEventListener('click', () => {
+            guidelinesModal.classList.remove('hidden');
+        });
+
+        closeGuidelinesBtn.addEventListener('click', () => {
+            guidelinesModal.classList.add('hidden');
+        });
+
+        voiceInputBtn.addEventListener('click', () => {
+            if (recognition) {
+                recognition.start();
+            } else {
+                alert('Speech recognition not supported in this browser');
+            }
+        });
+
+        startVoiceBtn.addEventListener('click', () => {
+            // Placeholder for HeyGen avatar integration
+            if (!isRecording) {
+                isRecording = true;
+                startVoiceBtn.classList.add('hidden');
+                stopVoiceBtn.classList.remove('hidden');
+                document.getElementById('statusText').textContent = 'Listening...';
+                document.getElementById('statusIndicator').className = 'w-3 h-3 bg-red-500 rounded-full animate-pulse';
+                
+                // Here you would integrate with HeyGen's streaming avatar API
+                console.log('Starting voice interaction with avatar...');
+            }
+        });
+
+        stopVoiceBtn.addEventListener('click', () => {
+            if (isRecording) {
+                isRecording = false;
+                stopVoiceBtn.classList.add('hidden');
+                startVoiceBtn.classList.remove('hidden');
+                document.getElementById('statusText').textContent = 'Ready to practice';
+                document.getElementById('statusIndicator').className = 'w-3 h-3 bg-green-500 rounded-full';
+                
+                console.log('Stopping voice interaction...');
+            }
+        });
+
+        // Initialize
+        initializeSpeechRecognition();
+        initializeScenario('clinical-interview');
+    </script>
+</body>
+</html>
