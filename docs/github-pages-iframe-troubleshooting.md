@@ -19,8 +19,8 @@ The target domain (textbot.hkbu.tech) may send X-Frame-Options headers that prev
 
 **Testing Commands:**
 ```bash
-curl -I https://textbot.hkbu.tech/chat/tcm-clinical-interview
-curl -I https://textbot.hkbu.tech/chat/tcm-concept-explanation
+curl -I https://textbot.hkbu.tech/avatar/tcm-clinical-interview
+curl -I https://textbot.hkbu.tech/avatar/tcm-concept-explanation
 ```
 
 ### 3. HTTPS/Mixed Content Issues
