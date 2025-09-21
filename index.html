@@ -60,6 +60,9 @@
                         <p>Choose a practice scenario from the Avatar Selection tab to start your session.</p>
                     </div>
                     <div class="practice-controls">
+                        <button class="control-btn" onclick="toggleInstructions()" id="show-instructions-btn">
+                            📚 Show Instructions
+                        </button>
                         <button class="control-btn" id="reset-session" disabled>
                             🔄 Reset Session
                         </button>
@@ -85,6 +88,137 @@
                                 <li>Apply the specific communication framework for each scenario</li>
                                 <li>Take notes on key insights and areas for improvement</li>
                             </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Instructions Panel (Hidden by default) -->
+                <div class="instructions-panel" id="instructions-panel" style="display: none;">
+                    <div class="instructions-header">
+                        <h3>📚 Practice Instructions & Assessment Guide</h3>
+                        <button class="instruction-toggle" onclick="toggleInstructions()">
+                            <span id="instruction-toggle-text">Hide Instructions</span>
+                        </button>
+                    </div>
+                    
+                    <div class="instructions-content">
+                        <div class="instruction-tabs">
+                            <button class="instruction-tab active" onclick="showInstructionTab('student')">👨‍🎓 For Students</button>
+                            <button class="instruction-tab" onclick="showInstructionTab('teacher')">👨‍🏫 For Teachers</button>
+                        </div>
+                        
+                        <div class="instruction-content active" id="student-instructions">
+                            <h4>How to Interact with the Avatar</h4>
+                            <div class="instruction-section">
+                                <h5>🎯 Before You Start:</h5>
+                                <ul>
+                                    <li>Review the patient scenario and communication framework</li>
+                                    <li>Prepare your opening questions and approach</li>
+                                    <li>Have a notepad ready for key insights</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="instruction-section">
+                                <h5>💬 During the Conversation:</h5>
+                                <ul>
+                                    <li><strong>Type your responses</strong> in the chat interface</li>
+                                    <li><strong>Use the provided framework</strong> to guide your questions</li>
+                                    <li><strong>Be empathetic</strong> and maintain professionalism</li>
+                                    <li><strong>Ask follow-up questions</strong> based on patient responses</li>
+                                    <li><strong>Practice active listening</strong> by acknowledging patient concerns</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="instruction-section">
+                                <h5>🔍 Key Areas to Focus On:</h5>
+                                <ul>
+                                    <li>Building rapport and trust</li>
+                                    <li>Gathering comprehensive information</li>
+                                    <li>Cultural sensitivity and awareness</li>
+                                    <li>Clear explanation of TCM concepts</li>
+                                    <li>Appropriate referral timing and communication</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="instruction-content" id="teacher-instructions">
+                            <h4>Assessment Guidelines for Educators</h4>
+                            <div class="instruction-section">
+                                <h5>📊 Evaluation Criteria:</h5>
+                                <div class="assessment-grid">
+                                    <div class="assessment-item">
+                                        <strong>Communication Skills (25%)</strong>
+                                        <ul>
+                                            <li>Professional tone and language</li>
+                                            <li>Empathy and active listening</li>
+                                            <li>Appropriate questioning techniques</li>
+                                        </ul>
+                                    </div>
+                                    <div class="assessment-item">
+                                        <strong>Framework Application (25%)</strong>
+                                        <ul>
+                                            <li>Proper use of suggested framework</li>
+                                            <li>Systematic approach to information gathering</li>
+                                            <li>Logical progression of conversation</li>
+                                        </ul>
+                                    </div>
+                                    <div class="assessment-item">
+                                        <strong>Cultural Competency (25%)</strong>
+                                        <ul>
+                                            <li>Cultural sensitivity and awareness</li>
+                                            <li>Appropriate adaptation of communication style</li>
+                                            <li>Respect for patient beliefs and values</li>
+                                        </ul>
+                                    </div>
+                                    <div class="assessment-item">
+                                        <strong>TCM Knowledge (25%)</strong>
+                                        <ul>
+                                            <li>Accurate explanation of concepts</li>
+                                            <li>Appropriate use of terminology</li>
+                                            <li>Integration of TCM principles</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="instruction-section">
+                                <h5>📝 Suggested Assessment Methods:</h5>
+                                <ul>
+                                    <li><strong>Live Observation:</strong> Monitor student interactions in real-time</li>
+                                    <li><strong>Conversation Review:</strong> Analyze chat logs for quality and appropriateness</li>
+                                    <li><strong>Self-Reflection:</strong> Have students write reflection essays post-session</li>
+                                    <li><strong>Peer Review:</strong> Students assess each other's performance</li>
+                                    <li><strong>Progress Tracking:</strong> Compare performance across multiple scenarios</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="instruction-section">
+                                <h5>🎯 Learning Objectives by Scenario:</h5>
+                                <div class="objective-list" id="scenario-objectives">
+                                    <p><em>Specific objectives will appear here based on selected avatar scenario.</em></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Avatar Practice Session -->
+                <div class="avatar-session" id="avatar-session" style="display: none;">
+                    <div class="session-header">
+                        <div class="session-info">
+                            <h3 id="session-title">Practice Session</h3>
+                            <p id="session-description">Interactive conversation practice</p>
+                        </div>
+                        <div class="session-controls">
+                            <button class="control-btn" onclick="toggleInstructions()" id="show-instructions-btn">
+                                📚 Show Instructions
+                            </button>
+                            <button class="control-btn" onclick="openAvatarInNewWindow()" id="open-new-window-btn">
+                                🔗 Open in New Window
+                            </button>
+                            <button class="control-btn" onclick="resetSession()">
+                                🔄 Reset Session
+                            </button>
                         </div>
                     </div>
                 </div>

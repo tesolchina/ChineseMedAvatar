@@ -1,3 +1,6 @@
+// Global variable to store current avatar URL for fallback
+let currentAvatarUrl = null;
+
 // Avatar configuration and state management
 class AvatarSelectionApp {
     constructor() {
@@ -238,6 +241,10 @@ class AvatarSelectionApp {
         
         console.log('Selected avatar:', this.selectedAvatar);
         
+        // Set current avatar URL for fallback functionality
+        currentAvatarUrl = this.selectedAvatar.url;
+        console.log('🔗 Set current avatar URL:', currentAvatarUrl);
+        
         // Enable practice tab
         const practiceTab = document.querySelector('[data-tab="practice"]');
         if (practiceTab) {
@@ -249,6 +256,14 @@ class AvatarSelectionApp {
         
         // Update practice tab content
         this.updatePracticeTab();
+        
+        // Show avatar session controls
+        this.showAvatarSession();
+        
+        // Update scenario-specific objectives
+        if (window.updateScenarioObjectives) {
+            window.updateScenarioObjectives(avatarId);
+        }
         
         // Switch to practice tab
         this.showTab('practice');
@@ -290,6 +305,29 @@ class AvatarSelectionApp {
                     </ul>
                 </div>
             `;
+        }
+    }
+    
+    showAvatarSession() {
+        if (!this.selectedAvatar) return;
+        
+        const sessionDiv = document.getElementById('avatar-session');
+        if (sessionDiv) {
+            // Update session info
+            const sessionTitle = document.getElementById('session-title');
+            const sessionDescription = document.getElementById('session-description');
+            
+            if (sessionTitle) {
+                sessionTitle.textContent = `${this.selectedAvatar.icon} ${this.selectedAvatar.name}`;
+            }
+            
+            if (sessionDescription) {
+                sessionDescription.textContent = `Practice with ${this.selectedAvatar.patient}`;
+            }
+            
+            // Show the session
+            sessionDiv.style.display = 'block';
+            console.log('🎭 Avatar session controls displayed');
         }
     }
     
@@ -644,5 +682,92 @@ if (typeof window !== 'undefined') {
         } else {
             console.error('App not initialized');
         }
+    };
+    
+    // Instructions panel functions
+    window.toggleInstructions = function() {
+        const panel = document.getElementById('instructions-panel');
+        const toggleText = document.getElementById('instruction-toggle-text');
+        const showBtn = document.getElementById('show-instructions-btn');
+        
+        if (panel.style.display === 'none') {
+            panel.style.display = 'block';
+            toggleText.textContent = 'Hide Instructions';
+            if (showBtn) showBtn.textContent = '📚 Hide Instructions';
+            console.log('📚 Instructions panel shown');
+        } else {
+            panel.style.display = 'none';
+            toggleText.textContent = 'Show Instructions';
+            if (showBtn) showBtn.textContent = '📚 Show Instructions';
+            console.log('📚 Instructions panel hidden');
+        }
+    };
+    
+    window.showInstructionTab = function(tabType) {
+        const studentTab = document.querySelector('.instruction-tab[onclick*="student"]');
+        const teacherTab = document.querySelector('.instruction-tab[onclick*="teacher"]');
+        const studentContent = document.getElementById('student-instructions');
+        const teacherContent = document.getElementById('teacher-instructions');
+        
+        if (tabType === 'student') {
+            studentTab.classList.add('active');
+            teacherTab.classList.remove('active');
+            studentContent.classList.add('active');
+            teacherContent.classList.remove('active');
+            console.log('👨‍🎓 Student instructions tab activated');
+        } else {
+            teacherTab.classList.add('active');
+            studentTab.classList.remove('active');
+            teacherContent.classList.add('active');
+            studentContent.classList.remove('active');
+            console.log('👨‍🏫 Teacher instructions tab activated');
+        }
+    };
+    
+    window.openAvatarInNewWindow = function() {
+        if (!currentAvatarUrl) {
+            alert('⚠️ No avatar selected. Please select an avatar from the Avatar Selection tab first.');
+            console.warn('🔗 No avatar URL available for new window');
+            return;
+        }
+        
+        console.log('🔗 Opening avatar in new window:', currentAvatarUrl);
+        
+        // Open in new window with appropriate size
+        const newWindow = window.open(
+            currentAvatarUrl,
+            '_blank',
+            'width=800,height=600,scrollbars=yes,resizable=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes'
+        );
+        
+        if (newWindow) {
+            console.log('✅ Avatar opened successfully in new window');
+        } else {
+            console.error('❌ Failed to open new window - popup may be blocked');
+            alert('⚠️ Popup blocked! Please allow popups for this site or copy the URL: ' + currentAvatarUrl);
+        }
+    };
+    
+    window.updateScenarioObjectives = function(avatarId) {
+        const objectivesList = document.getElementById('scenario-objectives');
+        if (!objectivesList || !app?.avatars?.[avatarId]) return;
+        
+        const avatar = app.avatars[avatarId];
+        const objectives = [
+            `Practice ${avatar.framework} communication approach`,
+            `Demonstrate cultural sensitivity with ${avatar.patient}`,
+            `Apply TCM diagnostic principles appropriately`,
+            `Manage ${avatar.duration} conversation effectively`,
+            `Address specific challenges in ${avatar.name.toLowerCase()} context`
+        ];
+        
+        objectivesList.innerHTML = `
+            <h6>Specific Learning Objectives for ${avatar.name}:</h6>
+            <ul>
+                ${objectives.map(obj => `<li>${obj}</li>`).join('')}
+            </ul>
+        `;
+        
+        console.log('🎯 Updated scenario objectives for:', avatarId);
     };
 }

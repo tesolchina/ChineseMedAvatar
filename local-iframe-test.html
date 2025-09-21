@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Iframe Test</title>
+    <style>
+        body { margin: 20px; font-family: Arial, sans-serif; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ccc; }
+        iframe { width: 100%; height: 400px; border: 2px solid #007cba; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 4px; }
+        .loading { background: #fff3cd; }
+        .success { background: #d4edda; }
+        .error { background: #f8d7da; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Local Iframe Test - Blank Content Diagnosis</h1>
+    
+    <div class="test-section">
+        <h2>Test 1: Direct URL (from your console log)</h2>
+        <p><strong>URL:</strong> https://textbot.hkbu.tech/tcm-clinical-interview</p>
+        <div id="status1" class="status loading">Loading...</div>
+        <iframe 
+            src="https://textbot.hkbu.tech/tcm-clinical-interview" 
+            onload="handleLoad(1)" 
+            onerror="handleError(1)">
+        </iframe>
+        <p><a href="https://textbot.hkbu.tech/tcm-clinical-interview" target="_blank">🔗 Open in New Tab</a></p>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 2: Avatar Path URL</h2>
+        <p><strong>URL:</strong> https://textbot.hkbu.tech/avatar/tcm-clinical-interview</p>
+        <div id="status2" class="status loading">Loading...</div>
+        <iframe 
+            src="https://textbot.hkbu.tech/avatar/tcm-clinical-interview" 
+            onload="handleLoad(2)" 
+            onerror="handleError(2)">
+        </iframe>
+        <p><a href="https://textbot.hkbu.tech/avatar/tcm-clinical-interview" target="_blank">🔗 Open in New Tab</a></p>
+    </div>
+    
+    <div class="test-section">
+        <h2>🏥 Diagnosis</h2>
+        <div id="diagnosis">
+            <p><strong>Instructions:</strong></p>
+            <ol>
+                <li>Check if either iframe shows content or remains blank</li>
+                <li>Open the "New Tab" links to see if URLs work directly</li>
+                <li>Check browser console (F12) for any error messages</li>
+                <li>If iframes are blank but new tabs work, it's an X-Frame-Options issue</li>
+            </ol>
+        </div>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        function handleLoad(testNum) {
+            const status = document.getElementById(`status${testNum}`);
+            status.className = 'status success';
+            status.textContent = `✅ Test ${testNum}: Iframe loaded (but check if content is visible)`;
+            console.log(`Test ${testNum}: Iframe onload event fired`);
+            
+            updateDiagnosis(testNum, 'loaded');
+        }
+        
+        function handleError(testNum) {
+            const status = document.getElementById(`status${testNum}`);
+            status.className = 'status error';
+            status.textContent = `❌ Test ${testNum}: Iframe failed to load`;
+            console.log(`Test ${testNum}: Iframe onerror event fired`);
+            
+            updateDiagnosis(testNum, 'error');
+        }
+        
+        function updateDiagnosis(testNum, result) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML += `<p>Test ${testNum}: ${result}</p>`;
+            
+            // Add diagnosis after both tests
+            setTimeout(() => {
+                const allStatuses = document.querySelectorAll('.status');
+                let loadedCount = 0;
+                let errorCount = 0;
+                
+                allStatuses.forEach(status => {
+                    if (status.textContent.includes('✅')) loadedCount++;
+                    if (status.textContent.includes('❌')) errorCount++;
+                });
+                
+                if (loadedCount === 2) {
+                    resultsDiv.innerHTML += `
+                        <div style="background: #fff3cd; padding: 15px; border-radius: 4px; margin: 10px 0;">
+                            <h4>⚠️ Diagnosis: Iframe loads but content may be blank</h4>
+                            <p><strong>This suggests X-Frame-Options or CSP blocking.</strong></p>
+                            <p><strong>Solution:</strong> The textbot.hkbu.tech server may be blocking iframe embedding.</p>
+                            <p><strong>Test:</strong> Do the "Open in New Tab" links work? If yes, it's definitely iframe blocking.</p>
+                        </div>
+                    `;
+                } else if (errorCount === 2) {
+                    resultsDiv.innerHTML += `
+                        <div style="background: #f8d7da; padding: 15px; border-radius: 4px; margin: 10px 0;">
+                            <h4>❌ Diagnosis: Network or URL issues</h4>
+                            <p><strong>The URLs are not accessible.</strong></p>
+                            <p><strong>Check:</strong> Internet connection and URL validity.</p>
+                        </div>
+                    `;
+                }
+            }, 2000);
+        }
+        
+        console.log('Iframe test initialized');
+        console.log('Watch for iframe loading vs. blank content issues');
+    </script>
+</body>
+</html>
