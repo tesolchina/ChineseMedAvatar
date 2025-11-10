@@ -12,7 +12,7 @@ class AvatarSelectionApp {
                 name: 'Clinical Interview',
                 icon: '🩺',
                 description: 'Practice conducting comprehensive patient interviews in TCM context, focusing on gathering chief complaints, medical history, and understanding patient concerns.',
-                patient: 'Ms. Wang (45), stressed office worker with digestive issues',
+                patient: 'Mr. Wang (45), stressed office worker with digestive issues',
                 framework: 'HEAL framework + TCM diagnostic inquiry',
                 duration: '15-20 minutes',
                 difficulty: 'intermediate',

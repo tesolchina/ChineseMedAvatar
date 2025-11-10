@@ -15,7 +15,7 @@ class AvatarSelectionApp {
                 name: 'Clinical Interview',
                 icon: '🩺',
                 description: 'Practice conducting comprehensive patient interviews in TCM context, focusing on gathering chief complaints, medical history, and understanding patient concerns.',
-                patient: 'Ms. Wang (45), stressed office worker with digestive issues',
+                patient: 'Mr. Wang (45), stressed office worker with digestive issues',
                 framework: 'HEAL framework + TCM diagnostic inquiry',
                 duration: '15-20 minutes',
                 difficulty: 'intermediate',
@@ -202,7 +202,7 @@ class AvatarSelectionApp {
                 <div class="card-description">${avatar.description}</div>
                 <div class="card-details">
                     <div class="detail-item">
-                        <span class="detail-label">Patient Scenario:</span>
+                        <span class="detail-label">Patient:</span>
                         <span class="detail-value">${avatar.patient}</span>
                     </div>
                     <div class="detail-item">
@@ -212,12 +212,6 @@ class AvatarSelectionApp {
                     <div class="detail-item">
                         <span class="detail-label">Duration:</span>
                         <span class="detail-value">${avatar.duration}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Difficulty:</span>
-                        <span class="detail-value">
-                            <span class="difficulty ${avatar.difficulty}">${avatar.difficulty}</span>
-                        </span>
                     </div>
                 </div>
             </div>
