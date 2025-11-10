@@ -9,7 +9,7 @@ Interactive platform for Traditional Chinese Medicine practitioners to practice 
 ## 📚 Practice Scenarios
 
 ### 1. 🩺 Clinical Interview
-- **Patient:** Ms. Wang (45), stressed office worker with digestive issues
+- **Patient:** Mr. Wang (45), stressed office worker with digestive issues
 - **Framework:** HEAL framework + TCM diagnostic inquiry
 - **Duration:** 15-20 minutes
 - **Difficulty:** Intermediate
