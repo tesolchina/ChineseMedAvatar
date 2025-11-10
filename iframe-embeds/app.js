@@ -281,7 +281,6 @@ class AvatarSelectionApp {
                     <p><strong>Patient:</strong> ${this.selectedAvatar.patient}</p>
                     <p><strong>Framework:</strong> ${this.selectedAvatar.framework}</p>
                     <p><strong>Expected Duration:</strong> ${this.selectedAvatar.duration}</p>
-                    <p><strong>Difficulty Level:</strong> <span class="difficulty ${this.selectedAvatar.difficulty}">${this.selectedAvatar.difficulty}</span></p>
                 </div>
                 <div class="demo-tips">
                     <h4>Practice Tips:</h4>
