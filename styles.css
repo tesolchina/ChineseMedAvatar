@@ -539,7 +539,7 @@ body {
     }
     
     .iframe-container {
-        height: 500px;
+        height: 95vh;
     }
     
     #practice-tips {
@@ -573,7 +573,7 @@ body {
     }
     
     .iframe-container {
-        height: 400px;
+        height: 95vh;
     }
 }
 
