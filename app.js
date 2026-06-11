@@ -368,18 +368,34 @@ class AvatarSelectionApp {
             console.log('🚀 Creating iframe with URL:', this.selectedAvatar.url);
             console.log('🔍 Avatar data:', this.selectedAvatar);
             
-            iframeContainer.innerHTML = `
-                <iframe 
-                    id="practice-iframe"
-                    src="${this.selectedAvatar.url}"
-                    title="${this.selectedAvatar.name} Practice Session"
-                    loading="lazy"
-                    allow="microphone; camera; autoplay; encrypted-media; fullscreen"
-                    style="width: 100%; height: 100%; border: none;">
-                </iframe>
-            `;
-            
-            // Handle iframe load
+            // Timeout fallback: if no response in 12s, show error UI
+              iframeContainer.style.position = 'relative';
+              const loadTimeout = setTimeout(() => {
+                  const fb = document.getElementById('iframe-fallback');
+                  const fr = document.getElementById('practice-iframe');
+                  if (fb) fb.style.display = 'flex';
+                  if (fr) fr.style.display = 'none';
+              }, 12000);
+
+              iframeContainer.innerHTML = `
+                  <iframe 
+                      id="practice-iframe"
+                      src="${this.selectedAvatar.url}"
+                      title="${this.selectedAvatar.name} Practice Session"
+                      loading="lazy"
+                      allow="microphone; camera; autoplay; encrypted-media; fullscreen"
+                      style="width: 100%; height: 100%; border: none;">
+                  </iframe>
+                  <div id="iframe-fallback" style="display:none;position:absolute;inset:0;background:#f8fafc;flex-direction:column;align-items:center;justify-content:center;padding:2rem;text-align:center;gap:1rem;border-radius:0.5rem;">
+                      <div style="font-size:3rem;">🔧</div>
+                      <h3 style="color:#1e293b;margin:0;">Avatar Service Temporarily Unavailable</h3>
+                      <p style="color:#64748b;max-width:420px;margin:0;">The <strong>${this.selectedAvatar.icon} ${this.selectedAvatar.name}</strong> chatbot service (textbot.hkbu.tech) is currently offline.</p>
+                      <p style="color:#64748b;max-width:420px;margin:0;">Please contact <a href="mailto:simonwang@hkbu.edu.hk" style="color:#3b82f6;">Simon Wang</a> to restore the service, or try again later.</p>
+                      <p style="color:#94a3b8;font-size:0.8rem;margin:0;">Service URL: ${this.selectedAvatar.url}</p>
+                  </div>
+              `;
+              
+              // Handle iframe load
             const newIframe = document.getElementById('practice-iframe');
             if (newIframe) {
                 console.log('📦 Iframe element created successfully');
@@ -391,6 +407,7 @@ class AvatarSelectionApp {
                 });
                 
                 newIframe.onload = () => {
+                    clearTimeout(loadTimeout);
                     console.log('✅ Avatar iframe loaded successfully');
                     console.log('🔍 Iframe src:', newIframe.src);
                     console.log('📊 Final iframe dimensions:', {
